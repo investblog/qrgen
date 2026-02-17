@@ -1,0 +1,146 @@
+{
+  "EXTENSION_NAME": {
+    "message": "QRCGen — Генератор QR-кодов"
+  },
+  "EXTENSION_DESCRIPTION": {
+    "message": "Генерация QR-кодов, ссылки для шаринга, embed-сниппеты. Боковая панель, офлайн-превью, канонические SVG URL."
+  },
+  "TAB_GENERATE": {
+    "message": "Создать"
+  },
+  "TAB_EMBED": {
+    "message": "Код"
+  },
+  "TAB_HISTORY": {
+    "message": "История"
+  },
+  "TAB_SETTINGS": {
+    "message": "Настройки"
+  },
+  "THEME_TOGGLE": {
+    "message": "Переключить тему"
+  },
+  "GENERATE_SOURCE_TAB": {
+    "message": "Текущая страница"
+  },
+  "GENERATE_SOURCE_CUSTOM": {
+    "message": "Свой текст"
+  },
+  "GENERATE_INPUT_LABEL": {
+    "message": "Текст или URL"
+  },
+  "GENERATE_INPUT_PLACEHOLDER": {
+    "message": "Введите URL или текст..."
+  },
+  "GENERATE_PRESET": {
+    "message": "Размер"
+  },
+  "GENERATE_ECC": {
+    "message": "ECC"
+  },
+  "GENERATE_PREVIEW_EMPTY": {
+    "message": "Введите данные для генерации QR-кода"
+  },
+  "GENERATE_ERROR": {
+    "message": "Ошибка генерации QR-кода"
+  },
+  "GENERATE_COPY_LINK": {
+    "message": "Скопировать ссылку"
+  },
+  "GENERATE_COPY_SVG": {
+    "message": "Скопировать SVG"
+  },
+  "GENERATE_DOWNLOAD_SVG": {
+    "message": "Скачать SVG"
+  },
+  "EMBED_FORMAT": {
+    "message": "Формат сниппета"
+  },
+  "EMBED_NO_QR": {
+    "message": "Сначала создайте QR-код"
+  },
+  "EMBED_COPY_SNIPPET": {
+    "message": "Скопировать сниппет"
+  },
+  "EMBED_COPY_URL": {
+    "message": "Скопировать URL"
+  },
+  "EMBED_API_DOCS": {
+    "message": "Документация API"
+  },
+  "HISTORY_EMPTY": {
+    "message": "История пуста"
+  },
+  "HISTORY_CLEAR": {
+    "message": "Очистить"
+  },
+  "HISTORY_CLEARED": {
+    "message": "История очищена"
+  },
+  "HISTORY_COPY_LINK": {
+    "message": "Копировать ссылку"
+  },
+  "HISTORY_OPEN": {
+    "message": "Открыть в браузере"
+  },
+  "HISTORY_JUST_NOW": {
+    "message": "только что"
+  },
+  "SETTINGS_DEFAULTS": {
+    "message": "По умолчанию"
+  },
+  "SETTINGS_DEFAULT_PRESET": {
+    "message": "Размер"
+  },
+  "SETTINGS_DEFAULT_ECC": {
+    "message": "Уровень ECC"
+  },
+  "SETTINGS_BEHAVIOR": {
+    "message": "Поведение"
+  },
+  "SETTINGS_AUTO_GENERATE": {
+    "message": "Авто-генерация при открытии"
+  },
+  "SETTINGS_HISTORY_LIMIT": {
+    "message": "Лимит истории"
+  },
+  "SETTINGS_APPEARANCE": {
+    "message": "Внешний вид"
+  },
+  "SETTINGS_THEME": {
+    "message": "Тема"
+  },
+  "SETTINGS_THEME_AUTO": {
+    "message": "Авто"
+  },
+  "SETTINGS_THEME_DARK": {
+    "message": "Тёмная"
+  },
+  "SETTINGS_THEME_LIGHT": {
+    "message": "Светлая"
+  },
+  "SETTINGS_PRIVACY": {
+    "message": "Приватность"
+  },
+  "SETTINGS_PRIVACY_NOTE": {
+    "message": "QR-данные и параметры генерации отправляются на qr.qrcgen.com для кеширования изображений на CDN. Без аккаунтов, без трекинга, без аналитики."
+  },
+  "SETTINGS_LINKS": {
+    "message": "Ссылки"
+  },
+  "SETTINGS_LINK_DOCS": {
+    "message": "Руководство по расширению"
+  },
+  "SETTINGS_LINK_API": {
+    "message": "Документация API"
+  },
+  "TOAST_COPIED": {
+    "message": "Скопировано"
+  },
+  "TOAST_COPY_FAILED": {
+    "message": "Ошибка копирования"
+  },
+  "TOAST_DOWNLOADED": {
+    "message": "Загружено"
+  }
+}

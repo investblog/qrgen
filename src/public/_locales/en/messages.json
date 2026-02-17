@@ -1,0 +1,146 @@
+{
+  "EXTENSION_NAME": {
+    "message": "QRCGen — QR Code Generator"
+  },
+  "EXTENSION_DESCRIPTION": {
+    "message": "Generate QR codes, copy share links, and embed snippets. Side panel workflow, offline preview, canonical SVG URLs."
+  },
+  "TAB_GENERATE": {
+    "message": "Generate"
+  },
+  "TAB_EMBED": {
+    "message": "Embed"
+  },
+  "TAB_HISTORY": {
+    "message": "History"
+  },
+  "TAB_SETTINGS": {
+    "message": "Settings"
+  },
+  "THEME_TOGGLE": {
+    "message": "Toggle theme"
+  },
+  "GENERATE_SOURCE_TAB": {
+    "message": "Current page"
+  },
+  "GENERATE_SOURCE_CUSTOM": {
+    "message": "Custom input"
+  },
+  "GENERATE_INPUT_LABEL": {
+    "message": "Text or URL"
+  },
+  "GENERATE_INPUT_PLACEHOLDER": {
+    "message": "Enter URL or text..."
+  },
+  "GENERATE_PRESET": {
+    "message": "Size"
+  },
+  "GENERATE_ECC": {
+    "message": "ECC"
+  },
+  "GENERATE_PREVIEW_EMPTY": {
+    "message": "Enter data to generate QR code"
+  },
+  "GENERATE_ERROR": {
+    "message": "Failed to generate QR code"
+  },
+  "GENERATE_COPY_LINK": {
+    "message": "Copy Share Link"
+  },
+  "GENERATE_COPY_SVG": {
+    "message": "Copy SVG"
+  },
+  "GENERATE_DOWNLOAD_SVG": {
+    "message": "Download SVG"
+  },
+  "EMBED_FORMAT": {
+    "message": "Snippet format"
+  },
+  "EMBED_NO_QR": {
+    "message": "Generate a QR code first"
+  },
+  "EMBED_COPY_SNIPPET": {
+    "message": "Copy Snippet"
+  },
+  "EMBED_COPY_URL": {
+    "message": "Copy Canonical URL"
+  },
+  "EMBED_API_DOCS": {
+    "message": "API Docs"
+  },
+  "HISTORY_EMPTY": {
+    "message": "No history yet"
+  },
+  "HISTORY_CLEAR": {
+    "message": "Clear all"
+  },
+  "HISTORY_CLEARED": {
+    "message": "History cleared"
+  },
+  "HISTORY_COPY_LINK": {
+    "message": "Copy link"
+  },
+  "HISTORY_OPEN": {
+    "message": "Open in browser"
+  },
+  "HISTORY_JUST_NOW": {
+    "message": "just now"
+  },
+  "SETTINGS_DEFAULTS": {
+    "message": "Defaults"
+  },
+  "SETTINGS_DEFAULT_PRESET": {
+    "message": "Default size"
+  },
+  "SETTINGS_DEFAULT_ECC": {
+    "message": "Default ECC"
+  },
+  "SETTINGS_BEHAVIOR": {
+    "message": "Behavior"
+  },
+  "SETTINGS_AUTO_GENERATE": {
+    "message": "Auto-generate on open"
+  },
+  "SETTINGS_HISTORY_LIMIT": {
+    "message": "History limit"
+  },
+  "SETTINGS_APPEARANCE": {
+    "message": "Appearance"
+  },
+  "SETTINGS_THEME": {
+    "message": "Theme"
+  },
+  "SETTINGS_THEME_AUTO": {
+    "message": "Auto"
+  },
+  "SETTINGS_THEME_DARK": {
+    "message": "Dark"
+  },
+  "SETTINGS_THEME_LIGHT": {
+    "message": "Light"
+  },
+  "SETTINGS_PRIVACY": {
+    "message": "Privacy"
+  },
+  "SETTINGS_PRIVACY_NOTE": {
+    "message": "QR payload and generation params are sent to qr.qrcgen.com to cache QR images on the CDN edge. No accounts, no tracking, no analytics."
+  },
+  "SETTINGS_LINKS": {
+    "message": "Links"
+  },
+  "SETTINGS_LINK_DOCS": {
+    "message": "Extension Guide"
+  },
+  "SETTINGS_LINK_API": {
+    "message": "API Documentation"
+  },
+  "TOAST_COPIED": {
+    "message": "Copied to clipboard"
+  },
+  "TOAST_COPY_FAILED": {
+    "message": "Copy failed"
+  },
+  "TOAST_DOWNLOADED": {
+    "message": "Downloaded"
+  }
+}
