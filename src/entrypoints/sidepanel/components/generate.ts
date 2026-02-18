@@ -29,7 +29,7 @@ const state: GenerateState = {
   tabTitle: '',
   preset: DEFAULT_SETTINGS.defaultPreset,
   ecc: DEFAULT_SETTINGS.defaultEcc,
-  quiet: 4,
+  quiet: 2,
   canonicalUrl: '',
   svgString: '',
 };
