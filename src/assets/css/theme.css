@@ -30,6 +30,8 @@
 
   /* Semantic */
   --danger: #FF4F6E;
+  --danger-soft: rgba(255, 79, 110, 0.12);
+  --danger-hover: #E8435F;
   --success: #18C27A;
   --warning: #FFB347;
   --info: #3B82F6;

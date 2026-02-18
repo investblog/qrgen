@@ -298,6 +298,17 @@ a.panel__title:hover {
   border-color: var(--border-strong);
 }
 
+.btn--danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid transparent;
+}
+
+.btn--danger:hover {
+  background: var(--danger);
+  color: #fff;
+}
+
 .btn--ghost {
   background: none;
   color: var(--text-muted);

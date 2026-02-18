@@ -13,7 +13,7 @@ export function createHistoryTab(): HTMLElement {
   footer.style.textAlign = 'center';
   footer.style.paddingTop = 'var(--space-3)';
 
-  const clearBtn = el('button', 'btn btn--ghost btn--sm') as HTMLButtonElement;
+  const clearBtn = el('button', 'btn btn--danger btn--sm') as HTMLButtonElement;
   clearBtn.appendChild(svgIcon(ICONS.trash, 14));
   clearBtn.appendChild(document.createTextNode(t('HISTORY_CLEAR')));
   clearBtn.addEventListener('click', async () => {
