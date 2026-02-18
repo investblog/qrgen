@@ -31,5 +31,5 @@ jobs:
       - name: Test
         run: npm test
 
-      - name: Build (Chrome + Edge)
+      - name: Build (Chrome + Firefox + Edge + Opera)
         run: npm run build:all

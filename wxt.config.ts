@@ -23,12 +23,26 @@ export default defineConfig({
     homepage_url: 'https://qrcgen.com',
     default_locale: 'en',
 
-    permissions: ['sidePanel', 'storage', 'activeTab', 'tabs'],
+    permissions: [
+      ...(browser !== 'firefox' ? ['sidePanel'] : []),
+      'storage',
+      'activeTab',
+      'tabs',
+    ],
     host_permissions: ['https://qr.qrcgen.com/*'],
 
-    side_panel: {
-      default_path: 'sidepanel/index.html',
-    },
+    ...(browser !== 'firefox' && {
+      side_panel: {
+        default_path: 'sidepanel/index.html',
+      },
+    }),
+
+    ...(browser === 'firefox' && {
+      sidebar_action: {
+        default_panel: 'sidepanel/index.html',
+        default_title: '__MSG_EXTENSION_NAME__',
+      },
+    }),
 
     content_security_policy: {
       extension_pages: "script-src 'self'; object-src 'self'",
@@ -51,6 +65,19 @@ export default defineConfig({
 
     ...(browser === 'edge' && {
       minimum_chrome_version: '116',
+    }),
+
+    ...(browser === 'opera' && {
+      minimum_chrome_version: '116',
+    }),
+
+    ...(browser === 'firefox' && {
+      browser_specific_settings: {
+        gecko: {
+          id: 'qrcgen@qrcgen.com',
+          strict_min_version: '142.0',
+        },
+      },
     }),
   }),
 
