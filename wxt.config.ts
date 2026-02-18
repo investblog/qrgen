@@ -23,12 +23,7 @@ export default defineConfig({
     homepage_url: 'https://qrcgen.com',
     default_locale: 'en',
 
-    permissions: [
-      ...(browser !== 'firefox' ? ['sidePanel'] : []),
-      'storage',
-      'activeTab',
-      'tabs',
-    ],
+    permissions: [...(browser !== 'firefox' ? ['sidePanel'] : []), 'storage', 'activeTab', 'tabs'],
     host_permissions: ['https://qr.qrcgen.com/*'],
 
     ...(browser !== 'firefox' && {
