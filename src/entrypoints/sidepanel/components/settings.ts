@@ -4,6 +4,7 @@ import { loadSettings, saveSettings } from '@shared/storage';
 import { getThemePreference, setThemePreference, type ThemePreference } from '@shared/theme';
 import type { EccLevel, PresetId, Settings } from '@shared/types';
 import { el, t } from '../helpers';
+import { notifyDefaultsChanged } from '../state';
 
 let settings: Settings = { ...DEFAULT_SETTINGS };
 
@@ -25,6 +26,7 @@ export function createSettingsTab(): HTMLElement {
     (val) => {
       settings.defaultPreset = val as PresetId;
       persist();
+      notifyDefaultsChanged(settings.defaultPreset, settings.defaultEcc);
     },
   );
   defaultsGroup.appendChild(presetRow);
@@ -40,6 +42,7 @@ export function createSettingsTab(): HTMLElement {
     (val) => {
       settings.defaultEcc = val as EccLevel;
       persist();
+      notifyDefaultsChanged(settings.defaultPreset, settings.defaultEcc);
     },
   );
   defaultsGroup.appendChild(eccRow);

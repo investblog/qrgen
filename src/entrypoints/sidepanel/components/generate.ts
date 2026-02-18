@@ -8,7 +8,7 @@ import { getPreset, PRESET_IDS, PRESETS } from '@shared/presets';
 import { addHistoryItem, loadSettings } from '@shared/storage';
 import type { EccLevel, PresetId, QrParams } from '@shared/types';
 import { copyToClipboard, downloadFile, el, ICONS, showToast, svgIcon, t } from '../helpers';
-import { setCanonicalUrl } from '../state';
+import { onDefaultsChange, setCanonicalUrl } from '../state';
 
 interface GenerateState {
   source: 'tab' | 'custom';
@@ -35,6 +35,9 @@ const state: GenerateState = {
 };
 
 let previewContainer: HTMLElement | null = null;
+let presetSelect: HTMLSelectElement | null = null;
+let eccSelect: HTMLSelectElement | null = null;
+let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
 export function createGenerateTab(): HTMLElement {
   const container = el('div');
@@ -67,7 +70,8 @@ export function createGenerateTab(): HTMLElement {
   input.addEventListener('input', () => {
     state.customInput = input.value;
     counter.textContent = `${input.value.length} / ${MAX_DATA_LENGTH}`;
-    regenerate();
+    if (debounceTimer) clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => regenerate(), 150);
   });
   const counter = el('div', 'input-group__counter', `0 / ${MAX_DATA_LENGTH}`);
   inputGroup.appendChild(inputLabel);
@@ -80,7 +84,7 @@ export function createGenerateTab(): HTMLElement {
 
   const presetGroup = el('div', 'input-group');
   const presetLabel = el('label', 'input-group__label', t('GENERATE_PRESET'));
-  const presetSelect = document.createElement('select');
+  presetSelect = document.createElement('select');
   for (const id of PRESET_IDS) {
     const preset = PRESETS.get(id)!;
     const option = document.createElement('option');
@@ -90,7 +94,7 @@ export function createGenerateTab(): HTMLElement {
     presetSelect.appendChild(option);
   }
   presetSelect.addEventListener('change', () => {
-    state.preset = presetSelect.value as PresetId;
+    if (presetSelect) state.preset = presetSelect.value as PresetId;
     regenerate();
   });
   presetGroup.appendChild(presetLabel);
@@ -98,7 +102,7 @@ export function createGenerateTab(): HTMLElement {
 
   const eccGroup = el('div', 'input-group');
   const eccLabel = el('label', 'input-group__label', t('GENERATE_ECC'));
-  const eccSelect = document.createElement('select');
+  eccSelect = document.createElement('select');
   for (const level of ECC_LEVELS) {
     const option = document.createElement('option');
     option.value = level;
@@ -107,7 +111,7 @@ export function createGenerateTab(): HTMLElement {
     eccSelect.appendChild(option);
   }
   eccSelect.addEventListener('change', () => {
-    state.ecc = eccSelect.value as EccLevel;
+    if (eccSelect) state.ecc = eccSelect.value as EccLevel;
     regenerate();
   });
   eccGroup.appendChild(eccLabel);
@@ -162,6 +166,15 @@ export function createGenerateTab(): HTMLElement {
   row2.appendChild(downloadBtn);
   actions.appendChild(row2);
   container.appendChild(actions);
+
+  // Subscribe to settings defaults changes
+  onDefaultsChange((preset, ecc) => {
+    state.preset = preset;
+    state.ecc = ecc;
+    if (presetSelect) presetSelect.value = preset;
+    if (eccSelect) eccSelect.value = ecc;
+    regenerate();
+  });
 
   // Load initial data
   initGenerate();
