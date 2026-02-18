@@ -35,7 +35,7 @@ export async function refreshHistory(): Promise<void> {
 
 function renderHistory(items: HistoryItem[]): void {
   if (!listContainer) return;
-  listContainer.innerHTML = '';
+  listContainer.textContent = '';
 
   if (items.length === 0) {
     const empty = el('div', 'history-empty', t('HISTORY_EMPTY'));

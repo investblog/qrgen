@@ -59,6 +59,18 @@ export function showToast(message: string, type: 'success' | 'error' | 'info' = 
   setTimeout(() => toast.remove(), 2500);
 }
 
+/** Remove all children from an element (safe alternative to innerHTML = '') */
+export function clearChildren(node: HTMLElement): void {
+  node.textContent = '';
+}
+
+/** Parse an SVG string and append it to a container */
+export function appendSvgFromString(container: HTMLElement, svgString: string): void {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(svgString, 'image/svg+xml');
+  container.appendChild(document.importNode(doc.documentElement, true));
+}
+
 // ---- SVG icons ----
 
 export const ICONS = {
@@ -89,6 +101,10 @@ export function svgIcon(paths: string, size = 16): SVGSVGElement {
   svg.setAttribute('stroke-width', '2');
   svg.setAttribute('stroke-linecap', 'round');
   svg.setAttribute('stroke-linejoin', 'round');
-  svg.innerHTML = paths;
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(`<svg xmlns="http://www.w3.org/2000/svg">${paths}</svg>`, 'image/svg+xml');
+  for (const child of Array.from(doc.documentElement.childNodes)) {
+    svg.appendChild(svg.ownerDocument.importNode(child, true));
+  }
   return svg;
 }

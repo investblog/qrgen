@@ -7,7 +7,17 @@ import { sendMessageSafe } from '@shared/messaging';
 import { getPreset, PRESET_IDS, PRESETS } from '@shared/presets';
 import { addHistoryItem, loadSettings } from '@shared/storage';
 import type { EccLevel, PresetId, QrParams } from '@shared/types';
-import { copyToClipboard, downloadFile, el, ICONS, showToast, svgIcon, t } from '../helpers';
+import {
+  appendSvgFromString,
+  clearChildren,
+  copyToClipboard,
+  downloadFile,
+  el,
+  ICONS,
+  showToast,
+  svgIcon,
+  t,
+} from '../helpers';
 import { onDefaultsChange, setCanonicalUrl } from '../state';
 
 interface GenerateState {
@@ -123,7 +133,7 @@ export function createGenerateTab(): HTMLElement {
 
   // Preview
   previewContainer = el('div', 'qr-preview');
-  previewContainer.innerHTML = `<div class="qr-preview__empty">${t('GENERATE_PREVIEW_EMPTY')}</div>`;
+  previewContainer.appendChild(el('div', 'qr-preview__empty', t('GENERATE_PREVIEW_EMPTY')));
   container.appendChild(previewContainer);
 
   // Actions
@@ -239,7 +249,8 @@ async function regenerate(): Promise<void> {
   const data = getCurrentData();
   if (!data || !previewContainer) {
     if (previewContainer) {
-      previewContainer.innerHTML = `<div class="qr-preview__empty">${t('GENERATE_PREVIEW_EMPTY')}</div>`;
+      clearChildren(previewContainer);
+      previewContainer.appendChild(el('div', 'qr-preview__empty', t('GENERATE_PREVIEW_EMPTY')));
     }
     state.canonicalUrl = '';
     state.svgString = '';
@@ -258,12 +269,14 @@ async function regenerate(): Promise<void> {
   try {
     const matrix = generateMatrix(data, state.ecc);
     const previewSvg = renderSvgPreview(matrix, state.quiet);
-    previewContainer.innerHTML = previewSvg;
+    clearChildren(previewContainer);
+    appendSvgFromString(previewContainer, previewSvg);
 
     const preset = getPreset(state.preset);
     state.svgString = renderSvg(matrix, state.quiet, preset);
   } catch {
-    previewContainer.innerHTML = `<div class="qr-preview__empty">${t('GENERATE_ERROR')}</div>`;
+    clearChildren(previewContainer);
+    previewContainer.appendChild(el('div', 'qr-preview__empty', t('GENERATE_ERROR')));
     state.svgString = '';
     return;
   }

@@ -71,6 +71,9 @@ export default defineConfig({
         gecko: {
           id: 'qrcgen@qrcgen.com',
           strict_min_version: '142.0',
+          data_collection_permissions: {
+            required: ['none'],
+          },
         },
       },
     }),

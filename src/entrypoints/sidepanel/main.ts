@@ -20,7 +20,7 @@ const tabButtons = new Map<TabId, HTMLElement>();
 
 function buildUI(): void {
   const app = document.getElementById('app')!;
-  app.innerHTML = '';
+  app.textContent = '';
 
   const panel = el('div', 'panel');
 
@@ -120,7 +120,7 @@ function switchTab(tabId: TabId): void {
 }
 
 function updateThemeIcon(btn: HTMLElement): void {
-  btn.innerHTML = '';
+  btn.textContent = '';
   const theme = getTheme();
   btn.appendChild(svgIcon(theme === 'dark' ? ICONS.sun : ICONS.moon, 16));
 }
