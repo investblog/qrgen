@@ -36,7 +36,7 @@ export default defineConfig({
   manifest: ({ browser }) => ({
     name: '__MSG_EXTENSION_NAME__',
     description: '__MSG_EXTENSION_DESCRIPTION__',
-    version: '1.0.0',
+    version: '1.0.1',
     author: 'QRCGen <support@qrcgen.com>',
     homepage_url: 'https://qrcgen.com',
     default_locale: 'en',

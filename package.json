@@ -1,6 +1,6 @@
 {
   "name": "qrcgen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "QR Code Generator with share links and embed snippets. Side panel workflow, offline preview, canonical URLs.",
   "type": "module",
   "scripts": {
