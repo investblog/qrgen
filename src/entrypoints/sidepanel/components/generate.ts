@@ -2,11 +2,11 @@ import { generateMatrix } from '@qr/generate';
 import { renderSvg, renderSvgPreview } from '@qr/render';
 import { buildApiUrl, buildCanonicalUrl } from '@shared/canonical';
 import { DEFAULT_SETTINGS, ECC_LEVELS, MAX_DATA_LENGTH } from '@shared/constants';
-import type { MessageMap } from '@shared/messaging';
 import { sendMessageSafe } from '@shared/messaging';
 import { getPreset, PRESET_IDS, PRESETS } from '@shared/presets';
 import { addHistoryItem, loadSettings } from '@shared/storage';
 import type { EccLevel, PresetId, QrParams } from '@shared/types';
+import { browser } from 'wxt/browser';
 import {
   appendSvgFromString,
   clearChildren,
@@ -227,13 +227,13 @@ async function initGenerate(): Promise<void> {
 }
 
 async function refreshTabUrl(): Promise<void> {
-  const response = await sendMessageSafe<MessageMap['qrcgen:get-tab-url']['response']>({
-    type: 'qrcgen:get-tab-url',
-  });
-
-  if (response && !response.__error) {
-    state.tabUrl = response.url;
-    state.tabTitle = response.title;
+  try {
+    const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
+    state.tabUrl = tab?.url ?? '';
+    state.tabTitle = tab?.title ?? '';
+  } catch {
+    state.tabUrl = '';
+    state.tabTitle = '';
   }
 
   if (state.source === 'tab') {

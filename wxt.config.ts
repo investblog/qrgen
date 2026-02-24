@@ -15,6 +15,24 @@ export default defineConfig({
     },
   }),
 
+  hooks: {
+    'build:manifestGenerated': (wxt, manifest) => {
+      // Firefox: sidebar icon + toolbar popup fallback
+      if (wxt.config.browser === 'firefox') {
+        const sa = manifest as unknown as Record<string, unknown>;
+        if (sa.sidebar_action && typeof sa.sidebar_action === 'object') {
+          (sa.sidebar_action as Record<string, unknown>).default_icon = {
+            16: 'icons/16.png',
+            32: 'icons/32.png',
+          };
+        }
+        if (manifest.action) {
+          manifest.action.default_popup = 'sidepanel.html';
+        }
+      }
+    },
+  },
+
   manifest: ({ browser }) => ({
     name: '__MSG_EXTENSION_NAME__',
     description: '__MSG_EXTENSION_DESCRIPTION__',

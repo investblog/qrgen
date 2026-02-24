@@ -4,15 +4,17 @@ import { browser } from 'wxt/browser';
 export default defineBackground(() => {
   // Open side panel on action click
   browser.action.onClicked.addListener(async (tab) => {
-    if (tab.windowId != null) {
+    if ((browser as any).sidebarAction?.toggle) {
+      // Firefox: toggle sidebar
+      await (browser as any).sidebarAction.toggle();
+    } else if (tab.windowId != null) {
+      // Chrome/Edge: open side panel
       await (browser as any).sidePanel.open({ windowId: tab.windowId });
     }
   });
 
-  // Enable side panel to open on action click
-  (browser as any).sidePanel?.setPanelBehavior?.({ openPanelOnActionClick: true }).catch(() => {
-    // Fallback: not all browsers support this
-  });
+  // Chrome/Edge: enable side panel to open on action click
+  (browser as any).sidePanel?.setPanelBehavior?.({ openPanelOnActionClick: true }).catch(() => {});
 
   // Message router
   browser.runtime.onMessage.addListener(((
