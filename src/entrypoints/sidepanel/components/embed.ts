@@ -1,4 +1,3 @@
-import { warmLink } from '@shared/messaging';
 import { generateSnippet, SNIPPET_FORMATS } from '@shared/snippets';
 import type { SnippetFormat } from '@shared/types';
 import { copyToClipboard, el, ICONS, showToast, svgIcon, t } from '../helpers';
@@ -53,10 +52,8 @@ export function createEmbedTab(): HTMLElement {
       if (linkWithheld) showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
       return;
     }
-    const url = currentCanonicalUrl;
-    const ok = await copyToClipboard(generateSnippet(url, currentFormat));
+    const ok = await copyToClipboard(generateSnippet(currentCanonicalUrl, currentFormat));
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
-    if (ok) warmLink(url);
   });
   actions.appendChild(copySnippetBtn);
 
@@ -68,10 +65,8 @@ export function createEmbedTab(): HTMLElement {
       if (linkWithheld) showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
       return;
     }
-    const url = currentCanonicalUrl;
-    const ok = await copyToClipboard(url);
+    const ok = await copyToClipboard(currentCanonicalUrl);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
-    if (ok) warmLink(url);
   });
   actions.appendChild(copyUrlBtn);
 

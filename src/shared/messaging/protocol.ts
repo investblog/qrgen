@@ -3,10 +3,6 @@ export interface MessageMap {
     request: Record<string, never>;
     response: { url: string; title: string };
   };
-  'qrcgen:warm-cache': {
-    request: { url: string };
-    response: { ok: boolean };
-  };
 }
 
 export type MessageType = keyof MessageMap;

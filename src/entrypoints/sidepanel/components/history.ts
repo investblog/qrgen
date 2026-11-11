@@ -1,5 +1,4 @@
 import { buildCanonicalUrl, isLinkable } from '@shared/canonical';
-import { warmLink } from '@shared/messaging';
 import { clearHistory, loadHistory } from '@shared/storage';
 import type { HistoryItem } from '@shared/types';
 import { browser } from 'wxt/browser';
@@ -81,7 +80,6 @@ function createHistoryRow(item: HistoryItem): HTMLElement {
     if (!url) return;
     const ok = await copyToClipboard(url);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
-    if (ok) warmLink(url);
   });
 
   const openBtn = el('button', 'btn btn--ghost btn--icon') as HTMLButtonElement;
@@ -102,8 +100,8 @@ function createHistoryRow(item: HistoryItem): HTMLElement {
 }
 
 /**
- * Rebuilt from the stored data: entries saved by older versions hold a bare URL that only works
- * while the image sits in the edge cache, and may hold data too long for the worker.
+ * Rebuilt from the stored data: entries saved by older versions hold a bare URL, which the worker no
+ * longer serves, and may hold data too long for the worker.
  */
 async function linkFor(item: HistoryItem): Promise<string> {
   if (!isLinkable(item.data)) {

@@ -15,7 +15,7 @@ QR code generator browser extension — side panel UI, share links, embed snippe
 - **Side panel UI** — always accessible, doesn't block the page
 - **Instant preview** — QR generated locally via `uqr`, no network needed
 - **~5 KB SVGs** — run-length encoded, single `<path>`, integer coordinates
-- **Share links** — self-contained links at `qr.qrcgen.com` that work from any CDN edge location
+- **Share links** — self-contained links at `qr.qrcgen.com`; the API rebuilds the image from the link
 - **Embed snippets** — HTML, Markdown, React, Vue formats
 - **History** — recent QR codes stored locally
 - **Dark & light theme** — with auto-detection
@@ -36,8 +36,8 @@ QR code generator browser extension — side panel UI, share links, embed snippe
 3. SHA-256 hash computed locally (same algorithm as the API worker)
 4. Share link built deterministically — the path names the image, the query carries the data, so the
    API can rebuild and verify it anywhere; no API call needed
-5. Copy share link, download SVG, or grab an embed snippet — copying a link requests it once to warm
-   the CDN edge cache
+5. Copy share link, download SVG, or grab an embed snippet — the extension itself makes no network
+   requests
 
 ## Development
 
@@ -66,7 +66,7 @@ npm run check          # typecheck + lint + test
 
 ## Privacy
 
-QRCGen runs in your browser. QR codes are generated locally — nothing is sent for the preview. The extension contacts `qr.qrcgen.com` only when you copy or open a share link or snippet, and the link carries the encoded text. No accounts, no tracking, no analytics. Full policy: [PRIVACY.md](PRIVACY.md).
+QRCGen runs entirely in your browser and makes no network requests. Share links carry the encoded text, so whoever opens one (or scans the code) can read it. No accounts, no tracking, no analytics. Full policy: [PRIVACY.md](PRIVACY.md).
 
 ## Related
 

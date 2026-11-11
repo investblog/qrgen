@@ -28,7 +28,7 @@ Chrome/Edge MV3 side panel extension that generates QR codes locally and produce
 ```
 src/
 ├── entrypoints/
-│   ├── background/index.ts          # Service worker: tab URL, cache warming
+│   ├── background/index.ts          # Service worker: opens the side panel, tab URL
 │   └── sidepanel/
 │       ├── index.html               # HTML shell
 │       ├── main.ts                  # Bootstrap, tab navigation
@@ -53,7 +53,7 @@ src/
 │   ├── theme.ts                     # Dark/light/auto theme switcher
 │   └── messaging/
 │       ├── protocol.ts              # MessageMap type definitions
-│       └── index.ts                 # sendMessageSafe()
+│       └── index.ts                 # re-exports the types
 ├── assets/css/
 │   ├── theme.css                    # Design tokens (colors, typography, spacing, dark/light)
 │   └── sidepanel.css                # Component styles (panel, tabs, buttons, preview, toasts)
@@ -66,16 +66,15 @@ src/
 
 ```
 User opens side panel
-  → background sends current tab URL
+  → side panel reads the active tab URL (tabs.query)
   → LOCAL: uqr.encode() → matrix → renderSvgPreview() → inline SVG (instant)
   → LOCAL: computeHash() → canonical URL /qr/<preset>/<hash>.svg?data=…&ecc=…&q=… (no fetch)
   → User clicks "Copy Share Link" / copies a snippet / copies or opens a history item
-      → clipboard gets the URL
-      → BACKGROUND (fire-and-forget): fetch that URL once → warms the nearest CDN edge
+      → clipboard gets the URL (history entries open via tabs.create)
 ```
 
-No network for the preview or the automatic code on open. The link is self-contained: the worker
-re-creates the image from the query and checks it against the hash, so it works from any edge
+The extension makes no network requests and has no host permissions. The link is self-contained: the
+worker re-creates the image from the query and checks it against the hash, so it works from any edge
 location; `isLinkable()` withholds links whose data the worker would reject (over 2,048 characters).
 History entries are re-linked from their stored data, so entries saved by older versions (bare URLs)
 get self-contained links too.
@@ -97,7 +96,6 @@ npm run lint:fix     # Biome auto-fix
 - `sidePanel` — open side panel
 - `storage` — persist history + settings
 - `activeTab` + `tabs` — read current tab URL
-- `host_permissions: qr.qrcgen.com/*` — warming fetch for a copied link
 
 ## Conventions
 

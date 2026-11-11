@@ -29,12 +29,6 @@ export default defineBackground(() => {
       return true;
     }
 
-    if (msg.type === 'qrcgen:warm-cache') {
-      const payload = msg.payload as MessageMap['qrcgen:warm-cache']['request'];
-      handleWarmCache(payload.url).then(sendResponse);
-      return true;
-    }
-
     return true;
   }) as any);
 });
@@ -48,14 +42,5 @@ async function handleGetTabUrl(): Promise<MessageMap['qrcgen:get-tab-url']['resp
     };
   } catch {
     return { url: '', title: '' };
-  }
-}
-
-async function handleWarmCache(url: string): Promise<MessageMap['qrcgen:warm-cache']['response']> {
-  try {
-    await fetch(url, { mode: 'no-cors' });
-    return { ok: true };
-  } catch {
-    return { ok: false };
   }
 }

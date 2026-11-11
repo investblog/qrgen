@@ -2,7 +2,6 @@ import { generateMatrix } from '@qr/generate';
 import { renderSvg, renderSvgPreview } from '@qr/render';
 import { buildCanonicalUrl, isLinkable } from '@shared/canonical';
 import { DEFAULT_SETTINGS, ECC_LEVELS, MAX_DATA_LENGTH } from '@shared/constants';
-import { warmLink } from '@shared/messaging';
 import { getPreset, PRESET_IDS, PRESETS } from '@shared/presets';
 import { addHistoryItem, loadSettings } from '@shared/storage';
 import type { EccLevel, PresetId, QrParams } from '@shared/types';
@@ -158,10 +157,7 @@ export function createGenerateTab(): HTMLElement {
     }
     const ok = await copyToClipboard(url);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
-    if (ok) {
-      warmLink(url);
-      saveToHistory(url, params);
-    }
+    if (ok) saveToHistory(url, params);
   });
   actions.appendChild(copyLinkBtn);
 
@@ -307,8 +303,8 @@ async function regenerate(): Promise<void> {
     return;
   }
 
-  // Build the share link locally; nothing is sent until the user copies or opens it. The old link is
-  // dropped first, and Copy waits for linkReady, so the preview and the link never disagree.
+  // Build the share link locally (the extension never sends anything). The old link is dropped
+  // first, and Copy waits for linkReady, so the preview and the link never disagree.
   clearLink();
   const linkable = isLinkable(data);
   linkReady = (async () => {

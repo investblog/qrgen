@@ -3,8 +3,9 @@ import type { HistoryItem, Settings } from '@shared/types';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 /**
- * Privacy invariant of the side panel: the QR code is drawn locally, and the data goes over the
- * network (warmLink) only after the user copies or opens a link.
+ * Privacy invariant of the side panel: everything is local. The extension never makes a network
+ * request or asks the background to make one; the only way data leaves is a link the user copies
+ * or opens.
  */
 
 const env = vi.hoisted(() => ({
@@ -14,10 +15,11 @@ const env = vi.hoisted(() => ({
   clipboardOk: true,
 }));
 
-const warmLink = vi.hoisted(() => vi.fn());
 const addHistoryItem = vi.hoisted(() => vi.fn(async () => {}));
 const tabsCreate = vi.hoisted(() => vi.fn(async () => ({})));
 const writeText = vi.hoisted(() => vi.fn(async () => {}));
+const sendMessage = vi.hoisted(() => vi.fn(async () => ({})));
+const fetchSpy = vi.fn(async () => new Response(''));
 
 vi.mock('wxt/browser', () => ({
   browser: {
@@ -25,10 +27,10 @@ vi.mock('wxt/browser', () => ({
       query: vi.fn(async () => [{ url: env.tabUrl, title: 'Page' }]),
       create: tabsCreate,
     },
+    runtime: { sendMessage },
     i18n: { getMessage: (key: string) => key },
   },
 }));
-vi.mock('@shared/messaging', () => ({ warmLink }));
 vi.mock('@shared/storage', () => ({
   loadSettings: vi.fn(async () => ({ ...env.settings }) as Settings),
   addHistoryItem,
@@ -54,6 +56,7 @@ async function openPanel() {
     copyLink: () => (generate.querySelector('.btn--primary') as HTMLButtonElement).click(),
     refresh: () => (generate.querySelector('button[title="Reload URL"]') as HTMLButtonElement).click(),
     copySnippet: () => (embed.querySelector('.btn--primary') as HTMLButtonElement).click(),
+    copyEmbedUrl: () => (embed.querySelector('.btn--secondary') as HTMLButtonElement).click(),
     snippetText: () => embed.querySelector('pre')?.textContent ?? '',
     toast: () => document.querySelector('.toast')?.textContent ?? '',
   };
@@ -65,9 +68,11 @@ beforeEach(() => {
   env.settings.autoGenerate = true;
   env.history = [];
   env.clipboardOk = true;
-  warmLink.mockClear();
   addHistoryItem.mockClear();
   tabsCreate.mockClear();
+  sendMessage.mockClear();
+  fetchSpy.mockClear();
+  vi.stubGlobal('fetch', fetchSpy);
   writeText.mockReset();
   writeText.mockImplementation(async () => {
     if (!env.clipboardOk) throw new Error('denied');
@@ -78,48 +83,47 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  // Every scenario: no network request, no request through the background.
+  expect(fetchSpy).not.toHaveBeenCalled();
+  expect(sendMessage).not.toHaveBeenCalled();
+  vi.unstubAllGlobals();
   document.body.textContent = '';
 });
 
 describe('opening the panel', () => {
-  it('draws the current page locally and sends nothing', async () => {
+  it('draws the current page locally', async () => {
     const p = await openPanel();
     expect(p.preview()).not.toBeNull();
     expect(p.snippetText()).toContain('https://qr.qrcgen.com/qr/sq250/');
-    expect(warmLink).not.toHaveBeenCalled();
   });
 
-  it('with auto-generate off, draws nothing and sends nothing', async () => {
+  it('with auto-generate off, draws nothing', async () => {
     env.settings.autoGenerate = false;
     const p = await openPanel();
     expect(p.preview()).toBeNull();
-    expect(warmLink).not.toHaveBeenCalled();
   });
 
-  it('the refresh button regenerates without sending', async () => {
+  it('the refresh button regenerates', async () => {
     env.settings.autoGenerate = false;
     const p = await openPanel();
     p.refresh();
     await flush();
     expect(p.preview()).not.toBeNull();
-    expect(warmLink).not.toHaveBeenCalled();
   });
 });
 
 describe('copying a share link', () => {
-  it('copies the self-contained link, warms it once and saves history', async () => {
+  it('copies the self-contained link and saves history', async () => {
     const p = await openPanel();
     p.copyLink();
     await flush();
     const url = writeText.mock.calls[0][0] as string;
     expect(url).toMatch(/^https:\/\/qr\.qrcgen\.com\/qr\/sq250\/[a-f0-9]{64}\.svg\?data=.+&ecc=M&q=2$/);
     expect(new URL(url).searchParams.get('data')).toBe(env.tabUrl);
-    expect(warmLink).toHaveBeenCalledTimes(1);
-    expect(warmLink).toHaveBeenCalledWith(url);
     expect(addHistoryItem).toHaveBeenCalledTimes(1);
   });
 
-  it('warms and saves the link that was copied, even if the input changes meanwhile', async () => {
+  it('saves the link that was copied, even if the input changes meanwhile', async () => {
     let release: () => void = () => {};
     writeText.mockImplementationOnce(() => new Promise<void>((r) => (release = r)));
     const p = await openPanel();
@@ -134,29 +138,33 @@ describe('copying a share link', () => {
 
     release();
     await flush();
-    expect(warmLink).toHaveBeenCalledWith(copied);
     expect(addHistoryItem).toHaveBeenCalledWith(
       expect.objectContaining({ data: 'https://example.com/page', canonicalUrl: copied }),
       50,
     );
   });
 
-  it('a failed copy sends nothing', async () => {
+  it('a failed copy saves nothing', async () => {
     env.clipboardOk = false;
     const p = await openPanel();
     p.copyLink();
     await flush();
     expect(p.toast()).toBe('TOAST_COPY_FAILED');
-    expect(warmLink).not.toHaveBeenCalled();
     expect(addHistoryItem).not.toHaveBeenCalled();
   });
 
-  it('copying a snippet warms the same link', async () => {
+  it('a snippet carries the same link, HTML-escaped', async () => {
     const p = await openPanel();
     p.copySnippet();
     await flush();
     expect(writeText.mock.calls[0][0]).toContain('&amp;ecc=M&amp;q=2');
-    expect(warmLink).toHaveBeenCalledTimes(1);
+  });
+
+  it("the Embed tab's Copy URL copies the plain link", async () => {
+    const p = await openPanel();
+    p.copyEmbedUrl();
+    await flush();
+    expect(writeText.mock.calls[0][0]).toMatch(/\.svg\?data=.+&ecc=M&q=2$/);
   });
 });
 
@@ -175,7 +183,6 @@ describe('generation failure', () => {
     p.copySnippet();
     await flush();
     expect(writeText).not.toHaveBeenCalled();
-    expect(warmLink).not.toHaveBeenCalled();
     expect(addHistoryItem).not.toHaveBeenCalled();
   });
 });
@@ -197,7 +204,6 @@ describe('data too long for a link', () => {
     p.copySnippet();
     await flush();
     expect(writeText).not.toHaveBeenCalled();
-    expect(warmLink).not.toHaveBeenCalled();
   });
 });
 
@@ -229,7 +235,6 @@ describe('history', () => {
     expect(url).not.toBe(legacy.canonicalUrl);
     expect(new URL(url).searchParams.get('data')).toBe(legacy.data);
     expect(url).toContain('/qr/sq200/');
-    expect(warmLink).toHaveBeenCalledWith(url);
   });
 
   it('opens the rebuilt link in a new tab', async () => {
@@ -247,6 +252,5 @@ describe('history', () => {
     await flush();
     expect(writeText).not.toHaveBeenCalled();
     expect(tabsCreate).not.toHaveBeenCalled();
-    expect(warmLink).not.toHaveBeenCalled();
   });
 });
