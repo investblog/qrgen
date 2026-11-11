@@ -53,10 +53,10 @@ export function createEmbedTab(): HTMLElement {
       if (linkWithheld) showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
       return;
     }
-    const snippet = generateSnippet(currentCanonicalUrl, currentFormat);
-    const ok = await copyToClipboard(snippet);
+    const url = currentCanonicalUrl;
+    const ok = await copyToClipboard(generateSnippet(url, currentFormat));
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
-    if (ok) warmLink(currentCanonicalUrl);
+    if (ok) warmLink(url);
   });
   actions.appendChild(copySnippetBtn);
 
@@ -68,9 +68,10 @@ export function createEmbedTab(): HTMLElement {
       if (linkWithheld) showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
       return;
     }
-    const ok = await copyToClipboard(currentCanonicalUrl);
+    const url = currentCanonicalUrl;
+    const ok = await copyToClipboard(url);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
-    if (ok) warmLink(currentCanonicalUrl);
+    if (ok) warmLink(url);
   });
   actions.appendChild(copyUrlBtn);
 

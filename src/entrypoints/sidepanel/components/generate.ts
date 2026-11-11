@@ -29,6 +29,8 @@ interface GenerateState {
   ecc: EccLevel;
   quiet: number;
   canonicalUrl: string;
+  /** The params `canonicalUrl` was built from (history saves these, not the live input). */
+  linkParams: QrParams | null;
   svgString: string;
 }
 
@@ -41,9 +43,12 @@ const state: GenerateState = {
   ecc: DEFAULT_SETTINGS.defaultEcc,
   quiet: 2,
   canonicalUrl: '',
+  linkParams: null,
   svgString: '',
 };
 
+let regenSeq = 0;
+let linkReady: Promise<void> = Promise.resolve();
 let previewContainer: HTMLElement | null = null;
 let presetSelect: HTMLSelectElement | null = null;
 let eccSelect: HTMLSelectElement | null = null;
@@ -143,15 +148,19 @@ export function createGenerateTab(): HTMLElement {
   copyLinkBtn.appendChild(svgIcon(ICONS.link));
   copyLinkBtn.appendChild(document.createTextNode(t('GENERATE_COPY_LINK')));
   copyLinkBtn.addEventListener('click', async () => {
-    if (!state.canonicalUrl) {
+    await linkSettled();
+    // Snapshot: the input may change while the clipboard call is pending.
+    const url = state.canonicalUrl;
+    const params = state.linkParams;
+    if (!url || !params) {
       if (state.svgString) showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
       return;
     }
-    const ok = await copyToClipboard(state.canonicalUrl);
+    const ok = await copyToClipboard(url);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
     if (ok) {
-      warmLink(state.canonicalUrl);
-      saveToHistory();
+      warmLink(url);
+      saveToHistory(url, params);
     }
   });
   actions.appendChild(copyLinkBtn);
@@ -255,16 +264,22 @@ function getCurrentData(): string {
   return state.source === 'tab' ? state.tabUrl : state.customInput.trim();
 }
 
+function clearLink(): void {
+  state.canonicalUrl = '';
+  state.linkParams = null;
+  setCanonicalUrl('');
+}
+
 async function regenerate(): Promise<void> {
+  const seq = ++regenSeq;
   const data = getCurrentData();
   if (!data || !previewContainer) {
     if (previewContainer) {
       clearChildren(previewContainer);
       previewContainer.appendChild(el('div', 'qr-preview__empty', t('GENERATE_PREVIEW_EMPTY')));
     }
-    state.canonicalUrl = '';
     state.svgString = '';
-    setCanonicalUrl('');
+    clearLink();
     return;
   }
 
@@ -288,31 +303,36 @@ async function regenerate(): Promise<void> {
     clearChildren(previewContainer);
     previewContainer.appendChild(el('div', 'qr-preview__empty', t('GENERATE_ERROR')));
     state.svgString = '';
+    clearLink();
     return;
   }
 
-  // Build the share link locally; nothing is sent until the user copies or opens it.
+  // Build the share link locally; nothing is sent until the user copies or opens it. The old link is
+  // dropped first, and Copy waits for linkReady, so the preview and the link never disagree.
+  clearLink();
   const linkable = isLinkable(data);
-  state.canonicalUrl = linkable ? await buildCanonicalUrl(params) : '';
-  setCanonicalUrl(state.canonicalUrl, !linkable);
+  linkReady = (async () => {
+    const url = linkable ? await buildCanonicalUrl(params) : '';
+    if (seq !== regenSeq) return; // a newer regeneration has started; its link wins
+    state.canonicalUrl = url;
+    state.linkParams = linkable ? params : null;
+    setCanonicalUrl(url, !linkable);
+  })();
+  await linkReady;
 }
 
-async function saveToHistory(): Promise<void> {
-  const data = getCurrentData();
-  if (!data || !state.canonicalUrl) return;
+/** Resolves once the link for the latest regeneration is set (or known to be withheld). */
+async function linkSettled(): Promise<void> {
+  let current: Promise<void>;
+  do {
+    current = linkReady;
+    await current;
+  } while (current !== linkReady);
+}
 
+async function saveToHistory(url: string, params: QrParams): Promise<void> {
   const settings = await loadSettings();
-  await addHistoryItem(
-    {
-      data,
-      preset: state.preset,
-      ecc: state.ecc,
-      quiet: state.quiet,
-      canonicalUrl: state.canonicalUrl,
-      createdAt: Date.now(),
-    },
-    settings.historyLimit,
-  );
+  await addHistoryItem({ ...params, canonicalUrl: url, createdAt: Date.now() }, settings.historyLimit);
 }
 
 function extractDomain(data: string): string {

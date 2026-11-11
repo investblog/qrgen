@@ -119,6 +119,28 @@ describe('copying a share link', () => {
     expect(addHistoryItem).toHaveBeenCalledTimes(1);
   });
 
+  it('warms and saves the link that was copied, even if the input changes meanwhile', async () => {
+    let release: () => void = () => {};
+    writeText.mockImplementationOnce(() => new Promise<void>((r) => (release = r)));
+    const p = await openPanel();
+    p.copyLink();
+    await flush();
+    const copied = writeText.mock.calls[0][0] as string;
+
+    env.tabUrl = 'https://other.example/';
+    p.refresh();
+    await flush();
+    expect(p.snippetText()).toContain(encodeURIComponent('https://other.example/'));
+
+    release();
+    await flush();
+    expect(warmLink).toHaveBeenCalledWith(copied);
+    expect(addHistoryItem).toHaveBeenCalledWith(
+      expect.objectContaining({ data: 'https://example.com/page', canonicalUrl: copied }),
+      50,
+    );
+  });
+
   it('a failed copy sends nothing', async () => {
     env.clipboardOk = false;
     const p = await openPanel();
@@ -135,6 +157,26 @@ describe('copying a share link', () => {
     await flush();
     expect(writeText.mock.calls[0][0]).toContain('&amp;ecc=M&amp;q=2');
     expect(warmLink).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('generation failure', () => {
+  it('drops the previous link when the new data cannot be encoded', async () => {
+    const p = await openPanel();
+    expect(p.snippetText()).toContain('/qr/sq250/');
+
+    env.tabUrl = `https://example.com/${'中'.repeat(2000)}`; // ≤ 2,048 units, but too big for any QR
+    p.refresh();
+    await flush();
+    expect(p.preview()).toBeNull();
+    expect(p.snippetText()).toBe('EMBED_NO_QR');
+
+    p.copyLink();
+    p.copySnippet();
+    await flush();
+    expect(writeText).not.toHaveBeenCalled();
+    expect(warmLink).not.toHaveBeenCalled();
+    expect(addHistoryItem).not.toHaveBeenCalled();
   });
 });
 
