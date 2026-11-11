@@ -2,7 +2,8 @@ import type { EccLevel, PresetId } from '@shared/types';
 
 // ---- Canonical URL state ----
 
-type Listener = (canonicalUrl: string) => void;
+/** `withheld`: a QR code is shown, but its data is too long for a link (the URL is then ''). */
+type Listener = (canonicalUrl: string, withheld: boolean) => void;
 
 const listeners: Listener[] = [];
 let current = '';
@@ -11,9 +12,9 @@ export function getCanonicalUrl(): string {
   return current;
 }
 
-export function setCanonicalUrl(url: string): void {
+export function setCanonicalUrl(url: string, withheld = false): void {
   current = url;
-  for (const fn of listeners) fn(url);
+  for (const fn of listeners) fn(url, withheld);
 }
 
 export function onCanonicalUrlChange(fn: Listener): void {

@@ -15,12 +15,12 @@ QR code generator browser extension — side panel UI, share links, embed snippe
 - **Side panel UI** — always accessible, doesn't block the page
 - **Instant preview** — QR generated locally via `uqr`, no network needed
 - **~5 KB SVGs** — run-length encoded, single `<path>`, integer coordinates
-- **Share links** — canonical URLs at `qr.qrcgen.com` with CDN edge caching
+- **Share links** — self-contained links at `qr.qrcgen.com` that work from any CDN edge location
 - **Embed snippets** — HTML, Markdown, React, Vue formats
 - **History** — recent QR codes stored locally
 - **Dark & light theme** — with auto-detection
 - **2 languages** — English, Russian
-- **Fully local** — no accounts, no tracking, no data leaves your browser
+- **Local first** — no accounts, no tracking; data leaves your browser only in a link you copy or open
 
 ## Install
 
@@ -34,9 +34,10 @@ QR code generator browser extension — side panel UI, share links, embed snippe
 1. Click the extension icon — side panel opens with a QR code for the current page
 2. QR matrix generated **locally** with `uqr` — instant, offline
 3. SHA-256 hash computed locally (same algorithm as the API worker)
-4. Canonical URL built deterministically — no API call needed
-5. Background worker warms the CDN edge cache (fire-and-forget)
-6. Copy share link, download SVG, or grab an embed snippet
+4. Share link built deterministically — the path names the image, the query carries the data, so the
+   API can rebuild and verify it anywhere; no API call needed
+5. Copy share link, download SVG, or grab an embed snippet — copying a link requests it once to warm
+   the CDN edge cache
 
 ## Development
 
@@ -60,12 +61,12 @@ npm run check          # typecheck + lint + test
 - [uqr](https://github.com/unjs/uqr) — QR matrix generation (zero deps)
 - Vanilla DOM — no React/Vue runtime
 - [Biome](https://biomejs.dev) — linter & formatter
-- [Vitest](https://vitest.dev) — test runner (32 tests)
+- [Vitest](https://vitest.dev) + happy-dom — unit tests and side panel flow tests
 - Chrome MV3 + Edge MV3 builds
 
 ## Privacy
 
-QRCGen runs entirely in your browser. QR codes are generated locally — no data is sent for preview. The only network request is an optional cache-warming fetch to `qr.qrcgen.com` so share links load instantly for recipients. No accounts, no tracking, no analytics.
+QRCGen runs in your browser. QR codes are generated locally — nothing is sent for the preview. The extension contacts `qr.qrcgen.com` only when you copy or open a share link or snippet, and the link carries the encoded text. No accounts, no tracking, no analytics. Full policy: [PRIVACY.md](PRIVACY.md).
 
 ## Related
 

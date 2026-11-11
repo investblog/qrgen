@@ -4,7 +4,7 @@ export interface MessageMap {
     response: { url: string; title: string };
   };
   'qrcgen:warm-cache': {
-    request: { apiUrl: string };
+    request: { url: string };
     response: { ok: boolean };
   };
 }

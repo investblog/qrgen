@@ -1,3 +1,4 @@
+import { warmLink } from '@shared/messaging';
 import { generateSnippet, SNIPPET_FORMATS } from '@shared/snippets';
 import type { SnippetFormat } from '@shared/types';
 import { copyToClipboard, el, ICONS, showToast, svgIcon, t } from '../helpers';
@@ -5,6 +6,7 @@ import { onCanonicalUrlChange } from '../state';
 
 let currentFormat: SnippetFormat = 'html-img';
 let currentCanonicalUrl = '';
+let linkWithheld = false;
 let codeBlock: HTMLPreElement | null = null;
 
 export function createEmbedTab(): HTMLElement {
@@ -47,10 +49,14 @@ export function createEmbedTab(): HTMLElement {
   copySnippetBtn.appendChild(svgIcon(ICONS.copy));
   copySnippetBtn.appendChild(document.createTextNode(t('EMBED_COPY_SNIPPET')));
   copySnippetBtn.addEventListener('click', async () => {
-    if (!currentCanonicalUrl) return;
+    if (!currentCanonicalUrl) {
+      if (linkWithheld) showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
+      return;
+    }
     const snippet = generateSnippet(currentCanonicalUrl, currentFormat);
     const ok = await copyToClipboard(snippet);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
+    if (ok) warmLink(currentCanonicalUrl);
   });
   actions.appendChild(copySnippetBtn);
 
@@ -58,9 +64,13 @@ export function createEmbedTab(): HTMLElement {
   copyUrlBtn.appendChild(svgIcon(ICONS.link));
   copyUrlBtn.appendChild(document.createTextNode(t('EMBED_COPY_URL')));
   copyUrlBtn.addEventListener('click', async () => {
-    if (!currentCanonicalUrl) return;
+    if (!currentCanonicalUrl) {
+      if (linkWithheld) showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
+      return;
+    }
     const ok = await copyToClipboard(currentCanonicalUrl);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
+    if (ok) warmLink(currentCanonicalUrl);
   });
   actions.appendChild(copyUrlBtn);
 
@@ -79,8 +89,9 @@ export function createEmbedTab(): HTMLElement {
   container.appendChild(actions);
 
   // Subscribe to canonical URL changes from Generate tab
-  onCanonicalUrlChange((url) => {
+  onCanonicalUrlChange((url, withheld) => {
     currentCanonicalUrl = url;
+    linkWithheld = withheld;
     updateSnippet();
   });
 
@@ -90,7 +101,7 @@ export function createEmbedTab(): HTMLElement {
 function updateSnippet(): void {
   if (!codeBlock) return;
   if (!currentCanonicalUrl) {
-    codeBlock.textContent = t('EMBED_NO_QR');
+    codeBlock.textContent = t(linkWithheld ? 'TOAST_TOO_LONG_FOR_LINK' : 'EMBED_NO_QR');
     return;
   }
   codeBlock.textContent = generateSnippet(currentCanonicalUrl, currentFormat);

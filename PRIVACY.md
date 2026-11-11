@@ -2,32 +2,41 @@
 
 **QRCGen** — QR Code Generator Browser Extension
 
-*Last updated: February 19, 2026*
+*Last updated: November 12, 2026*
 
 ## Summary
 
-QRCGen runs entirely in your browser. No accounts, no tracking, no analytics. The only network request is an optional cache-warming fetch so share links load instantly for recipients.
+QRCGen runs in your browser. No accounts, no tracking, no analytics. QR codes are drawn locally; the
+extension contacts `qr.qrcgen.com` only when you copy or open a share link or an embed snippet.
 
 ## Data Collection
 
-QRCGen does **not** collect, store, or transmit any personal data.
+QRCGen does not collect personal data and has no user accounts. The only data that leaves your device
+is the content of a QR code you choose to share, as described below.
 
 ### What stays on your device
 
-- QR code generation (performed locally using the `uqr` library)
-- Extension settings (theme, default size, error correction level)
-- QR code history (recent items you explicitly saved)
-
-All of the above is stored locally via `browser.storage.local` and never leaves your browser.
+- QR code generation is performed locally using the `uqr` library, including the automatic code for
+  the current page; it is not stored.
+- Extension settings (theme, default size, error correction level) and QR code history (codes whose
+  share link you copied) are stored locally via `browser.storage.local`; they are not synced or sent
+  anywhere automatically. A history entry's text goes out only when you copy or open its link.
 
 ### What is sent over the network
 
-When you generate a QR code, the extension sends a single **cache-warming request** to `qr.qrcgen.com`. This request contains:
+When you **copy a share link, copy an embed snippet or copy/open a link from history**, the extension
+requests that link from `qr.qrcgen.com` once, so the image is ready in the CDN cache. The link — and
+therefore this request — contains:
 
 - The URL or text you encoded
 - QR parameters (size preset, error correction level, quiet zone)
 
-This request is used solely to pre-cache the QR code image on a CDN edge server so that share links load instantly. No cookies, tokens, or identifiers are attached.
+The share link itself carries the encoded text in plain form: anyone you give the link to, and anyone
+who scans the QR code, can read it. Do not put passwords or other secrets into a QR code you share.
+No cookies, tokens, or identifiers are attached to the request.
+
+Versions before 1.1.0 sent the same request every time a QR code was generated, including the
+automatic code for the current page when the panel opened.
 
 **No other network requests are made.**
 
@@ -37,20 +46,27 @@ This request is used solely to pre-cache the QR code image on a CDN edge server 
 |------------|---------|
 | `sidePanel` / `sidebar` | Display the extension UI in the browser side panel |
 | `storage` | Save your settings and history locally |
-| `activeTab` + `tabs` | Read the URL of your current page to generate a QR code |
+| `activeTab` + `tabs` | Read the URL of the current page when the panel opens or you press refresh |
+| `qr.qrcgen.com` (host) | Request the share link you copied (see above) |
 
 The extension does not access page content, browsing history, bookmarks, passwords, or any other browser data.
 
 ## Third-Party Services
 
-- **qr.qrcgen.com** — QR code CDN (Cloudflare Workers). No analytics, no cookies, no logging of user identities. See [API documentation](https://qrcgen.com/docs/qr-api).
+- **qr.qrcgen.com** — QR code API and CDN, run on Cloudflare Workers. Its code does not log the encoded
+  data or user identities and uses no analytics or cookies. Cloudflare, as the hosting provider, processes
+  request metadata under its own privacy policy. See the
+  [API documentation](https://qrcgen.com/docs/qr-api) and the
+  [service privacy policy](https://qrcgen.com/docs/privacy).
 
 No other third-party services, SDKs, or analytics tools are used.
 
 ## Data Retention
 
 - Local data (settings, history) persists until you clear it via the extension settings or uninstall the extension.
-- Cache-warming requests are processed by Cloudflare Workers with no persistent logging of request origins.
+- The generated image is kept in Cloudflare's edge cache for up to a year and may be evicted earlier.
+  The service stores nothing about who requested it; request metadata handled by Cloudflare itself is
+  covered by Cloudflare's privacy policy.
 
 ## Children's Privacy
 

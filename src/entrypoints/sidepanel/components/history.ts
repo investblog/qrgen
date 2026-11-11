@@ -1,5 +1,8 @@
+import { buildCanonicalUrl, isLinkable } from '@shared/canonical';
+import { warmLink } from '@shared/messaging';
 import { clearHistory, loadHistory } from '@shared/storage';
 import type { HistoryItem } from '@shared/types';
+import { browser } from 'wxt/browser';
 import { copyToClipboard, el, ICONS, showToast, svgIcon, t } from '../helpers';
 
 let listContainer: HTMLElement | null = null;
@@ -74,16 +77,21 @@ function createHistoryRow(item: HistoryItem): HTMLElement {
   copyBtn.appendChild(svgIcon(ICONS.link, 14));
   copyBtn.addEventListener('click', async (e) => {
     e.stopPropagation();
-    const ok = await copyToClipboard(item.canonicalUrl);
+    const url = await linkFor(item);
+    if (!url) return;
+    const ok = await copyToClipboard(url);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
+    if (ok) warmLink(url);
   });
 
   const openBtn = el('button', 'btn btn--ghost btn--icon') as HTMLButtonElement;
   openBtn.title = t('HISTORY_OPEN');
   openBtn.appendChild(svgIcon(ICONS.externalLink, 14));
-  openBtn.addEventListener('click', (e) => {
+  openBtn.addEventListener('click', async (e) => {
     e.stopPropagation();
-    window.open(item.canonicalUrl, '_blank');
+    const url = await linkFor(item);
+    // tabs.create needs no user activation, unlike window.open after an await.
+    if (url) await browser.tabs.create({ url });
   });
 
   actions.appendChild(copyBtn);
@@ -91,6 +99,18 @@ function createHistoryRow(item: HistoryItem): HTMLElement {
   li.appendChild(actions);
 
   return li;
+}
+
+/**
+ * Rebuilt from the stored data: entries saved by older versions hold a bare URL that only works
+ * while the image sits in the edge cache, and may hold data too long for the worker.
+ */
+async function linkFor(item: HistoryItem): Promise<string> {
+  if (!isLinkable(item.data)) {
+    showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
+    return '';
+  }
+  return buildCanonicalUrl(item);
 }
 
 function truncateData(data: string): string {

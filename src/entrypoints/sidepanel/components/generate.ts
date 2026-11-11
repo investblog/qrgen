@@ -1,8 +1,8 @@
 import { generateMatrix } from '@qr/generate';
 import { renderSvg, renderSvgPreview } from '@qr/render';
-import { buildApiUrl, buildCanonicalUrl } from '@shared/canonical';
+import { buildCanonicalUrl, isLinkable } from '@shared/canonical';
 import { DEFAULT_SETTINGS, ECC_LEVELS, MAX_DATA_LENGTH } from '@shared/constants';
-import { sendMessageSafe } from '@shared/messaging';
+import { warmLink } from '@shared/messaging';
 import { getPreset, PRESET_IDS, PRESETS } from '@shared/presets';
 import { addHistoryItem, loadSettings } from '@shared/storage';
 import type { EccLevel, PresetId, QrParams } from '@shared/types';
@@ -143,10 +143,16 @@ export function createGenerateTab(): HTMLElement {
   copyLinkBtn.appendChild(svgIcon(ICONS.link));
   copyLinkBtn.appendChild(document.createTextNode(t('GENERATE_COPY_LINK')));
   copyLinkBtn.addEventListener('click', async () => {
-    if (!state.canonicalUrl) return;
+    if (!state.canonicalUrl) {
+      if (state.svgString) showToast(t('TOAST_TOO_LONG_FOR_LINK'), 'error');
+      return;
+    }
     const ok = await copyToClipboard(state.canonicalUrl);
     showToast(ok ? t('TOAST_COPIED') : t('TOAST_COPY_FAILED'), ok ? 'success' : 'error');
-    if (ok) saveToHistory();
+    if (ok) {
+      warmLink(state.canonicalUrl);
+      saveToHistory();
+    }
   });
   actions.appendChild(copyLinkBtn);
 
@@ -183,7 +189,7 @@ export function createGenerateTab(): HTMLElement {
     state.ecc = ecc;
     if (presetSelect) presetSelect.value = preset;
     if (eccSelect) eccSelect.value = ecc;
-    regenerate();
+    if (state.svgString) regenerate();
   });
 
   // Load initial data
@@ -219,14 +225,14 @@ async function initGenerate(): Promise<void> {
   state.preset = settings.defaultPreset;
   state.ecc = settings.defaultEcc;
 
-  await refreshTabUrl();
+  await readTabUrl();
 
   if (settings.autoGenerate && state.tabUrl) {
     regenerate();
   }
 }
 
-async function refreshTabUrl(): Promise<void> {
+async function readTabUrl(): Promise<void> {
   try {
     const [tab] = await browser.tabs.query({ active: true, currentWindow: true });
     state.tabUrl = tab?.url ?? '';
@@ -235,7 +241,11 @@ async function refreshTabUrl(): Promise<void> {
     state.tabUrl = '';
     state.tabTitle = '';
   }
+}
 
+/** Refresh button: re-read the active tab and regenerate. */
+async function refreshTabUrl(): Promise<void> {
+  await readTabUrl();
   if (state.source === 'tab') {
     regenerate();
   }
@@ -281,13 +291,10 @@ async function regenerate(): Promise<void> {
     return;
   }
 
-  // Build canonical URL (local hash computation)
-  state.canonicalUrl = await buildCanonicalUrl(params);
-  setCanonicalUrl(state.canonicalUrl);
-
-  // Background: warm edge cache (fire-and-forget)
-  const apiUrl = buildApiUrl(params);
-  sendMessageSafe({ type: 'qrcgen:warm-cache', payload: { apiUrl } });
+  // Build the share link locally; nothing is sent until the user copies or opens it.
+  const linkable = isLinkable(data);
+  state.canonicalUrl = linkable ? await buildCanonicalUrl(params) : '';
+  setCanonicalUrl(state.canonicalUrl, !linkable);
 }
 
 async function saveToHistory(): Promise<void> {

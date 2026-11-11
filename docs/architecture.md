@@ -68,12 +68,17 @@ src/
 User opens side panel
   → background sends current tab URL
   → LOCAL: uqr.encode() → matrix → renderSvgPreview() → inline SVG (instant)
-  → LOCAL: computeHash() → canonical URL (deterministic, no fetch)
-  → BACKGROUND (fire-and-forget): fetch API URL → warms CDN edge cache
-  → User clicks "Copy Share Link" → clipboard gets canonical URL
+  → LOCAL: computeHash() → canonical URL /qr/<preset>/<hash>.svg?data=…&ecc=…&q=… (no fetch)
+  → User clicks "Copy Share Link" / copies a snippet / copies or opens a history item
+      → clipboard gets the URL
+      → BACKGROUND (fire-and-forget): fetch that URL once → warms the nearest CDN edge
 ```
 
-No network dependency for preview. Network only for cache warming (best-effort).
+No network for the preview or the automatic code on open. The link is self-contained: the worker
+re-creates the image from the query and checks it against the hash, so it works from any edge
+location; `isLinkable()` withholds links whose data the worker would reject (over 2,048 characters).
+History entries are re-linked from their stored data, so entries saved by older versions (bare URLs)
+get self-contained links too.
 
 ## Commands
 
@@ -92,7 +97,7 @@ npm run lint:fix     # Biome auto-fix
 - `sidePanel` — open side panel
 - `storage` — persist history + settings
 - `activeTab` + `tabs` — read current tab URL
-- `host_permissions: qr.qrcgen.com/*` — cache warming fetch
+- `host_permissions: qr.qrcgen.com/*` — warming fetch for a copied link
 
 ## Conventions
 

@@ -14,3 +14,11 @@ export function sendMessageSafe<T = unknown>(message: {
     },
   );
 }
+
+/**
+ * Asks the background to request a share link once, so the image is cached at the nearest edge.
+ * Called only when the user hands a link out (copy / open) — never for the local preview.
+ */
+export function warmLink(url: string): void {
+  void sendMessageSafe({ type: 'qrcgen:warm-cache', payload: { url } });
+}

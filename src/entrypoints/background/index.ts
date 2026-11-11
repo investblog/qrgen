@@ -31,7 +31,7 @@ export default defineBackground(() => {
 
     if (msg.type === 'qrcgen:warm-cache') {
       const payload = msg.payload as MessageMap['qrcgen:warm-cache']['request'];
-      handleWarmCache(payload.apiUrl).then(sendResponse);
+      handleWarmCache(payload.url).then(sendResponse);
       return true;
     }
 
@@ -51,9 +51,9 @@ async function handleGetTabUrl(): Promise<MessageMap['qrcgen:get-tab-url']['resp
   }
 }
 
-async function handleWarmCache(apiUrl: string): Promise<MessageMap['qrcgen:warm-cache']['response']> {
+async function handleWarmCache(url: string): Promise<MessageMap['qrcgen:warm-cache']['response']> {
   try {
-    await fetch(apiUrl, { redirect: 'follow', mode: 'no-cors' });
+    await fetch(url, { mode: 'no-cors' });
     return { ok: true };
   } catch {
     return { ok: false };

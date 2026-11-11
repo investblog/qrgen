@@ -142,5 +142,8 @@
   },
   "TOAST_DOWNLOADED": {
     "message": "Downloaded"
+  },
+  "TOAST_TOO_LONG_FOR_LINK": {
+    "message": "Too long for a link (max 2,048 characters) — use Copy SVG or Download"
   }
 }
