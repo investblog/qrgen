@@ -1,4 +1,11 @@
-# QRCGen — QR Code Generator Browser Extension
+---
+type: reference
+status: active
+tags: [architecture, release]
+project: qrgen
+---
+
+# QRCGen — architecture and development
 
 ## What This Is
 
@@ -86,12 +93,6 @@ npm run lint:fix     # Biome auto-fix
 - `storage` — persist history + settings
 - `activeTab` + `tabs` — read current tab URL
 - `host_permissions: qr.qrcgen.com/*` — cache warming fetch
-
-## Related Projects
-
-- `W:\Projects\qr-generator` — Cloudflare Worker API at `qr.qrcgen.com` (same hash algo)
-- `W:\Projects\cookiepeak` — Reference WXT extension (messaging, theme patterns)
-- `W:\Projects\301-ui` — Design system (CSS tokens origin)
 
 ## Conventions
 
