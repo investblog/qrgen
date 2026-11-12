@@ -5,7 +5,7 @@ tags: [architecture, release]
 project: qrgen
 ---
 
-# QRCGen — architecture and development
+# SVG QR Code Generator (formerly QRCGen) — architecture and development
 
 ## What This Is
 

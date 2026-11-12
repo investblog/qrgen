@@ -28,7 +28,7 @@ vi.mock('wxt/browser', () => ({
       create: tabsCreate,
     },
     runtime: { sendMessage },
-    i18n: { getMessage: (key: string) => key },
+    i18n: { getMessage: (key: string) => (key === 'SITE_URL' ? 'https://ru.clx.cx' : key) },
   },
 }));
 vi.mock('@shared/storage', () => ({
@@ -204,6 +204,25 @@ describe('data too long for a link', () => {
     p.copySnippet();
     await flush();
     expect(writeText).not.toHaveBeenCalled();
+  });
+});
+
+describe('links to the docs', () => {
+  it('Embed points to the English API docs', async () => {
+    const p = await openPanel();
+    const link = [...p.embed.querySelectorAll('a')].map((a) => a.href);
+    expect(link).toContain('https://clx.cx/qr-code-api');
+  });
+
+  it('Settings point to the pages in the UI language and to the API docs', async () => {
+    const { createSettingsTab } = await import('@/entrypoints/sidepanel/components/settings');
+    const tab = createSettingsTab();
+    document.body.append(tab);
+    await flush();
+    const hrefs = [...tab.querySelectorAll('a')].map((a) => a.href);
+    expect(hrefs).toContain('https://ru.clx.cx/qr-code-extension');
+    expect(hrefs).toContain('https://clx.cx/qr-code-api');
+    expect(hrefs.join(' ')).not.toContain('qrcgen.com');
   });
 });
 

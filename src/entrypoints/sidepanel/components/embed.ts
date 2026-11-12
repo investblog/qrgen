@@ -1,3 +1,4 @@
+import { API_DOCS_URL } from '@shared/constants';
 import { generateSnippet, SNIPPET_FORMATS } from '@shared/snippets';
 import type { SnippetFormat } from '@shared/types';
 import { copyToClipboard, el, ICONS, showToast, svgIcon, t } from '../helpers';
@@ -72,7 +73,7 @@ export function createEmbedTab(): HTMLElement {
 
   // API docs link
   const docsLink = document.createElement('a');
-  docsLink.href = 'https://qrcgen.com/docs/qr-api';
+  docsLink.href = API_DOCS_URL;
   docsLink.target = '_blank';
   docsLink.rel = 'noopener';
   docsLink.className = 'btn btn--ghost btn--sm';

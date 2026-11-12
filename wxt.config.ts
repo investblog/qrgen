@@ -37,8 +37,8 @@ export default defineConfig({
     name: '__MSG_EXTENSION_NAME__',
     description: '__MSG_EXTENSION_DESCRIPTION__',
     version: '1.1.0',
-    author: 'QRCGen <support@qrcgen.com>',
-    homepage_url: 'https://qrcgen.com',
+    author: '301.st',
+    homepage_url: 'https://clx.cx/qr-code-extension',
     default_locale: 'en',
 
     permissions: [...(browser !== 'firefox' ? ['sidePanel'] : []), 'storage', 'activeTab', 'tabs'],

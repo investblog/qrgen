@@ -1,4 +1,4 @@
-import { DEFAULT_SETTINGS, ECC_LEVELS, HISTORY_LIMITS } from '@shared/constants';
+import { API_DOCS_URL, DEFAULT_SETTINGS, ECC_LEVELS, HISTORY_LIMITS } from '@shared/constants';
 import { PRESET_IDS, PRESETS } from '@shared/presets';
 import { loadSettings, saveSettings } from '@shared/storage';
 import { getThemePreference, setThemePreference, type ThemePreference } from '@shared/theme';
@@ -111,14 +111,14 @@ export function createSettingsTab(): HTMLElement {
   const links = el('div', 'settings-links');
 
   const docLink = document.createElement('a');
-  docLink.href = 'https://qrcgen.com/docs/qr-extension';
+  docLink.href = `${t('SITE_URL')}/qr-code-extension`;
   docLink.target = '_blank';
   docLink.rel = 'noopener';
   docLink.textContent = t('SETTINGS_LINK_DOCS');
   links.appendChild(docLink);
 
   const apiLink = document.createElement('a');
-  apiLink.href = 'https://qrcgen.com/docs/qr-api';
+  apiLink.href = API_DOCS_URL;
   apiLink.target = '_blank';
   apiLink.rel = 'noopener';
   apiLink.textContent = t('SETTINGS_LINK_API');

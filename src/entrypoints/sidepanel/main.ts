@@ -27,11 +27,11 @@ function buildUI(): void {
   // Header
   const header = el('div', 'panel__header');
   const titleLink = document.createElement('a');
-  titleLink.href = 'https://qrcgen.com/?utm_source=extension&utm_medium=sidepanel';
+  titleLink.href = `${t('SITE_URL')}/qr-code-generator?utm_source=extension&utm_medium=sidepanel`;
   titleLink.target = '_blank';
   titleLink.rel = 'noopener';
   titleLink.className = 'panel__title';
-  titleLink.textContent = 'QRCGen';
+  titleLink.textContent = t('EXTENSION_NAME');
   header.appendChild(titleLink);
 
   const headerActions = el('div', 'panel__header-actions');
@@ -89,10 +89,10 @@ function buildUI(): void {
   // Footer
   const footer = el('div', 'panel__footer');
   const footerLink = document.createElement('a');
-  footerLink.href = 'https://qrcgen.com/?utm_source=extension&utm_medium=footer';
+  footerLink.href = `${t('SITE_URL')}/qr-code-generator?utm_source=extension&utm_medium=footer`;
   footerLink.target = '_blank';
   footerLink.rel = 'noopener';
-  footerLink.textContent = 'qrcgen.com';
+  footerLink.textContent = 'clx.cx';
   footer.appendChild(footerLink);
   panel.appendChild(footer);
 

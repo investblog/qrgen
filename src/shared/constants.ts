@@ -2,6 +2,9 @@ import type { EccLevel, PresetId, Settings } from './types';
 
 export const API_BASE = 'https://qr.clx.cx';
 
+/** The API documentation exists in English only. */
+export const API_DOCS_URL = 'https://clx.cx/qr-code-api';
+
 export const MAX_DATA_LENGTH = 2048;
 
 export const ECC_LEVELS: readonly EccLevel[] = ['L', 'M', 'Q', 'H'];

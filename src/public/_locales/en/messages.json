@@ -2,6 +2,10 @@
   "EXTENSION_NAME": {
     "message": "SVG QR Code Generator"
   },
+  "SITE_URL": {
+    "message": "https://clx.cx",
+    "description": "Base URL of the extension's pages for this language, no trailing slash"
+  },
   "EXTENSION_DESCRIPTION": {
     "message": "Generate QR codes, copy share links, and embed snippets. Side panel workflow, offline preview, canonical SVG URLs."
   },

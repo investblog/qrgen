@@ -1,17 +1,20 @@
 # Privacy Policy
 
-**QRCGen** — QR Code Generator Browser Extension
+**SVG QR Code Generator** browser extension (formerly QRCGen)
 
 *Last updated: November 12, 2026*
 
+The same policy, together with the QR code API and the web generator, is published at
+[clx.cx/qr-code-privacy](https://clx.cx/qr-code-privacy).
+
 ## Summary
 
-QRCGen runs entirely in your browser. No accounts, no tracking, no analytics, and — since version
+The extension runs entirely in your browser. No accounts, no tracking, no analytics, and — since version
 1.1.0 — no network requests at all. The only way your data leaves the browser is a link you copy or open.
 
 ## Data Collection
 
-QRCGen does not collect personal data and has no user accounts.
+The extension does not collect personal data and has no user accounts.
 
 ### What stays on your device
 
@@ -47,7 +50,7 @@ The extension does not access page content, browsing history, bookmarks, passwor
 The extension itself uses none. Share links are served by **qr.clx.cx**, a QR code API on
 Cloudflare Workers: it renders a share link's image from the link on each request without storing it,
 and its code does not log the encoded data or user identities. Cloudflare, as the hosting provider, processes request
-metadata under its own privacy policy. See the [clx.cx privacy policy](https://clx.cx/privacy).
+metadata under its own privacy policy.
 
 ## Data Retention
 
@@ -56,7 +59,7 @@ metadata under its own privacy policy. See the [clx.cx privacy policy](https://c
 
 ## Children's Privacy
 
-QRCGen does not knowingly collect any data from children or any other users.
+The extension does not knowingly collect any data from children or any other users.
 
 ## Changes to This Policy
 
@@ -64,4 +67,4 @@ Updates will be posted in this file and reflected in the extension's store listi
 
 ## Contact
 
-If you have questions about this policy, please open an issue at [github.com/investblog/qrgen](https://github.com/investblog/qrgen/issues) or email [support@qrcgen.com](mailto:support@qrcgen.com).
+If you have questions about this policy, please open an issue at [github.com/investblog/qrgen](https://github.com/investblog/qrgen/issues) or use the contact form at [301.st/contact](https://301.st/contact).
