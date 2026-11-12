@@ -1,6 +1,6 @@
 {
   "EXTENSION_NAME": {
-    "message": "QRCGen — Генератор QR-кодов"
+    "message": "SVG QR Code Generator"
   },
   "EXTENSION_DESCRIPTION": {
     "message": "Генерация QR-кодов, ссылки для шаринга, embed-сниппеты. Боковая панель, офлайн-превью, канонические SVG URL."
