@@ -84,6 +84,28 @@ describe('store listings', () => {
     }
   });
 
+  it.each(['chrome', 'edge', 'firefox'])('%s screenshots: six 1280×800 24-bit PNGs per language', (store) => {
+    for (const lang of ['en', 'ru']) {
+      const dir = resolve(__dirname, `../store-assets/out/screenshots/${store}/${lang}`);
+      const files = readdirSync(dir)
+        .filter((f) => f.endsWith('.png'))
+        .sort();
+      expect(files.map((f) => f.slice(0, 3)), dir).toEqual(['01-', '02-', '03-', '04-', '05-', '06-']);
+      for (const f of files) {
+        const png = readFileSync(resolve(dir, f));
+        const header = [
+          png.subarray(0, 8).toString('hex'),
+          png.subarray(12, 16).toString('latin1'),
+          png.readUInt32BE(16),
+          png.readUInt32BE(20),
+          png[24],
+          png[25],
+        ];
+        expect(header, f).toEqual(['89504e470d0a1a0a', 'IHDR', 1280, 800, 8, 2]);
+      }
+    }
+  });
+
   it.each(langs)('%s AMO text is AMO Markdown and its own wording', (lang) => {
     const amo = section(amoFile(lang), 'Description');
     expect(amo.join('\n')).not.toContain('•');

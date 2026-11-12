@@ -319,4 +319,24 @@ describe('history', () => {
     expect(writeText).not.toHaveBeenCalled();
     expect(tabsCreate).not.toHaveBeenCalled();
   });
+
+  it('a web address drops its scheme; other text keeps its prefix', async () => {
+    const { truncateData } = await import('@/entrypoints/sidepanel/components/history');
+    expect(truncateData('https://example.com/a/b')).toBe('example.com/a/b');
+    expect(truncateData('https://example.com/')).toBe('example.com');
+    expect(truncateData('WIFI:T:WPA;S:Cafe;P:pw;;')).toBe('WIFI:T:WPA;S:Cafe;P:pw;;');
+    expect(truncateData('mailto:a@example.com')).toBe('mailto:a@example.com');
+    expect(truncateData(`note ${'x'.repeat(50)}`)).toBe(`note ${'x'.repeat(35)}...`);
+  });
+
+  it('times are in the UI language', async () => {
+    const { formatDate } = await import('@/entrypoints/sidepanel/components/history');
+    const now = new Date(2026, 10, 12, 12).getTime(); // local noon: the date is formatted in local time
+    expect(formatDate(now - 10_000, now, 'ru')).toBe('HISTORY_JUST_NOW');
+    expect(formatDate(now - 2 * 60_000, now, 'ru')).toBe('2 мин. назад');
+    expect(formatDate(now - 5 * 3_600_000, now, 'de')).toBe('vor 5 Std.');
+    expect(formatDate(now - 3 * 86_400_000, now, 'en')).toBe('Nov 9');
+    // Without an explicit language it asks the browser (mocked as ru).
+    expect(formatDate(now - 2 * 60_000, now)).toBe('2 мин. назад');
+  });
 });

@@ -79,12 +79,13 @@ a.panel__title:hover {
 }
 
 .tabs__item {
-  flex: 1;
+  /* Sized by the label, not equal quarters: a long label takes room from a short one. */
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-1);
-  padding: var(--space-2) var(--space-2);
+  padding: var(--space-2) var(--space-1);
   border: none;
   background: none;
   color: var(--text-muted);
@@ -117,6 +118,13 @@ a.panel__title:hover {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
+}
+
+/* The narrowest panel (320px): the labels need the icons' room in de and fr. */
+@media (max-width: 339px) {
+  .tabs__item svg {
+    display: none;
+  }
 }
 
 /* ---- Tab content ---- */

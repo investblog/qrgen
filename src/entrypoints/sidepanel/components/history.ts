@@ -111,23 +111,27 @@ async function linkFor(item: HistoryItem): Promise<string> {
   return buildCanonicalUrl(item);
 }
 
-function truncateData(data: string): string {
-  try {
-    const url = new URL(data);
-    return url.hostname + (url.pathname !== '/' ? url.pathname : '');
-  } catch {
-    return data.length > 40 ? `${data.slice(0, 40)}...` : data;
+/** Web addresses lose the scheme; other text (`WIFI:…`, `mailto:…` parse as URLs too) stays whole. */
+export function truncateData(data: string): string {
+  if (/^https?:\/\//i.test(data)) {
+    try {
+      const url = new URL(data);
+      return url.hostname + (url.pathname !== '/' ? url.pathname : '');
+    } catch {
+      // not a valid address after all: shown as text
+    }
   }
+  return data.length > 40 ? `${data.slice(0, 40)}...` : data;
 }
 
-function formatDate(timestamp: number): string {
-  const d = new Date(timestamp);
-  const now = new Date();
-  const diff = now.getTime() - d.getTime();
+/** "2 min. ago", "5 hr. ago", then a short date — in the panel's UI language. */
+export function formatDate(timestamp: number, now = Date.now(), lang: string = browser.i18n.getUILanguage()): string {
+  const diff = now - timestamp;
 
   if (diff < 60_000) return t('HISTORY_JUST_NOW');
-  if (diff < 3_600_000) return `${Math.floor(diff / 60_000)}m`;
-  if (diff < 86_400_000) return `${Math.floor(diff / 3_600_000)}h`;
+  const rtf = new Intl.RelativeTimeFormat(lang, { style: 'short' });
+  if (diff < 3_600_000) return rtf.format(-Math.floor(diff / 60_000), 'minute');
+  if (diff < 86_400_000) return rtf.format(-Math.floor(diff / 3_600_000), 'hour');
 
-  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  return new Date(timestamp).toLocaleDateString(lang, { month: 'short', day: 'numeric' });
 }

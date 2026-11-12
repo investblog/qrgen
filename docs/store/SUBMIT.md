@@ -37,12 +37,12 @@ Opera has no listing (the Opera add-ons store no longer accepts extensions).
 | Small promo tile 440×280, Chrome | `store-assets/out/small-440x280-en.jpg` (Chrome tiles are one for all languages) |
 | Marquee 1400×560, Chrome | `store-assets/out/marquee-1400x560-en.jpg` |
 | Small / large promo tile, Edge | `store-assets/out/small-440x280-<en,ru>.png`, `marquee-1400x560-<en,ru>.png`: Edge sets them per language (`-ru` for Russian, `-en` for the rest) and wants the large tile as PNG |
-| Screenshots 1280×800, all three | the real panel, per language where the store allows it (not made yet: see *Before each submission*) |
+| Screenshots 1280×800, all three | `store-assets/out/screenshots/<chrome,edge,firefox>/<en,ru>/01…06-*.png`, in that order; alt texts in `captions.md` next to them. Each store has its own set (the panel footer shows that store's rating link); `ru` for Russian, `en` for the rest |
 | Privacy policy URL | `https://clx.cx/qr-code-privacy` |
 | Homepage | `https://clx.cx/qr-code-extension` |
 | Support | `https://github.com/investblog/qrgen/issues` |
 
-The images are built by `python store-assets/build.py` (Chrome headless + Pillow; text in its `COPY` table) from the
+The promo images (not the screenshots) are built by `python store-assets/build.py` (Chrome headless + Pillow; text in its `COPY` table) from the
 SVG sources in `store-assets/src/`: JPEG at quality 92 without chroma subsampling, and 24-bit PNG. Do not
 palette-compress the PNGs. `hero-1280x800-*` is the README banner (`assets/banner-1280x800.png`), not a store
 screenshot: store screenshots show the actual panel.
@@ -93,4 +93,7 @@ without the listing part.
 - The Edge limits in `README.md` still match Microsoft's page; `npm run check` covers the texts against them.
 - The texts still describe what the extension does (README *Text rules*); a new feature or a removed one means editing
   all seven languages, and both the Chrome and the AMO text.
-- The screenshots show the current interface. For 1.1.0 they still have to be made: the old ones show “QRCGen”.
+- The screenshots show the current interface. They are shot from the real build (`npm run build && npm run build:edge`)
+  in Chromium: six slides per store and language, 24-bit PNG without alpha. Chromium does not load the Firefox (MV2)
+  build, so the Firefox set is the Chrome build with the footer's rating link switched to what the Firefox build shows
+  there; the rest of the panel is the same page. A UI change that shows on them means a new set.
