@@ -94,7 +94,7 @@ describe('opening the panel', () => {
   it('draws the current page locally', async () => {
     const p = await openPanel();
     expect(p.preview()).not.toBeNull();
-    expect(p.snippetText()).toContain('https://qr.qrcgen.com/qr/sq250/');
+    expect(p.snippetText()).toContain('https://qr.clx.cx/qr/sq250/');
   });
 
   it('with auto-generate off, draws nothing', async () => {
@@ -118,7 +118,7 @@ describe('copying a share link', () => {
     p.copyLink();
     await flush();
     const url = writeText.mock.calls[0][0] as string;
-    expect(url).toMatch(/^https:\/\/qr\.qrcgen\.com\/qr\/sq250\/[a-f0-9]{64}\.svg\?data=.+&ecc=M&q=2$/);
+    expect(url).toMatch(/^https:\/\/qr\.clx\.cx\/qr\/sq250\/[a-f0-9]{64}\.svg\?data=.+&ecc=M&q=2$/);
     expect(new URL(url).searchParams.get('data')).toBe(env.tabUrl);
     expect(addHistoryItem).toHaveBeenCalledTimes(1);
   });

@@ -20,7 +20,7 @@ function parse(url: string) {
 describe('buildCanonicalUrl', () => {
   it('names the image by preset and hash and carries data, ecc and q', async () => {
     const url = await buildCanonicalUrl(base);
-    expect(url).toMatch(/^https:\/\/qr\.qrcgen\.com\/qr\/sq250\/[a-f0-9]{64}\.svg\?data=[^&]+&ecc=M&q=2$/);
+    expect(url).toMatch(/^https:\/\/qr\.clx\.cx\/qr\/sq250\/[a-f0-9]{64}\.svg\?data=[^&]+&ecc=M&q=2$/);
     expect(parse(url).path).toBe(`/qr/sq250/${await computeHash(base)}.svg`);
   });
 

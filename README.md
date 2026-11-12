@@ -15,7 +15,7 @@ QR code generator browser extension — side panel UI, share links, embed snippe
 - **Side panel UI** — always accessible, doesn't block the page
 - **Instant preview** — QR generated locally via `uqr`, no network needed
 - **~5 KB SVGs** — run-length encoded, single `<path>`, integer coordinates
-- **Share links** — self-contained links at `qr.qrcgen.com`; the API rebuilds the image from the link
+- **Share links** — self-contained links at `qr.clx.cx`; the API rebuilds the image from the link
 - **Embed snippets** — HTML, Markdown, React, Vue formats
 - **History** — recent QR codes stored locally
 - **Dark & light theme** — with auto-detection
@@ -70,7 +70,7 @@ QRCGen runs entirely in your browser and makes no network requests. Share links 
 
 ## Related
 
-- [qr-generator](https://github.com/investblog/qr-generator) — Cloudflare Worker API at `qr.qrcgen.com`
+- [qr-generator](https://github.com/investblog/qr-generator) — Cloudflare Worker API at `qr.clx.cx`
 - [qrcgen.com](https://qrcgen.com) — web UI & documentation
 - [API docs](https://qrcgen.com/docs/qr-api) — endpoint reference
 - [Extension guide](https://qrcgen.com/docs/qr-extension) — user documentation

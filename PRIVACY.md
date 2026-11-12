@@ -23,7 +23,7 @@ QRCGen does not collect personal data and has no user accounts.
 
 ### Share links
 
-A share link or embed snippet points to `qr.qrcgen.com` and carries the encoded text and QR
+A share link or embed snippet points to `qr.clx.cx` and carries the encoded text and QR
 parameters in plain form, so the image can be rebuilt from the link itself. The extension does not
 request the link; it is requested by whoever opens it — you, if you open it from history, or anyone you
 share it with. Anyone who has the link, or scans the QR code, can read the text: do not put passwords
@@ -44,11 +44,10 @@ The extension does not access page content, browsing history, bookmarks, passwor
 
 ## Third-Party Services
 
-The extension itself uses none. Share links are served by **qr.qrcgen.com**, a QR code API on
+The extension itself uses none. Share links are served by **qr.clx.cx**, a QR code API on
 Cloudflare Workers: it renders a share link's image from the link on each request without storing it,
 and its code does not log the encoded data or user identities. Cloudflare, as the hosting provider, processes request
-metadata under its own privacy policy. See the [API documentation](https://qrcgen.com/docs/qr-api) and
-the [service privacy policy](https://qrcgen.com/docs/privacy).
+metadata under its own privacy policy. See the [clx.cx privacy policy](https://clx.cx/privacy).
 
 ## Data Retention
 

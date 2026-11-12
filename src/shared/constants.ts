@@ -1,6 +1,6 @@
 import type { EccLevel, PresetId, Settings } from './types';
 
-export const API_BASE = 'https://qr.qrcgen.com';
+export const API_BASE = 'https://qr.clx.cx';
 
 export const MAX_DATA_LENGTH = 2048;
 

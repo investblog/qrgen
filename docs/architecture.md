@@ -9,7 +9,7 @@ project: qrgen
 
 ## What This Is
 
-Chrome/Edge MV3 side panel extension that generates QR codes locally and produces **share links** + **embed snippets** pointing to `qr.qrcgen.com` — driving organic traffic to the domain.
+Chrome/Edge MV3 side panel extension that generates QR codes locally and produces **share links** + **embed snippets** pointing to `qr.clx.cx`.
 
 ## Tech Stack
 

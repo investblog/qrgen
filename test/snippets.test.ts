@@ -1,7 +1,7 @@
 import { generateSnippet, SNIPPET_FORMATS } from '@shared/snippets';
 import { describe, expect, it } from 'vitest';
 
-const URL = 'https://qr.qrcgen.com/qr/sq250/abc123.svg?data=https%3A%2F%2Fexample.com%2F%28x%29&ecc=M&q=2';
+const URL = 'https://qr.clx.cx/qr/sq250/abc123.svg?data=https%3A%2F%2Fexample.com%2F%28x%29&ecc=M&q=2';
 const URL_HTML = URL.replace(/&/g, '&amp;');
 
 describe('SNIPPET_FORMATS', () => {
