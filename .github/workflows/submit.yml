@@ -5,6 +5,12 @@ name: Submit to stores
 # Firefox is manual-only (the reusable workflow centrally gates Firefox to
 # workflow_dispatch — AMO burns version numbers). Secrets are this repo's
 # GitHub Actions secrets (account-level creds reused; per-extension IDs differ).
+#
+# Hold (Chrome + Edge): upload the package as a draft and do NOT submit it for
+# review, so the store listing can be edited first (Chrome offers a listing
+# language only once a package with that _locales directory is uploaded). On a
+# tag push it is driven by the repository variable SUBMIT_HOLD=true; on a manual
+# run by the `hold` input. Procedure: docs/store/SUBMIT.md.
 
 on:
   push:
@@ -28,6 +34,10 @@ on:
         description: 'Dry run (validate credentials only, publish nothing)'
         type: boolean
         default: true
+      hold:
+        description: 'Chrome/Edge: upload as a draft, do not submit for review'
+        type: boolean
+        default: false
 
 concurrency:
   group: submit-${{ github.ref }}
@@ -40,6 +50,7 @@ jobs:
     with:
       ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
       dry_run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run || false }}
+      hold: ${{ (github.event_name == 'workflow_dispatch' && inputs.hold) || (github.event_name == 'push' && vars.SUBMIT_HOLD == 'true') }}
       chrome: ${{ github.event_name == 'push' || inputs.stores == 'chrome' || inputs.stores == 'all' }}
       firefox: ${{ inputs.stores == 'firefox' || inputs.stores == 'all' }}
       edge: ${{ github.event_name == 'push' || inputs.stores == 'edge' || inputs.stores == 'all' }}

@@ -43,7 +43,7 @@ the automatic code for the current page when the panel opened.
 |------------|---------|
 | `sidePanel` / `sidebar` | Display the extension UI in the browser side panel |
 | `storage` | Save your settings and history locally |
-| `activeTab` + `tabs` | Read the URL of the current page when the panel opens or you press refresh |
+| `tabs` | Read the URL of the current page when the panel opens or you press refresh |
 
 The extension does not access page content, browsing history, bookmarks, passwords, or any other browser data.
 

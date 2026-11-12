@@ -16,6 +16,18 @@ function section(file: string, name: string): string[] {
   return (end < 0 ? rest : rest.slice(0, end)).map((l) => l.trim()).filter(Boolean);
 }
 
+/** Width and height from a JPEG's start-of-frame segment (baseline or progressive). */
+function jpegSize(buf: Buffer): { width: number; height: number } | null {
+  if (buf[0] !== 0xff || buf[1] !== 0xd8) return null;
+  for (let i = 2; i + 9 < buf.length; ) {
+    if (buf[i] !== 0xff) return null;
+    const marker = buf[i + 1];
+    if (marker >= 0xc0 && marker <= 0xc2) return { height: buf.readUInt16BE(i + 5), width: buf.readUInt16BE(i + 7) };
+    i += 2 + buf.readUInt16BE(i + 2);
+  }
+  return null;
+}
+
 const chromeFile = (lang: string) => resolve(store, `${lang}.md`);
 const amoFile = (lang: string) => resolve(store, 'amo', `${lang}.md`);
 
@@ -40,6 +52,36 @@ describe('store listings', () => {
     expect(terms.length).toBeLessThanOrEqual(7);
     for (const term of terms) expect(term.length, term).toBeLessThanOrEqual(30);
     expect(terms.join(' ').split(/\s+/).length).toBeLessThanOrEqual(21);
+  });
+
+  it.each([
+    ['small-440x280', 440, 280],
+    ['marquee-1400x560', 1400, 560],
+    ['hero-1280x800', 1280, 800],
+  ])('store image %s has the exact store size (en, ru)', (name, width, height) => {
+    for (const lang of ['en', 'ru']) {
+      const jpg = resolve(__dirname, `../store-assets/out/${name}-${lang}.jpg`);
+      expect(jpegSize(readFileSync(jpg)), jpg).toEqual({ width, height });
+      if (name === 'hero-1280x800') continue; // README banner: its PNG is assets/banner-1280x800.png
+      // Edge takes the tiles as PNG (the large tile must be PNG): 24-bit RGB, no alpha.
+      const png = readFileSync(resolve(__dirname, `../store-assets/out/${name}-${lang}.png`));
+      const header = {
+        signature: png.subarray(0, 8).toString('hex'),
+        chunk: png.subarray(12, 16).toString('latin1'),
+        width: png.readUInt32BE(16),
+        height: png.readUInt32BE(20),
+        bitDepth: png[24],
+        colorType: png[25],
+      };
+      expect(header, name).toEqual({
+        signature: '89504e470d0a1a0a',
+        chunk: 'IHDR',
+        width,
+        height,
+        bitDepth: 8,
+        colorType: 2,
+      });
+    }
   });
 
   it.each(langs)('%s AMO text is AMO Markdown and its own wording', (lang) => {

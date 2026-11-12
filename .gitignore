@@ -41,3 +41,6 @@ AGENTS.md
 CLAUDE.md
 opencode.json
 .mcp.json
+
+# Store images (store-assets/build.py): tiles committed as JPEG + PNG (Edge wants PNG); the README hero PNG is a copy in assets/
+store-assets/out/hero-*.png

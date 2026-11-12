@@ -101,7 +101,7 @@ npm run lint:fix     # Biome auto-fix
 
 - `sidePanel` — open side panel
 - `storage` — persist history + settings
-- `activeTab` + `tabs` — read current tab URL
+- `tabs` — read the current tab URL (`tabs.query`; 1.0.x also asked for `activeTab`, unused)
 
 ## Conventions
 
@@ -114,7 +114,7 @@ npm run lint:fix     # Biome auto-fix
 ## Releasing / store deploy
 
 Version lives **only** in `wxt.config.ts` (`manifest.version`); `package.json` is not
-used by the build. To release: bump it, then `git tag vX.Y.Z && git push origin vX.Y.Z`.
+used by the build. To release: bump it, commit and push, then `git tag vX.Y.Z && git push origin vX.Y.Z` (a tag holds committed `HEAD`).
 
 A `v*` tag drives two workflows:
 - `release.yml` — typecheck/lint/test + a GitHub release with the built ZIPs.
@@ -124,7 +124,10 @@ A `v*` tag drives two workflows:
 **Chrome + Edge auto-submit on the tag; Firefox is manual** (Actions → *Submit to
 stores* → `stores=firefox`; AMO burns version numbers forever, so it never
 auto-runs). The manual dispatch has a `dry_run` toggle that validates
-credentials without publishing.
+credentials without publishing, and a `hold` toggle (on a tag: repository
+variable `SUBMIT_HOLD=true`) that uploads Chrome/Edge as drafts so the listing
+can be edited before review. Listings themselves (texts, images, privacy
+answers) are filled by hand: [docs/store/SUBMIT.md](store/SUBMIT.md).
 
 Store credentials are this repo's **GitHub Actions secrets** (`CHROME_*`,
 `FIREFOX_*`, `EDGE_*`). API creds are account-level and shared across all

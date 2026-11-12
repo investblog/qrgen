@@ -15,6 +15,8 @@ line break.
 |---|---|---|
 | `<lang>.md` (`en`, `ru`, `de`, `es`, `fr`, `pt_BR`, `tr`) | the detailed description and the Edge search terms | description: Chrome Web Store and Edge, in its language; search terms: Edge |
 | `amo/<lang>.md` (the same 7) | a separate description in AMO's Markdown | AMO, in its language |
+| `SUBMIT.md` | the submission runbook: what is automated, which file fills which field, release order | every release |
+| `../../store-assets/` | promo tiles for Chrome and Edge and the README banner (`build.py`, SVG sources, JPEG + PNG) | Chrome and Edge tiles |
 
 **Name and summary** come from the package: `EXTENSION_NAME` and `EXTENSION_DESCRIPTION` in `src/public/_locales/`
 (the summary is limited to 132 characters, checked by `test/locales.test.ts`). They are not repeated here. AMO has no
