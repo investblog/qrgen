@@ -1,4 +1,7 @@
 import { browser } from 'wxt/browser';
+import enCatalog from '@/public/_locales/en/messages.json';
+
+type CatalogEntry = { message: string; placeholders?: Record<string, { content: string }> };
 
 /** Create an element with optional className and text */
 export function el(tag: string, className?: string, text?: string): HTMLElement {
@@ -8,13 +11,28 @@ export function el(tag: string, className?: string, text?: string): HTMLElement 
   return node;
 }
 
-/** Get i18n message, with optional `$PLACEHOLDER$` substitutions */
+/** Get i18n message, with optional `$PLACEHOLDER$` substitutions. When the browser returns no message (or throws),
+ *  the bundled English catalog answers instead, so a raw key never reaches the user; an unknown key returns itself. */
 export function t(key: string, ...substitutions: string[]): string {
   try {
-    return browser.i18n.getMessage(key as any, substitutions.length ? substitutions : undefined) || key;
+    const msg = browser.i18n.getMessage(key as any, substitutions.length ? substitutions : undefined);
+    if (msg) return msg;
   } catch {
-    return key;
+    // fall through to the bundled English text
   }
+  return englishMessage(key, substitutions);
+}
+
+/** `key` from the bundled `en` catalog with its `$NAME$` placeholders filled from `substitutions` ($1, $2, …). */
+export function englishMessage(key: string, substitutions: string[] = []): string {
+  const entry = (enCatalog as Record<string, CatalogEntry>)[key];
+  if (!entry) return key;
+  let text = entry.message;
+  for (const [name, { content }] of Object.entries(entry.placeholders ?? {})) {
+    const value = /^\$(\d)$/.test(content) ? (substitutions[Number(content[1]) - 1] ?? '') : content;
+    text = text.replace(new RegExp(`\\$${name}\\$`, 'gi'), () => value);
+  }
+  return text;
 }
 
 /** Copy text to clipboard */
