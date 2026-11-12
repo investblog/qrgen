@@ -5,7 +5,7 @@ import { getThemePreference, setThemePreference, type ThemePreference } from '@s
 import type { EccLevel, PresetId, Settings } from '@shared/types';
 import { releaseNoteItems, WHATS_NEW } from '@shared/whats-new';
 import { browser } from 'wxt/browser';
-import { el, t } from '../helpers';
+import { el, qrPageUrl, t } from '../helpers';
 import { notifyDefaultsChanged } from '../state';
 
 let settings: Settings = { ...DEFAULT_SETTINGS };
@@ -113,7 +113,7 @@ export function createSettingsTab(): HTMLElement {
   const links = el('div', 'settings-links');
 
   const docLink = document.createElement('a');
-  docLink.href = `${t('SITE_URL')}/qr-code-extension`;
+  docLink.href = qrPageUrl('qr-code-extension');
   docLink.target = '_blank';
   docLink.rel = 'noopener';
   docLink.textContent = t('SETTINGS_LINK_DOCS');

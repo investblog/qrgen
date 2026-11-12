@@ -21,7 +21,7 @@ Chrome/Edge MV3 side panel (Firefox: MV2 sidebar) extension that generates QR co
 - **Styling:** CSS custom properties, design tokens from `301-ui`
 - **Linter:** Biome (single quotes, semicolons, 120 width)
 - **Tests:** Vitest
-- **i18n:** `browser.i18n` (en, ru, de, es, fr, pt_BR, tr; `SITE_URL` per language)
+- **i18n:** `browser.i18n` (en, ru, de, es, fr, pt_BR, tr; per language `QR_PAGES_URL` — the QR pages on clx.cx in that language — and `SITE_URL`, the site root for short links)
 
 ## Architecture
 
@@ -64,7 +64,7 @@ src/
 │   ├── sidepanel.css                # Component styles (panel, tabs, buttons, preview, toasts)
 │   └── welcome.css                  # Welcome page
 └── public/
-    ├── _locales/{en,ru,de,es,fr,pt_BR,tr}/messages.json   # SITE_URL: clx.cx, ru.clx.cx for ru
+    ├── _locales/{en,ru,de,es,fr,pt_BR,tr}/messages.json   # QR_PAGES_URL: clx.cx[/de|/es|/fr|/pt-br|/tr], ru.clx.cx; SITE_URL: clx.cx, ru.clx.cx
     └── icons/{16,32,48,128}.png, {chrome,edge,mozilla}.svg
 ```
 

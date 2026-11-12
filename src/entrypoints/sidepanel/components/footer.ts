@@ -1,5 +1,5 @@
 import { GLYPHS, getStoreInfo, glyph, LINKS } from '@shared/brand';
-import { el, t } from '../helpers';
+import { el, qrPageUrl, t } from '../helpers';
 
 function link(href: string, className: string, title: string): HTMLAnchorElement {
   const a = document.createElement('a');
@@ -33,11 +33,7 @@ export function createFooter(): HTMLElement {
 
   const right = el('div', 'panel__footer-links');
 
-  const clx = link(
-    `${t('SITE_URL')}/qr-code-generator?utm_source=extension&utm_medium=footer`,
-    'panel__clx',
-    t('FOOTER_CLX_TITLE'),
-  );
+  const clx = link(qrPageUrl('qr-code-generator', 'footer'), 'panel__clx', t('FOOTER_CLX_TITLE'));
   clx.append(glyph(GLYPHS.clx, 14), 'clx.cx');
   right.appendChild(clx);
 

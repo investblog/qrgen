@@ -4,7 +4,11 @@
   },
   "SITE_URL": {
     "message": "https://clx.cx",
-    "description": "Base URL of the extension's pages for this language, no trailing slash"
+    "description": "Root of clx.cx for this language (short links), no trailing slash"
+  },
+  "QR_PAGES_URL": {
+    "message": "https://clx.cx/pt-br",
+    "description": "Base of the QR pages on clx.cx in this language (generator, extension, privacy). SITE_URL stays the site root (short links)."
   },
   "EXTENSION_DESCRIPTION": {
     "message": "Gerador grátis de QR code em SVG no painel lateral: código para qualquer página ou texto, links, snippets. Sem rastreamento."

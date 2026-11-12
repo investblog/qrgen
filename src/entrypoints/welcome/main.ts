@@ -2,7 +2,7 @@ import { GLYPHS, getStoreInfo, glyph, LINKS } from '@shared/brand';
 import { initTheme } from '@shared/theme';
 import { releaseNoteItems, WHATS_NEW } from '@shared/whats-new';
 import { browser } from 'wxt/browser';
-import { t } from '../sidepanel/helpers';
+import { shortLinksUrl, t } from '../sidepanel/helpers';
 import { openGenerator } from './open-generator';
 
 initTheme();
@@ -17,7 +17,7 @@ for (const node of document.querySelectorAll<HTMLElement>('[data-i18n]')) {
 }
 
 const clxLink = document.getElementById('clx-link') as HTMLAnchorElement | null;
-if (clxLink) clxLink.href = `${t('SITE_URL')}/short-links?utm_source=extension&utm_medium=welcome`;
+if (clxLink) clxLink.href = shortLinksUrl('welcome');
 
 // ---- What's new ----
 const latest = WHATS_NEW[0];

@@ -35,6 +35,17 @@ export function englishMessage(key: string, substitutions: string[] = []): strin
   return text;
 }
 
+/** A QR page on clx.cx in the UI language: clx.cx has these pages in every language of the extension. */
+export function qrPageUrl(page: 'qr-code-generator' | 'qr-code-extension', medium?: string): string {
+  const url = `${t('QR_PAGES_URL')}/${page}`;
+  return medium ? `${url}?utm_source=extension&utm_medium=${medium}` : url;
+}
+
+/** Short links on clx.cx exist in English and Russian only, so this uses the language's site root (`SITE_URL`). */
+export function shortLinksUrl(medium: string): string {
+  return `${t('SITE_URL')}/short-links?utm_source=extension&utm_medium=${medium}`;
+}
+
 /** Copy text to clipboard */
 export async function copyToClipboard(text: string): Promise<boolean> {
   try {

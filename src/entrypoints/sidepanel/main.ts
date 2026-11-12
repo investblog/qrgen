@@ -4,7 +4,7 @@ import { createFooter } from './components/footer';
 import { createGenerateTab } from './components/generate';
 import { createHistoryTab, refreshHistory } from './components/history';
 import { createSettingsTab } from './components/settings';
-import { el, ICONS, svgIcon, t } from './helpers';
+import { el, ICONS, qrPageUrl, svgIcon, t } from './helpers';
 
 type TabId = 'generate' | 'embed' | 'history' | 'settings';
 
@@ -28,7 +28,7 @@ function buildUI(): void {
   // Header
   const header = el('div', 'panel__header');
   const titleLink = document.createElement('a');
-  titleLink.href = `${t('SITE_URL')}/qr-code-generator?utm_source=extension&utm_medium=sidepanel`;
+  titleLink.href = qrPageUrl('qr-code-generator', 'sidepanel');
   titleLink.target = '_blank';
   titleLink.rel = 'noopener';
   titleLink.className = 'panel__title';

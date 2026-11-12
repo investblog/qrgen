@@ -29,7 +29,18 @@ describe('locale catalogs', () => {
   });
 
   it.each(langs)('%s sends the user to its own pages', (lang) => {
+    // Site root (short links exist in en and ru only) and the QR pages, which clx.cx has in all seven languages.
     expect(load(lang).SITE_URL.message).toBe(lang === 'ru' ? 'https://ru.clx.cx' : 'https://clx.cx');
+    const qrPages: Record<string, string> = {
+      en: 'https://clx.cx',
+      ru: 'https://ru.clx.cx',
+      de: 'https://clx.cx/de',
+      es: 'https://clx.cx/es',
+      fr: 'https://clx.cx/fr',
+      pt_BR: 'https://clx.cx/pt-br',
+      tr: 'https://clx.cx/tr',
+    };
+    expect(load(lang).QR_PAGES_URL.message).toBe(qrPages[lang]);
   });
 
   it.each(langs)('%s no longer mentions the old domain', (lang) => {

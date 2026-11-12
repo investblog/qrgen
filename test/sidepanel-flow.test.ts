@@ -29,7 +29,8 @@ vi.mock('wxt/browser', () => ({
     },
     runtime: { sendMessage, getURL: (path: string) => `chrome-extension://test${path}` },
     i18n: {
-      getMessage: (key: string) => (key === 'SITE_URL' ? 'https://ru.clx.cx' : key),
+      // Distinct values prove which key each link uses: QR pages are localized, the site root is not.
+      getMessage: (key: string) => ({ SITE_URL: 'https://ru.clx.cx', QR_PAGES_URL: 'https://clx.cx/de' })[key] ?? key,
       getUILanguage: () => 'ru',
     },
   },
@@ -223,11 +224,21 @@ describe('links to the docs', () => {
     document.body.append(tab);
     await flush();
     const hrefs = [...tab.querySelectorAll('a')].map((a) => a.href);
-    expect(hrefs).toContain('https://ru.clx.cx/qr-code-extension');
+    expect(hrefs).toContain('https://clx.cx/de/qr-code-extension');
     expect(hrefs).toContain('https://clx.cx/qr-code-api');
     expect(hrefs.join(' ')).not.toContain('qrcgen.com');
     expect(hrefs).toContain('chrome-extension://test/welcome.html');
     expect(tab.querySelector('.whats-new li')?.textContent).toMatch(/clx\.cx/);
+  });
+
+  it('QR pages use the localized base; short links (en and ru only) use the site root', async () => {
+    // Used by the panel header and the welcome page, which build at import time.
+    const { qrPageUrl, shortLinksUrl } = await import('@/entrypoints/sidepanel/helpers');
+    expect(qrPageUrl('qr-code-generator', 'sidepanel')).toBe(
+      'https://clx.cx/de/qr-code-generator?utm_source=extension&utm_medium=sidepanel',
+    );
+    expect(qrPageUrl('qr-code-extension')).toBe('https://clx.cx/de/qr-code-extension');
+    expect(shortLinksUrl('welcome')).toBe('https://ru.clx.cx/short-links?utm_source=extension&utm_medium=welcome');
   });
 });
 
@@ -240,7 +251,7 @@ describe('footer', () => {
     expect(review.href).toMatch(/chromewebstore\.google\.com\/detail\/.+\/reviews$/);
     expect(review.querySelector('img')?.getAttribute('src')).toBe('/icons/chrome.svg');
     const clx = footer.querySelector('.panel__clx') as HTMLAnchorElement;
-    expect(clx.href).toBe('https://ru.clx.cx/qr-code-generator?utm_source=extension&utm_medium=footer');
+    expect(clx.href).toBe('https://clx.cx/de/qr-code-generator?utm_source=extension&utm_medium=footer');
     expect(clx.querySelector('svg')).not.toBeNull();
     const glyphs = [...footer.querySelectorAll<HTMLAnchorElement>('.panel__glyph')];
     expect(glyphs.map((a) => new URL(a.href).host)).toEqual(['301.st', 'github.com', 't.me']);
