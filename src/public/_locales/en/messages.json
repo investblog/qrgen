@@ -206,14 +206,17 @@
   "WELCOME_TIP_ICON": {
     "message": "Click the toolbar icon to open the side panel; pin the icon to keep it at hand."
   },
+  "WELCOME_TIP_PHONE": {
+    "message": "To open the page on your phone, point the phone’s camera at its code — no need to send yourself the link."
+  },
   "WELCOME_TIP_CUSTOM": {
     "message": "Switch to “Custom input” to encode any text, not just the page address."
   },
   "WELCOME_TIP_ECC": {
-    "message": "Error correction Q or H keeps a printed code readable when it gets scratched."
+    "message": "Error correction Q or H helps a printed code stay readable when it gets scratched."
   },
   "WELCOME_TIP_HISTORY": {
-    "message": "Every code whose link you copied stays in History, on your device only."
+    "message": "Codes you copy with “Copy Share Link” stay in History, on your device only."
   },
   "WELCOME_CLX_TITLE": {
     "message": "Need to count scans?"

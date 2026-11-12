@@ -206,14 +206,17 @@
   "WELCOME_TIP_ICON": {
     "message": "Klicken Sie auf das Symbol in der Symbolleiste, um die Seitenleiste zu öffnen; heften Sie es an, damit es griffbereit bleibt."
   },
+  "WELCOME_TIP_PHONE": {
+    "message": "Um die Seite auf dem Handy zu öffnen, halten Sie die Handykamera auf ihren Code – den Link müssen Sie sich nicht selbst schicken."
+  },
   "WELCOME_TIP_CUSTOM": {
     "message": "Wechseln Sie zu „Eigener Text“, um beliebigen Text zu codieren, nicht nur die Seitenadresse."
   },
   "WELCOME_TIP_ECC": {
-    "message": "Mit der Fehlerkorrektur Q oder H bleibt ein gedruckter Code auch mit Kratzern lesbar."
+    "message": "Die Fehlerkorrektur Q oder H hilft, dass ein gedruckter Code auch mit Kratzern lesbar bleibt."
   },
   "WELCOME_TIP_HISTORY": {
-    "message": "Jeder Code, dessen Link Sie kopiert haben, bleibt im Verlauf – nur auf Ihrem Gerät."
+    "message": "Codes, die Sie mit „Link kopieren“ kopieren, bleiben im Verlauf – nur auf Ihrem Gerät."
   },
   "WELCOME_CLX_TITLE": {
     "message": "Möchten Sie Scans zählen?"

@@ -206,14 +206,17 @@
   "WELCOME_TIP_ICON": {
     "message": "Cliquez sur l’icône de la barre d’outils pour ouvrir le panneau latéral ; épinglez-la pour l’avoir toujours sous la main."
   },
+  "WELCOME_TIP_PHONE": {
+    "message": "Pour ouvrir la page sur votre téléphone, visez son code avec l’appareil photo du téléphone : inutile de vous envoyer le lien."
+  },
   "WELCOME_TIP_CUSTOM": {
     "message": "Passez à « Texte libre » pour encoder n’importe quel texte, pas seulement l’adresse de la page."
   },
   "WELCOME_TIP_ECC": {
-    "message": "Avec la correction d’erreurs Q ou H, un code imprimé reste lisible même s’il est rayé."
+    "message": "La correction d’erreurs Q ou H aide un code imprimé à rester lisible même s’il est rayé."
   },
   "WELCOME_TIP_HISTORY": {
-    "message": "Chaque code dont vous avez copié le lien reste dans l’Historique, uniquement sur votre appareil."
+    "message": "Les codes copiés avec « Copier le lien » restent dans l’Historique, uniquement sur votre appareil."
   },
   "WELCOME_CLX_TITLE": {
     "message": "Besoin de compter les scans ?"

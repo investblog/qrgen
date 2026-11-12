@@ -206,14 +206,17 @@
   "WELCOME_TIP_ICON": {
     "message": "Clique no ícone da barra de ferramentas para abrir o painel lateral; fixe o ícone para tê-lo sempre à mão."
   },
+  "WELCOME_TIP_PHONE": {
+    "message": "Para abrir a página no celular, aponte a câmera do celular para o código dela — não precisa enviar o link para você mesmo."
+  },
   "WELCOME_TIP_CUSTOM": {
     "message": "Mude para “Texto livre” para codificar qualquer texto, não só o endereço da página."
   },
   "WELCOME_TIP_ECC": {
-    "message": "A correção de erros Q ou H mantém um código impresso legível mesmo quando arranhado."
+    "message": "A correção de erros Q ou H ajuda um código impresso a continuar legível quando fica arranhado."
   },
   "WELCOME_TIP_HISTORY": {
-    "message": "Todo código cujo link você copiou fica no Histórico, só no seu dispositivo."
+    "message": "Os códigos que você copia com “Copiar link” ficam no Histórico, só no seu dispositivo."
   },
   "WELCOME_CLX_TITLE": {
     "message": "Precisa contar os escaneamentos?"

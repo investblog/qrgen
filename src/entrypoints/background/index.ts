@@ -1,23 +1,10 @@
 import type { MessageMap } from '@shared/messaging';
 import { browser } from 'wxt/browser';
-import { registerLifecycle } from './lifecycle';
+import { registerLifecycle, registerToolbarButton } from './lifecycle';
 
 export default defineBackground(() => {
   registerLifecycle(browser as any);
-
-  // Open side panel on action click
-  browser.action.onClicked.addListener(async (tab) => {
-    if ((browser as any).sidebarAction?.toggle) {
-      // Firefox: toggle sidebar
-      await (browser as any).sidebarAction.toggle();
-    } else if (tab.windowId != null) {
-      // Chrome/Edge: open side panel
-      await (browser as any).sidePanel.open({ windowId: tab.windowId });
-    }
-  });
-
-  // Chrome/Edge: enable side panel to open on action click
-  (browser as any).sidePanel?.setPanelBehavior?.({ openPanelOnActionClick: true }).catch(() => {});
+  registerToolbarButton(browser as any);
 
   // Message router
   browser.runtime.onMessage.addListener(((

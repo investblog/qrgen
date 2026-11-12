@@ -206,14 +206,17 @@
   "WELCOME_TIP_ICON": {
     "message": "Yan paneli açmak için araç çubuğundaki simgeye tıklayın; simgeyi sabitlerseniz hep elinizin altında olur."
   },
+  "WELCOME_TIP_PHONE": {
+    "message": "Sayfayı telefonda açmak için telefonun kamerasını sayfanın koduna doğrultun; bağlantıyı kendinize göndermeniz gerekmez."
+  },
   "WELCOME_TIP_CUSTOM": {
     "message": "Yalnızca sayfa adresini değil, herhangi bir metni kodlamak için “Özel metin” seçeneğine geçin."
   },
   "WELCOME_TIP_ECC": {
-    "message": "Q veya H hata düzeltme düzeyi, basılı kodu çizilse bile okunabilir tutar."
+    "message": "Q veya H hata düzeltme düzeyi, basılı kodun çizildiğinde de okunabilir kalmasına yardımcı olur."
   },
   "WELCOME_TIP_HISTORY": {
-    "message": "Bağlantısını kopyaladığınız her kod Geçmiş sekmesinde kalır — yalnızca sizin cihazınızda."
+    "message": "“Bağlantıyı kopyala” ile kopyaladığınız kodlar Geçmiş'te kalır — yalnızca sizin cihazınızda."
   },
   "WELCOME_CLX_TITLE": {
     "message": "Tarama sayısını görmek mi istiyorsunuz?"

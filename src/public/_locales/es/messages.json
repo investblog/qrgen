@@ -206,14 +206,17 @@
   "WELCOME_TIP_ICON": {
     "message": "Haz clic en el icono de la barra de herramientas para abrir el panel lateral; fíjalo para tenerlo siempre a mano."
   },
+  "WELCOME_TIP_PHONE": {
+    "message": "Para abrir la página en el móvil, apunta la cámara del móvil a su código: no hace falta enviarte el enlace."
+  },
   "WELCOME_TIP_CUSTOM": {
     "message": "Cambia a «Texto propio» para codificar cualquier texto, no solo la dirección de la página."
   },
   "WELCOME_TIP_ECC": {
-    "message": "La corrección de errores Q o H mantiene legible un código impreso aunque se raye."
+    "message": "La corrección de errores Q o H ayuda a que un código impreso siga siendo legible aunque se raye."
   },
   "WELCOME_TIP_HISTORY": {
-    "message": "Cada código cuyo enlace hayas copiado queda en el Historial, solo en tu dispositivo."
+    "message": "Los códigos que copias con «Copiar enlace» quedan en el Historial, solo en tu dispositivo."
   },
   "WELCOME_CLX_TITLE": {
     "message": "¿Necesitas contar escaneos?"

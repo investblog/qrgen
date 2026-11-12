@@ -1,4 +1,4 @@
-import { registerLifecycle } from '@/entrypoints/background/lifecycle';
+import { registerLifecycle, registerToolbarButton } from '@/entrypoints/background/lifecycle';
 import { openGenerator } from '@/entrypoints/welcome/open-generator';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -39,6 +39,31 @@ describe('install and uninstall', () => {
     expect(() => lifecycleApi(undefined)).not.toThrow();
     expect(() => lifecycleApi(() => Promise.reject(new Error('no')))).not.toThrow();
     await flush();
+  });
+});
+
+describe('toolbar button opens the panel, no popup', () => {
+  function clickable() {
+    let click: (tab: { windowId?: number }) => void = () => {};
+    return { api: { onClicked: { addListener: (cb: typeof click) => (click = cb) } }, click: (t = {}) => click(t) };
+  }
+
+  it('Firefox (MV2 browserAction) toggles the sidebar', () => {
+    const b = clickable();
+    const toggle = vi.fn(async () => {});
+    registerToolbarButton({ browserAction: b.api, sidebarAction: { toggle } });
+    b.click();
+    expect(toggle).toHaveBeenCalledTimes(1);
+  });
+
+  it('Chrome/Edge open the side panel on click and set it as the button behavior', () => {
+    const a = clickable();
+    const open = vi.fn(async () => {});
+    const setPanelBehavior = vi.fn(async () => {});
+    registerToolbarButton({ action: a.api, sidePanel: { open, setPanelBehavior } });
+    expect(setPanelBehavior).toHaveBeenCalledWith({ openPanelOnActionClick: true });
+    a.click({ windowId: 3 });
+    expect(open).toHaveBeenCalledWith({ windowId: 3 });
   });
 });
 

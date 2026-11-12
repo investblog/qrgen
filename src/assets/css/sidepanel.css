@@ -8,6 +8,17 @@
   padding: 0;
 }
 
+/* Fluid type: the panel's viewport is the panel itself, so 1vw = 1% of its width. Text grows by one
+   step from a 360px panel (Chrome/Edge default) to 560px and wider (Firefox's sidebar often is), so a
+   wide sidebar no longer reads small. The rem part keeps the user's browser font size in the formula. */
+:root {
+  --fs-xs: clamp(0.75rem, 0.525rem + 1vw, 0.875rem);
+  --fs-sm: clamp(0.875rem, 0.65rem + 1vw, 1rem);
+  --fs-md: clamp(1rem, 0.775rem + 1vw, 1.125rem);
+  --fs-lg: clamp(1.125rem, 0.9rem + 1vw, 1.25rem);
+  --fs-tab: clamp(0.8125rem, 0.5875rem + 1vw, 0.9375rem);
+}
+
 body {
   font-family: var(--font-sans);
   font-size: var(--fs-sm);
@@ -77,9 +88,8 @@ a.panel__title:hover {
   border: none;
   background: none;
   color: var(--text-muted);
-  /* 13px, not --fs-xs: at 12px the labels read smaller than the rest of the panel, most visibly in
-     Firefox's wider sidebar. Long translations shrink to an ellipsis instead of overflowing. */
-  font-size: 0.8125rem;
+  /* Between --fs-xs and --fs-sm. Long translations shrink to an ellipsis instead of overflowing. */
+  font-size: var(--fs-tab);
   font-weight: var(--fw-medium);
   font-family: var(--font-sans);
   cursor: pointer;

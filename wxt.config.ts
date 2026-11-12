@@ -17,7 +17,8 @@ export default defineConfig({
 
   hooks: {
     'build:manifestGenerated': (wxt, manifest) => {
-      // Firefox: sidebar icon + toolbar popup fallback
+      // Firefox: sidebar icon. No toolbar popup: the button toggles the sidebar from the background
+      // (browserAction.onClicked), as Chromium opens its side panel; a popup would take precedence.
       if (wxt.config.browser === 'firefox') {
         const sa = manifest as unknown as Record<string, unknown>;
         if (sa.sidebar_action && typeof sa.sidebar_action === 'object') {
@@ -25,9 +26,6 @@ export default defineConfig({
             16: 'icons/16.png',
             32: 'icons/32.png',
           };
-        }
-        if (manifest.action) {
-          manifest.action.default_popup = 'sidepanel.html';
         }
       }
     },
