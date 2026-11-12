@@ -1,7 +1,10 @@
 import type { MessageMap } from '@shared/messaging';
 import { browser } from 'wxt/browser';
+import { registerLifecycle } from './lifecycle';
 
 export default defineBackground(() => {
+  registerLifecycle(browser as any);
+
   // Open side panel on action click
   browser.action.onClicked.addListener(async (tab) => {
     if ((browser as any).sidebarAction?.toggle) {

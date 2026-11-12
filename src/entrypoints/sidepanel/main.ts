@@ -1,5 +1,6 @@
 import { getTheme, initTheme, toggleTheme } from '@shared/theme';
 import { createEmbedTab } from './components/embed';
+import { createFooter } from './components/footer';
 import { createGenerateTab } from './components/generate';
 import { createHistoryTab, refreshHistory } from './components/history';
 import { createSettingsTab } from './components/settings';
@@ -31,7 +32,12 @@ function buildUI(): void {
   titleLink.target = '_blank';
   titleLink.rel = 'noopener';
   titleLink.className = 'panel__title';
-  titleLink.textContent = t('EXTENSION_NAME');
+  const logo = document.createElement('img');
+  logo.src = '/icons/32.png';
+  logo.width = 20;
+  logo.height = 20;
+  logo.alt = '';
+  titleLink.append(logo, t('EXTENSION_NAME'));
   header.appendChild(titleLink);
 
   const headerActions = el('div', 'panel__header-actions');
@@ -51,7 +57,8 @@ function buildUI(): void {
   for (const def of TAB_DEFS) {
     const btn = el('button', `tabs__item${def.id === activeTab ? ' active' : ''}`);
     btn.appendChild(svgIcon(def.icon, 14));
-    btn.appendChild(document.createTextNode(t(def.labelKey)));
+    btn.appendChild(el('span', 'tabs__label', t(def.labelKey)));
+    btn.title = t(def.labelKey);
     btn.addEventListener('click', () => switchTab(def.id));
     tabs.appendChild(btn);
     tabButtons.set(def.id, btn);
@@ -86,15 +93,7 @@ function buildUI(): void {
   tabContents.set('settings', settingsContent);
   panel.appendChild(settingsContent);
 
-  // Footer
-  const footer = el('div', 'panel__footer');
-  const footerLink = document.createElement('a');
-  footerLink.href = `${t('SITE_URL')}/qr-code-generator?utm_source=extension&utm_medium=footer`;
-  footerLink.target = '_blank';
-  footerLink.rel = 'noopener';
-  footerLink.textContent = 'clx.cx';
-  footer.appendChild(footerLink);
-  panel.appendChild(footer);
+  panel.appendChild(createFooter());
 
   app.appendChild(panel);
 }

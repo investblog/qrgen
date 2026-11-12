@@ -77,13 +77,21 @@ a.panel__title:hover {
   border: none;
   background: none;
   color: var(--text-muted);
-  font-size: var(--fs-xs);
+  /* 13px, not --fs-xs: at 12px the labels read smaller than the rest of the panel, most visibly in
+     Firefox's wider sidebar. Long translations shrink to an ellipsis instead of overflowing. */
+  font-size: 0.8125rem;
   font-weight: var(--fw-medium);
   font-family: var(--font-sans);
   cursor: pointer;
   border-bottom: 2px solid transparent;
   transition: color var(--transition-fast), border-color var(--transition-fast);
   white-space: nowrap;
+  min-width: 0;
+}
+
+.tabs__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .tabs__item:hover {
@@ -526,6 +534,16 @@ a.panel__title:hover {
   gap: var(--space-1);
 }
 
+.whats-new {
+  margin: 0;
+  padding-left: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--text-muted);
+  font-size: var(--fs-xs);
+}
+
 .settings-links a {
   font-size: var(--fs-sm);
   color: var(--primary);
@@ -542,10 +560,31 @@ a.panel__title:hover {
 .panel__footer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  gap: var(--space-2);
   padding: var(--space-2) var(--space-3);
   border-top: 1px solid var(--border-subtle);
   flex-shrink: 0;
+}
+
+.panel__footer-links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.panel__review img {
+  flex-shrink: 0;
+}
+
+.panel__footer a.panel__review {
+  color: var(--text-muted);
+}
+
+.panel__footer a.panel__review:hover,
+.panel__footer a.panel__glyph:hover,
+.panel__footer a.panel__clx:hover {
+  color: var(--text);
 }
 
 .panel__footer a {

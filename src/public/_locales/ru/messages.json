@@ -7,7 +7,7 @@
     "description": "Base URL of the extension's pages for this language, no trailing slash"
   },
   "EXTENSION_DESCRIPTION": {
-    "message": "Генерация QR-кодов, ссылки для шаринга, embed-сниппеты. Боковая панель, офлайн-превью, канонические SVG URL."
+    "message": "Бесплатный генератор QR-кодов в SVG в боковой панели: код для любой страницы или текста, ссылки, сниппеты. Без трекинга."
   },
   "TAB_GENERATE": {
     "message": "Создать"
@@ -149,5 +149,82 @@
   },
   "TOAST_TOO_LONG_FOR_LINK": {
     "message": "Слишком длинно для ссылки (максимум 2048 символов) — скопируйте или скачайте SVG"
+  },
+  "SETTINGS_LINK_WELCOME": {
+    "message": "Приветственная страница"
+  },
+  "WHATS_NEW_TITLE": {
+    "message": "Что нового в $VERSION$",
+    "placeholders": { "version": { "content": "$1", "example": "1.1.0" } }
+  },
+  "RATE_US": {
+    "message": "Оценить"
+  },
+  "RATE_ON_STORE": {
+    "message": "Оценить в $STORE$",
+    "placeholders": { "store": { "content": "$1", "example": "Chrome Web Store" } }
+  },
+  "FOOTER_CLX_TITLE": {
+    "message": "Генератор QR-кодов и короткие ссылки на clx.cx"
+  },
+  "FOOTER_CRAFTED_AT": {
+    "message": "Сделано в"
+  },
+  "FOOTER_FEEDBACK": {
+    "message": "Обратная связь"
+  },
+  "FOOTER_TELEGRAM": {
+    "message": "Telegram-сообщество"
+  },
+  "WELCOME_TAGLINE": {
+    "message": "Чёткие QR-коды в SVG прямо в браузере."
+  },
+  "WELCOME_SUBTITLE": {
+    "message": "QR-код для любой страницы или текста — рисуется локально, без аккаунта и без трекинга."
+  },
+  "WELCOME_STEP_GENERATE": {
+    "message": "Создайте"
+  },
+  "WELCOME_STEP_GENERATE_DESC": {
+    "message": "Откройте боковую панель — код текущей страницы уже готов."
+  },
+  "WELCOME_STEP_SHARE": {
+    "message": "Поделитесь"
+  },
+  "WELCOME_STEP_SHARE_DESC": {
+    "message": "Скопируйте ссылку или скачайте SVG."
+  },
+  "WELCOME_STEP_EMBED": {
+    "message": "Встройте"
+  },
+  "WELCOME_STEP_EMBED_DESC": {
+    "message": "Вставьте сниппет HTML, Markdown, React или Vue."
+  },
+  "WELCOME_TIPS_TITLE": {
+    "message": "Советы"
+  },
+  "WELCOME_TIP_ICON": {
+    "message": "Панель открывается по значку на панели инструментов; закрепите значок, чтобы он был под рукой."
+  },
+  "WELCOME_TIP_CUSTOM": {
+    "message": "Переключитесь на «Свой текст», чтобы закодировать любой текст, а не только адрес страницы."
+  },
+  "WELCOME_TIP_ECC": {
+    "message": "Уровень коррекции Q или H сохраняет напечатанный код читаемым, даже если он поцарапан."
+  },
+  "WELCOME_TIP_HISTORY": {
+    "message": "Коды, ссылки на которые вы копировали, остаются в «Истории» — только на вашем устройстве."
+  },
+  "WELCOME_CLX_TITLE": {
+    "message": "Нужно считать сканирования?"
+  },
+  "WELCOME_CLX_DESC": {
+    "message": "Поместите в код короткую ссылку clx.cx — она покажет, сколько людей его отсканировали."
+  },
+  "WELCOME_CLX_LINK": {
+    "message": "Короткие ссылки на clx.cx"
+  },
+  "WELCOME_CTA": {
+    "message": "Открыть генератор"
   }
 }

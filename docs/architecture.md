@@ -9,7 +9,7 @@ project: qrgen
 
 ## What This Is
 
-Chrome/Edge MV3 side panel extension that generates QR codes locally and produces **share links** + **embed snippets** pointing to `qr.clx.cx`.
+Chrome/Edge MV3 side panel (Firefox: MV2 sidebar) extension that generates QR codes locally and produces **share links** + **embed snippets** pointing to `qr.clx.cx`.
 
 ## Tech Stack
 
@@ -21,14 +21,16 @@ Chrome/Edge MV3 side panel extension that generates QR codes locally and produce
 - **Styling:** CSS custom properties, design tokens from `301-ui`
 - **Linter:** Biome (single quotes, semicolons, 120 width)
 - **Tests:** Vitest
-- **i18n:** `browser.i18n` (en + ru)
+- **i18n:** `browser.i18n` (en, ru, de, es, fr, pt_BR, tr; `SITE_URL` per language)
 
 ## Architecture
 
 ```
 src/
 ├── entrypoints/
-│   ├── background/index.ts          # Service worker: opens the side panel, tab URL
+│   ├── background/index.ts          # Service worker: opens the side panel, tab URL; welcome page on
+│   │                                #   install, feedback form (301.st/contact) on uninstall
+│   ├── welcome/                     # Welcome page: steps, tips, what's new, opens the panel
 │   └── sidepanel/
 │       ├── index.html               # HTML shell
 │       ├── main.ts                  # Bootstrap, tab navigation
@@ -38,7 +40,8 @@ src/
 │           ├── generate.ts          # QR generation: source selector, preview, actions
 │           ├── embed.ts             # Snippet formats: HTML, Markdown, React, Vue
 │           ├── history.ts           # History list from storage.local
-│           └── settings.ts          # Defaults, theme, limits
+│           ├── settings.ts          # Defaults, theme, limits, links, what's new
+│           └── footer.ts            # Rate link for this build's store; clx.cx, 301.st, feedback glyphs
 ├── qr/
 │   ├── generate.ts                  # uqr.encode() → QrMatrix
 │   ├── render.ts                    # SVG render with RLE path optimization
@@ -51,15 +54,18 @@ src/
 │   ├── snippets.ts                  # 5 formats: html-img, html-object, markdown, react, vue
 │   ├── storage.ts                   # browser.storage.local wrappers
 │   ├── theme.ts                     # Dark/light/auto theme switcher
+│   ├── brand.ts                     # Store review links per build, 301.st / GitHub / Telegram links, glyphs
+│   ├── whats-new.ts                 # Bundled release notes (no network), per UI language
 │   └── messaging/
 │       ├── protocol.ts              # MessageMap type definitions
 │       └── index.ts                 # re-exports the types
 ├── assets/css/
 │   ├── theme.css                    # Design tokens (colors, typography, spacing, dark/light)
-│   └── sidepanel.css                # Component styles (panel, tabs, buttons, preview, toasts)
+│   ├── sidepanel.css                # Component styles (panel, tabs, buttons, preview, toasts)
+│   └── welcome.css                  # Welcome page
 └── public/
-    ├── _locales/{en,ru}/messages.json
-    └── icons/{16,32,48,128}.png
+    ├── _locales/{en,ru,de,es,fr,pt_BR,tr}/messages.json   # SITE_URL: clx.cx, ru.clx.cx for ru
+    └── icons/{16,32,48,128}.png, {chrome,edge,mozilla}.svg
 ```
 
 ## Data Flow
@@ -85,7 +91,7 @@ get self-contained links too.
 npm run dev          # WXT dev server + Chrome with hot-reload
 npm run dev:edge     # Same for Edge
 npm run build        # Production build → dist/chrome-mv3/
-npm run build:all    # Chrome + Edge
+npm run build:all    # Chrome, Firefox, Edge, Opera
 npm run check        # typecheck + lint + test (run before commit)
 npm run test         # Vitest
 npm run lint:fix     # Biome auto-fix

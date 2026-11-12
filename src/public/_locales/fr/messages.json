@@ -1,0 +1,230 @@
+{
+  "EXTENSION_NAME": {
+    "message": "SVG QR Code Generator"
+  },
+  "SITE_URL": {
+    "message": "https://clx.cx",
+    "description": "Base URL of the extension's pages for this language, no trailing slash"
+  },
+  "EXTENSION_DESCRIPTION": {
+    "message": "Générateur de QR codes SVG gratuit dans le panneau latéral : code pour toute page ou texte, liens, snippets. Sans pistage."
+  },
+  "TAB_GENERATE": {
+    "message": "Générer"
+  },
+  "TAB_EMBED": {
+    "message": "Intégrer"
+  },
+  "TAB_HISTORY": {
+    "message": "Historique"
+  },
+  "TAB_SETTINGS": {
+    "message": "Réglages"
+  },
+  "THEME_TOGGLE": {
+    "message": "Changer de thème"
+  },
+  "GENERATE_SOURCE_TAB": {
+    "message": "Page actuelle"
+  },
+  "GENERATE_SOURCE_CUSTOM": {
+    "message": "Texte libre"
+  },
+  "GENERATE_INPUT_LABEL": {
+    "message": "Texte ou URL"
+  },
+  "GENERATE_INPUT_PLACEHOLDER": {
+    "message": "Saisissez une URL ou du texte..."
+  },
+  "GENERATE_PRESET": {
+    "message": "Taille"
+  },
+  "GENERATE_ECC": {
+    "message": "ECC"
+  },
+  "GENERATE_PREVIEW_EMPTY": {
+    "message": "Saisissez des données pour générer le QR code"
+  },
+  "GENERATE_ERROR": {
+    "message": "Impossible de générer le QR code"
+  },
+  "GENERATE_COPY_LINK": {
+    "message": "Copier le lien"
+  },
+  "GENERATE_COPY_SVG": {
+    "message": "Copier le SVG"
+  },
+  "GENERATE_DOWNLOAD_SVG": {
+    "message": "Télécharger le SVG"
+  },
+  "EMBED_FORMAT": {
+    "message": "Format du snippet"
+  },
+  "EMBED_NO_QR": {
+    "message": "Générez d’abord un QR code"
+  },
+  "EMBED_COPY_SNIPPET": {
+    "message": "Copier le snippet"
+  },
+  "EMBED_COPY_URL": {
+    "message": "Copier l’URL"
+  },
+  "EMBED_API_DOCS": {
+    "message": "Doc de l’API"
+  },
+  "HISTORY_EMPTY": {
+    "message": "Aucun historique pour l’instant"
+  },
+  "HISTORY_CLEAR": {
+    "message": "Tout effacer"
+  },
+  "HISTORY_CLEARED": {
+    "message": "Historique effacé"
+  },
+  "HISTORY_COPY_LINK": {
+    "message": "Copier le lien"
+  },
+  "HISTORY_OPEN": {
+    "message": "Ouvrir dans le navigateur"
+  },
+  "HISTORY_JUST_NOW": {
+    "message": "à l’instant"
+  },
+  "SETTINGS_DEFAULTS": {
+    "message": "Valeurs par défaut"
+  },
+  "SETTINGS_DEFAULT_PRESET": {
+    "message": "Taille par défaut"
+  },
+  "SETTINGS_DEFAULT_ECC": {
+    "message": "ECC par défaut"
+  },
+  "SETTINGS_BEHAVIOR": {
+    "message": "Comportement"
+  },
+  "SETTINGS_AUTO_GENERATE": {
+    "message": "Générer à l’ouverture"
+  },
+  "SETTINGS_HISTORY_LIMIT": {
+    "message": "Limite de l’historique"
+  },
+  "SETTINGS_APPEARANCE": {
+    "message": "Apparence"
+  },
+  "SETTINGS_THEME": {
+    "message": "Thème"
+  },
+  "SETTINGS_THEME_AUTO": {
+    "message": "Auto"
+  },
+  "SETTINGS_THEME_DARK": {
+    "message": "Sombre"
+  },
+  "SETTINGS_THEME_LIGHT": {
+    "message": "Clair"
+  },
+  "SETTINGS_PRIVACY": {
+    "message": "Confidentialité"
+  },
+  "SETTINGS_PRIVACY_NOTE": {
+    "message": "Tout se passe dans votre navigateur ; l’extension n’envoie rien. Un lien de partage contient le texte encodé : toute personne disposant du lien peut le lire. Pas de compte, pas de pistage, pas de statistiques."
+  },
+  "SETTINGS_LINKS": {
+    "message": "Liens"
+  },
+  "SETTINGS_LINK_DOCS": {
+    "message": "Guide de l’extension"
+  },
+  "SETTINGS_LINK_API": {
+    "message": "Documentation de l’API"
+  },
+  "TOAST_COPIED": {
+    "message": "Copié"
+  },
+  "TOAST_COPY_FAILED": {
+    "message": "Échec de la copie"
+  },
+  "TOAST_DOWNLOADED": {
+    "message": "Téléchargé"
+  },
+  "TOAST_TOO_LONG_FOR_LINK": {
+    "message": "Trop long pour un lien (2048 caractères max.) — copiez ou téléchargez le SVG"
+  },
+  "SETTINGS_LINK_WELCOME": {
+    "message": "Guide de bienvenue"
+  },
+  "WHATS_NEW_TITLE": {
+    "message": "Nouveautés de la version $VERSION$",
+    "placeholders": { "version": { "content": "$1", "example": "1.1.0" } }
+  },
+  "RATE_US": {
+    "message": "Notez-nous"
+  },
+  "RATE_ON_STORE": {
+    "message": "Noter sur $STORE$",
+    "placeholders": { "store": { "content": "$1", "example": "Chrome Web Store" } }
+  },
+  "FOOTER_CLX_TITLE": {
+    "message": "Générateur de QR codes et liens courts sur clx.cx"
+  },
+  "FOOTER_CRAFTED_AT": {
+    "message": "Conçu chez"
+  },
+  "FOOTER_FEEDBACK": {
+    "message": "Retours et problèmes"
+  },
+  "FOOTER_TELEGRAM": {
+    "message": "Communauté Telegram"
+  },
+  "WELCOME_TAGLINE": {
+    "message": "Des QR codes SVG nets, directement dans votre navigateur."
+  },
+  "WELCOME_SUBTITLE": {
+    "message": "Un QR code pour toute page ou tout texte — dessiné en local, sans compte et sans pistage."
+  },
+  "WELCOME_STEP_GENERATE": {
+    "message": "Générez"
+  },
+  "WELCOME_STEP_GENERATE_DESC": {
+    "message": "Ouvrez le panneau latéral : le code de la page actuelle est déjà prêt."
+  },
+  "WELCOME_STEP_SHARE": {
+    "message": "Partagez"
+  },
+  "WELCOME_STEP_SHARE_DESC": {
+    "message": "Copiez un lien de partage ou téléchargez le SVG."
+  },
+  "WELCOME_STEP_EMBED": {
+    "message": "Intégrez"
+  },
+  "WELCOME_STEP_EMBED_DESC": {
+    "message": "Collez un snippet HTML, Markdown, React ou Vue."
+  },
+  "WELCOME_TIPS_TITLE": {
+    "message": "Astuces"
+  },
+  "WELCOME_TIP_ICON": {
+    "message": "Cliquez sur l’icône de la barre d’outils pour ouvrir le panneau latéral ; épinglez-la pour l’avoir toujours sous la main."
+  },
+  "WELCOME_TIP_CUSTOM": {
+    "message": "Passez à « Texte libre » pour encoder n’importe quel texte, pas seulement l’adresse de la page."
+  },
+  "WELCOME_TIP_ECC": {
+    "message": "Avec la correction d’erreurs Q ou H, un code imprimé reste lisible même s’il est rayé."
+  },
+  "WELCOME_TIP_HISTORY": {
+    "message": "Chaque code dont vous avez copié le lien reste dans l’Historique, uniquement sur votre appareil."
+  },
+  "WELCOME_CLX_TITLE": {
+    "message": "Besoin de compter les scans ?"
+  },
+  "WELCOME_CLX_DESC": {
+    "message": "Mettez un lien court clx.cx dans le code : il indique combien de personnes l’ont scanné."
+  },
+  "WELCOME_CLX_LINK": {
+    "message": "Liens courts sur clx.cx"
+  },
+  "WELCOME_CTA": {
+    "message": "Ouvrir le générateur"
+  }
+}

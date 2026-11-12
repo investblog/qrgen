@@ -20,7 +20,8 @@ offline preview.
 - **Embed snippets** — HTML, Markdown, React, Vue formats
 - **History** — recent QR codes stored locally
 - **Dark & light theme** — with auto-detection
-- **2 languages** — English, Russian
+- **7 languages** — English, Russian, German, Spanish, French, Portuguese (Brazil), Turkish
+- **Welcome page** — a short guide on first install; what's new lives in Settings
 - **Local first** — no accounts, no tracking; data leaves your browser only in a link you copy or open
 
 ## Install

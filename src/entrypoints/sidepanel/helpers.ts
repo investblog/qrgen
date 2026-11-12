@@ -8,10 +8,10 @@ export function el(tag: string, className?: string, text?: string): HTMLElement 
   return node;
 }
 
-/** Get i18n message */
-export function t(key: string): string {
+/** Get i18n message, with optional `$PLACEHOLDER$` substitutions */
+export function t(key: string, ...substitutions: string[]): string {
   try {
-    return browser.i18n.getMessage(key as any) || key;
+    return browser.i18n.getMessage(key as any, substitutions.length ? substitutions : undefined) || key;
   } catch {
     return key;
   }

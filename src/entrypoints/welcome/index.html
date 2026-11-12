@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SVG QR Code Generator</title>
+    <link rel="stylesheet" href="../../assets/css/theme.css" />
+    <link rel="stylesheet" href="../../assets/css/welcome.css" />
+  </head>
+  <body>
+    <main class="welcome">
+      <header class="welcome__header">
+        <img src="/icons/48.png" alt="" width="40" height="40" class="welcome__icon" />
+        <h1 class="welcome__title" data-i18n="EXTENSION_NAME">SVG QR Code Generator</h1>
+      </header>
+
+      <section class="welcome__hero">
+        <p class="welcome__tagline" data-i18n="WELCOME_TAGLINE">Crisp SVG QR codes, right in your browser.</p>
+        <p class="welcome__subtitle" data-i18n="WELCOME_SUBTITLE">
+          A QR code for any page or text — drawn locally, with no account and no tracking.
+        </p>
+      </section>
+
+      <section class="welcome__steps">
+        <div class="welcome__step">
+          <span class="welcome__step-number">1</span>
+          <h2 class="welcome__step-title" data-i18n="WELCOME_STEP_GENERATE">Generate</h2>
+          <p class="welcome__step-desc" data-i18n="WELCOME_STEP_GENERATE_DESC">Open the side panel — the code for the current page is ready.</p>
+        </div>
+        <div class="welcome__step">
+          <span class="welcome__step-number">2</span>
+          <h2 class="welcome__step-title" data-i18n="WELCOME_STEP_SHARE">Share</h2>
+          <p class="welcome__step-desc" data-i18n="WELCOME_STEP_SHARE_DESC">Copy a share link or download the SVG.</p>
+        </div>
+        <div class="welcome__step">
+          <span class="welcome__step-number">3</span>
+          <h2 class="welcome__step-title" data-i18n="WELCOME_STEP_EMBED">Embed</h2>
+          <p class="welcome__step-desc" data-i18n="WELCOME_STEP_EMBED_DESC">Paste an HTML, Markdown, React or Vue snippet.</p>
+        </div>
+      </section>
+
+      <section class="welcome__tips">
+        <h2 class="welcome__section-title" data-i18n="WELCOME_TIPS_TITLE">Tips</h2>
+        <ul class="welcome__tips-list">
+          <li data-i18n="WELCOME_TIP_ICON">Click the toolbar icon to open the side panel; pin the icon to keep it at hand.</li>
+          <li data-i18n="WELCOME_TIP_CUSTOM">Switch to “Custom input” to encode any text, not just the page address.</li>
+          <li data-i18n="WELCOME_TIP_ECC">Error correction Q or H keeps a printed code readable when it gets scratched.</li>
+          <li data-i18n="WELCOME_TIP_HISTORY">Every code whose link you copied stays in History, on your device only.</li>
+        </ul>
+      </section>
+
+      <section class="welcome__card" id="whats-new" hidden>
+        <h2 class="welcome__section-title" id="whats-new-title">What's new</h2>
+        <ul class="welcome__news-list" id="whats-new-list"></ul>
+      </section>
+
+      <section class="welcome__card welcome__clx">
+        <h2 class="welcome__section-title" data-i18n="WELCOME_CLX_TITLE">Need to count scans?</h2>
+        <p class="welcome__step-desc" data-i18n="WELCOME_CLX_DESC">
+          Put a short link from clx.cx into the code — it shows how many people scanned it.
+        </p>
+        <a class="welcome__clx-link" id="clx-link" href="https://clx.cx/short-links" target="_blank" rel="noopener" data-i18n="WELCOME_CLX_LINK">Short links on clx.cx</a>
+      </section>
+
+      <div class="welcome__action">
+        <button id="cta" class="welcome__cta" type="button" data-i18n="WELCOME_CTA">Open the generator</button>
+      </div>
+
+      <footer class="welcome__footer" id="welcome-footer">
+        <span id="version"></span>
+      </footer>
+    </main>
+
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,230 @@
+{
+  "EXTENSION_NAME": {
+    "message": "SVG QR Code Generator"
+  },
+  "SITE_URL": {
+    "message": "https://clx.cx",
+    "description": "Base URL of the extension's pages for this language, no trailing slash"
+  },
+  "EXTENSION_DESCRIPTION": {
+    "message": "Ücretsiz SVG QR kod oluşturucu yan panelinizde: her sayfa veya metin için kod, paylaşım bağlantıları, yerleştirme kodu. İzleme yok."
+  },
+  "TAB_GENERATE": {
+    "message": "Oluştur"
+  },
+  "TAB_EMBED": {
+    "message": "Yerleştir"
+  },
+  "TAB_HISTORY": {
+    "message": "Geçmiş"
+  },
+  "TAB_SETTINGS": {
+    "message": "Ayarlar"
+  },
+  "THEME_TOGGLE": {
+    "message": "Temayı değiştir"
+  },
+  "GENERATE_SOURCE_TAB": {
+    "message": "Geçerli sayfa"
+  },
+  "GENERATE_SOURCE_CUSTOM": {
+    "message": "Özel metin"
+  },
+  "GENERATE_INPUT_LABEL": {
+    "message": "Metin veya URL"
+  },
+  "GENERATE_INPUT_PLACEHOLDER": {
+    "message": "URL veya metin girin..."
+  },
+  "GENERATE_PRESET": {
+    "message": "Boyut"
+  },
+  "GENERATE_ECC": {
+    "message": "ECC"
+  },
+  "GENERATE_PREVIEW_EMPTY": {
+    "message": "QR kod oluşturmak için veri girin"
+  },
+  "GENERATE_ERROR": {
+    "message": "QR kod oluşturulamadı"
+  },
+  "GENERATE_COPY_LINK": {
+    "message": "Bağlantıyı kopyala"
+  },
+  "GENERATE_COPY_SVG": {
+    "message": "SVG'yi kopyala"
+  },
+  "GENERATE_DOWNLOAD_SVG": {
+    "message": "SVG'yi indir"
+  },
+  "EMBED_FORMAT": {
+    "message": "Yerleştirme kodu biçimi"
+  },
+  "EMBED_NO_QR": {
+    "message": "Önce bir QR kod oluşturun"
+  },
+  "EMBED_COPY_SNIPPET": {
+    "message": "Yerleştirme kodunu kopyala"
+  },
+  "EMBED_COPY_URL": {
+    "message": "URL'yi kopyala"
+  },
+  "EMBED_API_DOCS": {
+    "message": "API belgeleri"
+  },
+  "HISTORY_EMPTY": {
+    "message": "Henüz geçmiş yok"
+  },
+  "HISTORY_CLEAR": {
+    "message": "Tümünü temizle"
+  },
+  "HISTORY_CLEARED": {
+    "message": "Geçmiş temizlendi"
+  },
+  "HISTORY_COPY_LINK": {
+    "message": "Bağlantıyı kopyala"
+  },
+  "HISTORY_OPEN": {
+    "message": "Tarayıcıda aç"
+  },
+  "HISTORY_JUST_NOW": {
+    "message": "az önce"
+  },
+  "SETTINGS_DEFAULTS": {
+    "message": "Varsayılanlar"
+  },
+  "SETTINGS_DEFAULT_PRESET": {
+    "message": "Varsayılan boyut"
+  },
+  "SETTINGS_DEFAULT_ECC": {
+    "message": "Varsayılan ECC"
+  },
+  "SETTINGS_BEHAVIOR": {
+    "message": "Davranış"
+  },
+  "SETTINGS_AUTO_GENERATE": {
+    "message": "Açılışta oluştur"
+  },
+  "SETTINGS_HISTORY_LIMIT": {
+    "message": "Geçmiş sınırı"
+  },
+  "SETTINGS_APPEARANCE": {
+    "message": "Görünüm"
+  },
+  "SETTINGS_THEME": {
+    "message": "Tema"
+  },
+  "SETTINGS_THEME_AUTO": {
+    "message": "Otomatik"
+  },
+  "SETTINGS_THEME_DARK": {
+    "message": "Koyu"
+  },
+  "SETTINGS_THEME_LIGHT": {
+    "message": "Açık"
+  },
+  "SETTINGS_PRIVACY": {
+    "message": "Gizlilik"
+  },
+  "SETTINGS_PRIVACY_NOTE": {
+    "message": "Her şey tarayıcınızda çalışır; uzantı hiçbir şey göndermez. Paylaşım bağlantısı kodlanmış metni içerir, bu yüzden bağlantıya sahip olan herkes onu okuyabilir. Hesap yok, izleme yok, analiz yok."
+  },
+  "SETTINGS_LINKS": {
+    "message": "Bağlantılar"
+  },
+  "SETTINGS_LINK_DOCS": {
+    "message": "Uzantı kılavuzu"
+  },
+  "SETTINGS_LINK_API": {
+    "message": "API belgeleri"
+  },
+  "TOAST_COPIED": {
+    "message": "Panoya kopyalandı"
+  },
+  "TOAST_COPY_FAILED": {
+    "message": "Kopyalanamadı"
+  },
+  "TOAST_DOWNLOADED": {
+    "message": "İndirildi"
+  },
+  "TOAST_TOO_LONG_FOR_LINK": {
+    "message": "Bağlantı için çok uzun (en fazla 2048 karakter) — SVG'yi kopyalayın veya indirin"
+  },
+  "SETTINGS_LINK_WELCOME": {
+    "message": "Hoş geldiniz rehberi"
+  },
+  "WHATS_NEW_TITLE": {
+    "message": "Sürüm $VERSION$: yenilikler",
+    "placeholders": { "version": { "content": "$1", "example": "1.1.0" } }
+  },
+  "RATE_US": {
+    "message": "Değerlendir"
+  },
+  "RATE_ON_STORE": {
+    "message": "$STORE$ üzerinde değerlendir",
+    "placeholders": { "store": { "content": "$1", "example": "Chrome Web Store" } }
+  },
+  "FOOTER_CLX_TITLE": {
+    "message": "clx.cx: QR kod oluşturucu ve kısa bağlantılar"
+  },
+  "FOOTER_CRAFTED_AT": {
+    "message": "Geliştiren:"
+  },
+  "FOOTER_FEEDBACK": {
+    "message": "Geri bildirim ve sorunlar"
+  },
+  "FOOTER_TELEGRAM": {
+    "message": "Telegram topluluğu"
+  },
+  "WELCOME_TAGLINE": {
+    "message": "Net SVG QR kodlar, doğrudan tarayıcınızda."
+  },
+  "WELCOME_SUBTITLE": {
+    "message": "Her sayfa veya metin için bir QR kod — yerel olarak çizilir, hesap ve izleme olmadan."
+  },
+  "WELCOME_STEP_GENERATE": {
+    "message": "Oluşturun"
+  },
+  "WELCOME_STEP_GENERATE_DESC": {
+    "message": "Yan paneli açın — geçerli sayfanın kodu hazır."
+  },
+  "WELCOME_STEP_SHARE": {
+    "message": "Paylaşın"
+  },
+  "WELCOME_STEP_SHARE_DESC": {
+    "message": "Paylaşım bağlantısını kopyalayın veya SVG'yi indirin."
+  },
+  "WELCOME_STEP_EMBED": {
+    "message": "Yerleştirin"
+  },
+  "WELCOME_STEP_EMBED_DESC": {
+    "message": "HTML, Markdown, React veya Vue yerleştirme kodunu yapıştırın."
+  },
+  "WELCOME_TIPS_TITLE": {
+    "message": "İpuçları"
+  },
+  "WELCOME_TIP_ICON": {
+    "message": "Yan paneli açmak için araç çubuğundaki simgeye tıklayın; simgeyi sabitlerseniz hep elinizin altında olur."
+  },
+  "WELCOME_TIP_CUSTOM": {
+    "message": "Yalnızca sayfa adresini değil, herhangi bir metni kodlamak için “Özel metin” seçeneğine geçin."
+  },
+  "WELCOME_TIP_ECC": {
+    "message": "Q veya H hata düzeltme düzeyi, basılı kodu çizilse bile okunabilir tutar."
+  },
+  "WELCOME_TIP_HISTORY": {
+    "message": "Bağlantısını kopyaladığınız her kod Geçmiş sekmesinde kalır — yalnızca sizin cihazınızda."
+  },
+  "WELCOME_CLX_TITLE": {
+    "message": "Tarama sayısını görmek mi istiyorsunuz?"
+  },
+  "WELCOME_CLX_DESC": {
+    "message": "Koda clx.cx kısa bağlantısı koyun — kaç kişinin taradığını gösterir."
+  },
+  "WELCOME_CLX_LINK": {
+    "message": "clx.cx kısa bağlantıları"
+  },
+  "WELCOME_CTA": {
+    "message": "Oluşturucuyu aç"
+  }
+}

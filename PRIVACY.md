@@ -10,7 +10,9 @@ The same policy, together with the QR code API and the web generator, is publish
 ## Summary
 
 The extension runs entirely in your browser. No accounts, no tracking, no analytics, and — since version
-1.1.0 — no network requests at all. The only way your data leaves the browser is a link you copy or open.
+1.1.0 — the extension itself makes no network requests. Your data leaves the browser only in a link you
+copy or open. The one page the browser opens without a click is a feedback form when you uninstall the
+extension (see *Pages the browser opens*).
 
 ## Data Collection
 
@@ -44,6 +46,14 @@ the automatic code for the current page when the panel opened.
 | `activeTab` + `tabs` | Read the URL of the current page when the panel opens or you press refresh |
 
 The extension does not access page content, browsing history, bookmarks, passwords, or any other browser data.
+
+### Pages the browser opens
+
+On first install the extension opens its welcome page, which is bundled with the extension. When you
+uninstall it, the browser opens a feedback form at `301.st/contact` once; the address carries only
+campaign tags naming the extension, nothing about you, and like any web page the request reaches
+301.st with your IP address and browser user agent. Links in the panel (store reviews, clx.cx,
+301.st, GitHub, Telegram) open only when you click them.
 
 ## Third-Party Services
 

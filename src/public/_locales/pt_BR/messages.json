@@ -1,0 +1,230 @@
+{
+  "EXTENSION_NAME": {
+    "message": "SVG QR Code Generator"
+  },
+  "SITE_URL": {
+    "message": "https://clx.cx",
+    "description": "Base URL of the extension's pages for this language, no trailing slash"
+  },
+  "EXTENSION_DESCRIPTION": {
+    "message": "Gerador grátis de QR code em SVG no painel lateral: código para qualquer página ou texto, links, snippets. Sem rastreamento."
+  },
+  "TAB_GENERATE": {
+    "message": "Gerar"
+  },
+  "TAB_EMBED": {
+    "message": "Código"
+  },
+  "TAB_HISTORY": {
+    "message": "Histórico"
+  },
+  "TAB_SETTINGS": {
+    "message": "Ajustes"
+  },
+  "THEME_TOGGLE": {
+    "message": "Alternar tema"
+  },
+  "GENERATE_SOURCE_TAB": {
+    "message": "Página atual"
+  },
+  "GENERATE_SOURCE_CUSTOM": {
+    "message": "Texto livre"
+  },
+  "GENERATE_INPUT_LABEL": {
+    "message": "Texto ou URL"
+  },
+  "GENERATE_INPUT_PLACEHOLDER": {
+    "message": "Digite uma URL ou texto..."
+  },
+  "GENERATE_PRESET": {
+    "message": "Tamanho"
+  },
+  "GENERATE_ECC": {
+    "message": "ECC"
+  },
+  "GENERATE_PREVIEW_EMPTY": {
+    "message": "Digite algo para gerar o QR code"
+  },
+  "GENERATE_ERROR": {
+    "message": "Não foi possível gerar o QR code"
+  },
+  "GENERATE_COPY_LINK": {
+    "message": "Copiar link"
+  },
+  "GENERATE_COPY_SVG": {
+    "message": "Copiar SVG"
+  },
+  "GENERATE_DOWNLOAD_SVG": {
+    "message": "Baixar SVG"
+  },
+  "EMBED_FORMAT": {
+    "message": "Formato do snippet"
+  },
+  "EMBED_NO_QR": {
+    "message": "Gere um QR code primeiro"
+  },
+  "EMBED_COPY_SNIPPET": {
+    "message": "Copiar snippet"
+  },
+  "EMBED_COPY_URL": {
+    "message": "Copiar URL"
+  },
+  "EMBED_API_DOCS": {
+    "message": "Docs da API"
+  },
+  "HISTORY_EMPTY": {
+    "message": "Nenhum histórico ainda"
+  },
+  "HISTORY_CLEAR": {
+    "message": "Limpar tudo"
+  },
+  "HISTORY_CLEARED": {
+    "message": "Histórico limpo"
+  },
+  "HISTORY_COPY_LINK": {
+    "message": "Copiar link"
+  },
+  "HISTORY_OPEN": {
+    "message": "Abrir no navegador"
+  },
+  "HISTORY_JUST_NOW": {
+    "message": "agora mesmo"
+  },
+  "SETTINGS_DEFAULTS": {
+    "message": "Padrões"
+  },
+  "SETTINGS_DEFAULT_PRESET": {
+    "message": "Tamanho padrão"
+  },
+  "SETTINGS_DEFAULT_ECC": {
+    "message": "ECC padrão"
+  },
+  "SETTINGS_BEHAVIOR": {
+    "message": "Comportamento"
+  },
+  "SETTINGS_AUTO_GENERATE": {
+    "message": "Gerar ao abrir"
+  },
+  "SETTINGS_HISTORY_LIMIT": {
+    "message": "Limite do histórico"
+  },
+  "SETTINGS_APPEARANCE": {
+    "message": "Aparência"
+  },
+  "SETTINGS_THEME": {
+    "message": "Tema"
+  },
+  "SETTINGS_THEME_AUTO": {
+    "message": "Automático"
+  },
+  "SETTINGS_THEME_DARK": {
+    "message": "Escuro"
+  },
+  "SETTINGS_THEME_LIGHT": {
+    "message": "Claro"
+  },
+  "SETTINGS_PRIVACY": {
+    "message": "Privacidade"
+  },
+  "SETTINGS_PRIVACY_NOTE": {
+    "message": "Tudo roda no seu navegador; a extensão não envia nada. Um link de compartilhamento contém o texto codificado, então qualquer pessoa com o link pode lê-lo. Sem contas, sem rastreamento, sem análises."
+  },
+  "SETTINGS_LINKS": {
+    "message": "Links"
+  },
+  "SETTINGS_LINK_DOCS": {
+    "message": "Guia da extensão"
+  },
+  "SETTINGS_LINK_API": {
+    "message": "Documentação da API"
+  },
+  "TOAST_COPIED": {
+    "message": "Copiado"
+  },
+  "TOAST_COPY_FAILED": {
+    "message": "Falha ao copiar"
+  },
+  "TOAST_DOWNLOADED": {
+    "message": "Baixado"
+  },
+  "TOAST_TOO_LONG_FOR_LINK": {
+    "message": "Longo demais para um link (máx. 2048 caracteres) — copie ou baixe o SVG"
+  },
+  "SETTINGS_LINK_WELCOME": {
+    "message": "Guia de boas-vindas"
+  },
+  "WHATS_NEW_TITLE": {
+    "message": "Novidades da versão $VERSION$",
+    "placeholders": { "version": { "content": "$1", "example": "1.1.0" } }
+  },
+  "RATE_US": {
+    "message": "Avaliar"
+  },
+  "RATE_ON_STORE": {
+    "message": "Avaliar em $STORE$",
+    "placeholders": { "store": { "content": "$1", "example": "Chrome Web Store" } }
+  },
+  "FOOTER_CLX_TITLE": {
+    "message": "Gerador de QR code e links curtos no clx.cx"
+  },
+  "FOOTER_CRAFTED_AT": {
+    "message": "Feito por"
+  },
+  "FOOTER_FEEDBACK": {
+    "message": "Feedback e problemas"
+  },
+  "FOOTER_TELEGRAM": {
+    "message": "Comunidade no Telegram"
+  },
+  "WELCOME_TAGLINE": {
+    "message": "QR codes SVG nítidos, direto no seu navegador."
+  },
+  "WELCOME_SUBTITLE": {
+    "message": "Um QR code para qualquer página ou texto — gerado localmente, sem conta e sem rastreamento."
+  },
+  "WELCOME_STEP_GENERATE": {
+    "message": "Gere"
+  },
+  "WELCOME_STEP_GENERATE_DESC": {
+    "message": "Abra o painel lateral — o código da página atual já está pronto."
+  },
+  "WELCOME_STEP_SHARE": {
+    "message": "Compartilhe"
+  },
+  "WELCOME_STEP_SHARE_DESC": {
+    "message": "Copie um link de compartilhamento ou baixe o SVG."
+  },
+  "WELCOME_STEP_EMBED": {
+    "message": "Incorpore"
+  },
+  "WELCOME_STEP_EMBED_DESC": {
+    "message": "Cole um snippet de HTML, Markdown, React ou Vue."
+  },
+  "WELCOME_TIPS_TITLE": {
+    "message": "Dicas"
+  },
+  "WELCOME_TIP_ICON": {
+    "message": "Clique no ícone da barra de ferramentas para abrir o painel lateral; fixe o ícone para tê-lo sempre à mão."
+  },
+  "WELCOME_TIP_CUSTOM": {
+    "message": "Mude para “Texto livre” para codificar qualquer texto, não só o endereço da página."
+  },
+  "WELCOME_TIP_ECC": {
+    "message": "A correção de erros Q ou H mantém um código impresso legível mesmo quando arranhado."
+  },
+  "WELCOME_TIP_HISTORY": {
+    "message": "Todo código cujo link você copiou fica no Histórico, só no seu dispositivo."
+  },
+  "WELCOME_CLX_TITLE": {
+    "message": "Precisa contar os escaneamentos?"
+  },
+  "WELCOME_CLX_DESC": {
+    "message": "Coloque um link curto do clx.cx no código — ele mostra quantas pessoas o escanearam."
+  },
+  "WELCOME_CLX_LINK": {
+    "message": "Links curtos no clx.cx"
+  },
+  "WELCOME_CTA": {
+    "message": "Abrir o gerador"
+  }
+}

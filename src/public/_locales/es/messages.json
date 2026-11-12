@@ -1,0 +1,230 @@
+{
+  "EXTENSION_NAME": {
+    "message": "SVG QR Code Generator"
+  },
+  "SITE_URL": {
+    "message": "https://clx.cx",
+    "description": "Base URL of the extension's pages for this language, no trailing slash"
+  },
+  "EXTENSION_DESCRIPTION": {
+    "message": "Generador gratuito de códigos QR en SVG en tu panel lateral: código para cualquier página o texto, enlaces, snippets. Sin rastreo."
+  },
+  "TAB_GENERATE": {
+    "message": "Generar"
+  },
+  "TAB_EMBED": {
+    "message": "Insertar"
+  },
+  "TAB_HISTORY": {
+    "message": "Historial"
+  },
+  "TAB_SETTINGS": {
+    "message": "Ajustes"
+  },
+  "THEME_TOGGLE": {
+    "message": "Cambiar tema"
+  },
+  "GENERATE_SOURCE_TAB": {
+    "message": "Página actual"
+  },
+  "GENERATE_SOURCE_CUSTOM": {
+    "message": "Texto propio"
+  },
+  "GENERATE_INPUT_LABEL": {
+    "message": "Texto o URL"
+  },
+  "GENERATE_INPUT_PLACEHOLDER": {
+    "message": "Escribe una URL o un texto..."
+  },
+  "GENERATE_PRESET": {
+    "message": "Tamaño"
+  },
+  "GENERATE_ECC": {
+    "message": "ECC"
+  },
+  "GENERATE_PREVIEW_EMPTY": {
+    "message": "Escribe algo para generar el código QR"
+  },
+  "GENERATE_ERROR": {
+    "message": "No se pudo generar el código QR"
+  },
+  "GENERATE_COPY_LINK": {
+    "message": "Copiar enlace"
+  },
+  "GENERATE_COPY_SVG": {
+    "message": "Copiar SVG"
+  },
+  "GENERATE_DOWNLOAD_SVG": {
+    "message": "Descargar SVG"
+  },
+  "EMBED_FORMAT": {
+    "message": "Formato del snippet"
+  },
+  "EMBED_NO_QR": {
+    "message": "Primero genera un código QR"
+  },
+  "EMBED_COPY_SNIPPET": {
+    "message": "Copiar snippet"
+  },
+  "EMBED_COPY_URL": {
+    "message": "Copiar URL"
+  },
+  "EMBED_API_DOCS": {
+    "message": "Docs de la API"
+  },
+  "HISTORY_EMPTY": {
+    "message": "Aún no hay historial"
+  },
+  "HISTORY_CLEAR": {
+    "message": "Borrar todo"
+  },
+  "HISTORY_CLEARED": {
+    "message": "Historial borrado"
+  },
+  "HISTORY_COPY_LINK": {
+    "message": "Copiar enlace"
+  },
+  "HISTORY_OPEN": {
+    "message": "Abrir en el navegador"
+  },
+  "HISTORY_JUST_NOW": {
+    "message": "ahora mismo"
+  },
+  "SETTINGS_DEFAULTS": {
+    "message": "Predeterminados"
+  },
+  "SETTINGS_DEFAULT_PRESET": {
+    "message": "Tamaño predeterminado"
+  },
+  "SETTINGS_DEFAULT_ECC": {
+    "message": "ECC predeterminado"
+  },
+  "SETTINGS_BEHAVIOR": {
+    "message": "Comportamiento"
+  },
+  "SETTINGS_AUTO_GENERATE": {
+    "message": "Generar al abrir"
+  },
+  "SETTINGS_HISTORY_LIMIT": {
+    "message": "Límite del historial"
+  },
+  "SETTINGS_APPEARANCE": {
+    "message": "Apariencia"
+  },
+  "SETTINGS_THEME": {
+    "message": "Tema"
+  },
+  "SETTINGS_THEME_AUTO": {
+    "message": "Automático"
+  },
+  "SETTINGS_THEME_DARK": {
+    "message": "Oscuro"
+  },
+  "SETTINGS_THEME_LIGHT": {
+    "message": "Claro"
+  },
+  "SETTINGS_PRIVACY": {
+    "message": "Privacidad"
+  },
+  "SETTINGS_PRIVACY_NOTE": {
+    "message": "Todo se ejecuta en tu navegador; la extensión no envía nada. Un enlace para compartir contiene el texto codificado, así que cualquiera que tenga el enlace puede leerlo. Sin cuentas, sin rastreo, sin analíticas."
+  },
+  "SETTINGS_LINKS": {
+    "message": "Enlaces"
+  },
+  "SETTINGS_LINK_DOCS": {
+    "message": "Guía de la extensión"
+  },
+  "SETTINGS_LINK_API": {
+    "message": "Documentación de la API"
+  },
+  "TOAST_COPIED": {
+    "message": "Copiado"
+  },
+  "TOAST_COPY_FAILED": {
+    "message": "Error al copiar"
+  },
+  "TOAST_DOWNLOADED": {
+    "message": "Descargado"
+  },
+  "TOAST_TOO_LONG_FOR_LINK": {
+    "message": "Demasiado largo para un enlace (máx. 2048 caracteres): copia o descarga el SVG"
+  },
+  "SETTINGS_LINK_WELCOME": {
+    "message": "Guía de bienvenida"
+  },
+  "WHATS_NEW_TITLE": {
+    "message": "Novedades de la versión $VERSION$",
+    "placeholders": { "version": { "content": "$1", "example": "1.1.0" } }
+  },
+  "RATE_US": {
+    "message": "Valóranos"
+  },
+  "RATE_ON_STORE": {
+    "message": "Valorar en $STORE$",
+    "placeholders": { "store": { "content": "$1", "example": "Chrome Web Store" } }
+  },
+  "FOOTER_CLX_TITLE": {
+    "message": "Generador de códigos QR y enlaces cortos en clx.cx"
+  },
+  "FOOTER_CRAFTED_AT": {
+    "message": "Hecho en"
+  },
+  "FOOTER_FEEDBACK": {
+    "message": "Comentarios y errores"
+  },
+  "FOOTER_TELEGRAM": {
+    "message": "Comunidad de Telegram"
+  },
+  "WELCOME_TAGLINE": {
+    "message": "Códigos QR nítidos en SVG, directamente en tu navegador."
+  },
+  "WELCOME_SUBTITLE": {
+    "message": "Un código QR para cualquier página o texto, generado localmente, sin cuenta y sin rastreo."
+  },
+  "WELCOME_STEP_GENERATE": {
+    "message": "Genera"
+  },
+  "WELCOME_STEP_GENERATE_DESC": {
+    "message": "Abre el panel lateral: el código de la página actual ya está listo."
+  },
+  "WELCOME_STEP_SHARE": {
+    "message": "Comparte"
+  },
+  "WELCOME_STEP_SHARE_DESC": {
+    "message": "Copia un enlace para compartir o descarga el SVG."
+  },
+  "WELCOME_STEP_EMBED": {
+    "message": "Inserta"
+  },
+  "WELCOME_STEP_EMBED_DESC": {
+    "message": "Pega un snippet de HTML, Markdown, React o Vue."
+  },
+  "WELCOME_TIPS_TITLE": {
+    "message": "Consejos"
+  },
+  "WELCOME_TIP_ICON": {
+    "message": "Haz clic en el icono de la barra de herramientas para abrir el panel lateral; fíjalo para tenerlo siempre a mano."
+  },
+  "WELCOME_TIP_CUSTOM": {
+    "message": "Cambia a «Texto propio» para codificar cualquier texto, no solo la dirección de la página."
+  },
+  "WELCOME_TIP_ECC": {
+    "message": "La corrección de errores Q o H mantiene legible un código impreso aunque se raye."
+  },
+  "WELCOME_TIP_HISTORY": {
+    "message": "Cada código cuyo enlace hayas copiado queda en el Historial, solo en tu dispositivo."
+  },
+  "WELCOME_CLX_TITLE": {
+    "message": "¿Necesitas contar escaneos?"
+  },
+  "WELCOME_CLX_DESC": {
+    "message": "Pon un enlace corto de clx.cx en el código: verás cuántas personas lo han escaneado."
+  },
+  "WELCOME_CLX_LINK": {
+    "message": "Enlaces cortos en clx.cx"
+  },
+  "WELCOME_CTA": {
+    "message": "Abrir el generador"
+  }
+}

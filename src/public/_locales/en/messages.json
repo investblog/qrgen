@@ -7,7 +7,7 @@
     "description": "Base URL of the extension's pages for this language, no trailing slash"
   },
   "EXTENSION_DESCRIPTION": {
-    "message": "Generate QR codes, copy share links, and embed snippets. Side panel workflow, offline preview, canonical SVG URLs."
+    "message": "Free SVG QR code generator in your side panel: a code for any page or text, share links, embed snippets. No tracking."
   },
   "TAB_GENERATE": {
     "message": "Generate"
@@ -149,5 +149,82 @@
   },
   "TOAST_TOO_LONG_FOR_LINK": {
     "message": "Too long for a link (max 2,048 characters) — use Copy SVG or Download"
+  },
+  "SETTINGS_LINK_WELCOME": {
+    "message": "Welcome guide"
+  },
+  "WHATS_NEW_TITLE": {
+    "message": "What's new in $VERSION$",
+    "placeholders": { "version": { "content": "$1", "example": "1.1.0" } }
+  },
+  "RATE_US": {
+    "message": "Rate us"
+  },
+  "RATE_ON_STORE": {
+    "message": "Rate on $STORE$",
+    "placeholders": { "store": { "content": "$1", "example": "Chrome Web Store" } }
+  },
+  "FOOTER_CLX_TITLE": {
+    "message": "QR code generator and short links on clx.cx"
+  },
+  "FOOTER_CRAFTED_AT": {
+    "message": "Crafted at"
+  },
+  "FOOTER_FEEDBACK": {
+    "message": "Feedback & issues"
+  },
+  "FOOTER_TELEGRAM": {
+    "message": "Telegram community"
+  },
+  "WELCOME_TAGLINE": {
+    "message": "Crisp SVG QR codes, right in your browser."
+  },
+  "WELCOME_SUBTITLE": {
+    "message": "A QR code for any page or text — drawn locally, with no account and no tracking."
+  },
+  "WELCOME_STEP_GENERATE": {
+    "message": "Generate"
+  },
+  "WELCOME_STEP_GENERATE_DESC": {
+    "message": "Open the side panel — the code for the current page is ready."
+  },
+  "WELCOME_STEP_SHARE": {
+    "message": "Share"
+  },
+  "WELCOME_STEP_SHARE_DESC": {
+    "message": "Copy a share link or download the SVG."
+  },
+  "WELCOME_STEP_EMBED": {
+    "message": "Embed"
+  },
+  "WELCOME_STEP_EMBED_DESC": {
+    "message": "Paste an HTML, Markdown, React or Vue snippet."
+  },
+  "WELCOME_TIPS_TITLE": {
+    "message": "Tips"
+  },
+  "WELCOME_TIP_ICON": {
+    "message": "Click the toolbar icon to open the side panel; pin the icon to keep it at hand."
+  },
+  "WELCOME_TIP_CUSTOM": {
+    "message": "Switch to “Custom input” to encode any text, not just the page address."
+  },
+  "WELCOME_TIP_ECC": {
+    "message": "Error correction Q or H keeps a printed code readable when it gets scratched."
+  },
+  "WELCOME_TIP_HISTORY": {
+    "message": "Every code whose link you copied stays in History, on your device only."
+  },
+  "WELCOME_CLX_TITLE": {
+    "message": "Need to count scans?"
+  },
+  "WELCOME_CLX_DESC": {
+    "message": "Put a short link from clx.cx into the code — it shows how many people scanned it."
+  },
+  "WELCOME_CLX_LINK": {
+    "message": "Short links on clx.cx"
+  },
+  "WELCOME_CTA": {
+    "message": "Open the generator"
   }
 }

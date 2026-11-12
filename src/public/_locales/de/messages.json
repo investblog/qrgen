@@ -1,0 +1,230 @@
+{
+  "EXTENSION_NAME": {
+    "message": "SVG QR Code Generator"
+  },
+  "SITE_URL": {
+    "message": "https://clx.cx",
+    "description": "Base URL of the extension's pages for this language, no trailing slash"
+  },
+  "EXTENSION_DESCRIPTION": {
+    "message": "Kostenloser SVG-QR-Code-Generator in der Seitenleiste: Code für jede Seite oder jeden Text, Freigabelinks, Snippets. Kein Tracking."
+  },
+  "TAB_GENERATE": {
+    "message": "Erstellen"
+  },
+  "TAB_EMBED": {
+    "message": "Einbetten"
+  },
+  "TAB_HISTORY": {
+    "message": "Verlauf"
+  },
+  "TAB_SETTINGS": {
+    "message": "Optionen"
+  },
+  "THEME_TOGGLE": {
+    "message": "Design wechseln"
+  },
+  "GENERATE_SOURCE_TAB": {
+    "message": "Aktuelle Seite"
+  },
+  "GENERATE_SOURCE_CUSTOM": {
+    "message": "Eigener Text"
+  },
+  "GENERATE_INPUT_LABEL": {
+    "message": "Text oder URL"
+  },
+  "GENERATE_INPUT_PLACEHOLDER": {
+    "message": "URL oder Text eingeben..."
+  },
+  "GENERATE_PRESET": {
+    "message": "Größe"
+  },
+  "GENERATE_ECC": {
+    "message": "ECC"
+  },
+  "GENERATE_PREVIEW_EMPTY": {
+    "message": "Daten eingeben, um einen QR-Code zu erstellen"
+  },
+  "GENERATE_ERROR": {
+    "message": "QR-Code konnte nicht erstellt werden"
+  },
+  "GENERATE_COPY_LINK": {
+    "message": "Link kopieren"
+  },
+  "GENERATE_COPY_SVG": {
+    "message": "SVG kopieren"
+  },
+  "GENERATE_DOWNLOAD_SVG": {
+    "message": "SVG herunterladen"
+  },
+  "EMBED_FORMAT": {
+    "message": "Snippet-Format"
+  },
+  "EMBED_NO_QR": {
+    "message": "Erstellen Sie zuerst einen QR-Code"
+  },
+  "EMBED_COPY_SNIPPET": {
+    "message": "Snippet kopieren"
+  },
+  "EMBED_COPY_URL": {
+    "message": "URL kopieren"
+  },
+  "EMBED_API_DOCS": {
+    "message": "API-Doku"
+  },
+  "HISTORY_EMPTY": {
+    "message": "Noch kein Verlauf"
+  },
+  "HISTORY_CLEAR": {
+    "message": "Alle löschen"
+  },
+  "HISTORY_CLEARED": {
+    "message": "Verlauf gelöscht"
+  },
+  "HISTORY_COPY_LINK": {
+    "message": "Link kopieren"
+  },
+  "HISTORY_OPEN": {
+    "message": "Im Browser öffnen"
+  },
+  "HISTORY_JUST_NOW": {
+    "message": "gerade eben"
+  },
+  "SETTINGS_DEFAULTS": {
+    "message": "Standardwerte"
+  },
+  "SETTINGS_DEFAULT_PRESET": {
+    "message": "Standardgröße"
+  },
+  "SETTINGS_DEFAULT_ECC": {
+    "message": "Standard-ECC"
+  },
+  "SETTINGS_BEHAVIOR": {
+    "message": "Verhalten"
+  },
+  "SETTINGS_AUTO_GENERATE": {
+    "message": "Beim Öffnen generieren"
+  },
+  "SETTINGS_HISTORY_LIMIT": {
+    "message": "Verlaufslimit"
+  },
+  "SETTINGS_APPEARANCE": {
+    "message": "Darstellung"
+  },
+  "SETTINGS_THEME": {
+    "message": "Design"
+  },
+  "SETTINGS_THEME_AUTO": {
+    "message": "Auto"
+  },
+  "SETTINGS_THEME_DARK": {
+    "message": "Dunkel"
+  },
+  "SETTINGS_THEME_LIGHT": {
+    "message": "Hell"
+  },
+  "SETTINGS_PRIVACY": {
+    "message": "Datenschutz"
+  },
+  "SETTINGS_PRIVACY_NOTE": {
+    "message": "Alles läuft in Ihrem Browser; die Erweiterung sendet nichts. Ein Freigabelink enthält den codierten Text – jeder mit dem Link kann ihn lesen. Keine Konten, kein Tracking, keine Analyse."
+  },
+  "SETTINGS_LINKS": {
+    "message": "Links"
+  },
+  "SETTINGS_LINK_DOCS": {
+    "message": "Anleitung zur Erweiterung"
+  },
+  "SETTINGS_LINK_API": {
+    "message": "API-Dokumentation"
+  },
+  "TOAST_COPIED": {
+    "message": "Kopiert"
+  },
+  "TOAST_COPY_FAILED": {
+    "message": "Kopieren fehlgeschlagen"
+  },
+  "TOAST_DOWNLOADED": {
+    "message": "Heruntergeladen"
+  },
+  "TOAST_TOO_LONG_FOR_LINK": {
+    "message": "Zu lang für einen Link (max. 2048 Zeichen) – kopieren Sie das SVG oder laden Sie es herunter"
+  },
+  "SETTINGS_LINK_WELCOME": {
+    "message": "Willkommensseite"
+  },
+  "WHATS_NEW_TITLE": {
+    "message": "Neu in Version $VERSION$",
+    "placeholders": { "version": { "content": "$1", "example": "1.1.0" } }
+  },
+  "RATE_US": {
+    "message": "Bewerten"
+  },
+  "RATE_ON_STORE": {
+    "message": "Bei $STORE$ bewerten",
+    "placeholders": { "store": { "content": "$1", "example": "Chrome Web Store" } }
+  },
+  "FOOTER_CLX_TITLE": {
+    "message": "QR-Code-Generator und Kurzlinks auf clx.cx"
+  },
+  "FOOTER_CRAFTED_AT": {
+    "message": "Entwickelt bei"
+  },
+  "FOOTER_FEEDBACK": {
+    "message": "Feedback & Fehler"
+  },
+  "FOOTER_TELEGRAM": {
+    "message": "Telegram-Community"
+  },
+  "WELCOME_TAGLINE": {
+    "message": "Gestochen scharfe SVG-QR-Codes, direkt in Ihrem Browser."
+  },
+  "WELCOME_SUBTITLE": {
+    "message": "Ein QR-Code für jede Seite und jeden Text – lokal erzeugt, ohne Konto und ohne Tracking."
+  },
+  "WELCOME_STEP_GENERATE": {
+    "message": "Erstellen"
+  },
+  "WELCOME_STEP_GENERATE_DESC": {
+    "message": "Öffnen Sie die Seitenleiste – der Code für die aktuelle Seite ist schon fertig."
+  },
+  "WELCOME_STEP_SHARE": {
+    "message": "Teilen"
+  },
+  "WELCOME_STEP_SHARE_DESC": {
+    "message": "Kopieren Sie einen Freigabelink oder laden Sie das SVG herunter."
+  },
+  "WELCOME_STEP_EMBED": {
+    "message": "Einbetten"
+  },
+  "WELCOME_STEP_EMBED_DESC": {
+    "message": "Fügen Sie ein Snippet für HTML, Markdown, React oder Vue ein."
+  },
+  "WELCOME_TIPS_TITLE": {
+    "message": "Tipps"
+  },
+  "WELCOME_TIP_ICON": {
+    "message": "Klicken Sie auf das Symbol in der Symbolleiste, um die Seitenleiste zu öffnen; heften Sie es an, damit es griffbereit bleibt."
+  },
+  "WELCOME_TIP_CUSTOM": {
+    "message": "Wechseln Sie zu „Eigener Text“, um beliebigen Text zu codieren, nicht nur die Seitenadresse."
+  },
+  "WELCOME_TIP_ECC": {
+    "message": "Mit der Fehlerkorrektur Q oder H bleibt ein gedruckter Code auch mit Kratzern lesbar."
+  },
+  "WELCOME_TIP_HISTORY": {
+    "message": "Jeder Code, dessen Link Sie kopiert haben, bleibt im Verlauf – nur auf Ihrem Gerät."
+  },
+  "WELCOME_CLX_TITLE": {
+    "message": "Möchten Sie Scans zählen?"
+  },
+  "WELCOME_CLX_DESC": {
+    "message": "Verwenden Sie im Code einen Kurzlink von clx.cx – er zeigt, wie viele Menschen ihn gescannt haben."
+  },
+  "WELCOME_CLX_LINK": {
+    "message": "Kurzlinks auf clx.cx"
+  },
+  "WELCOME_CTA": {
+    "message": "Generator öffnen"
+  }
+}

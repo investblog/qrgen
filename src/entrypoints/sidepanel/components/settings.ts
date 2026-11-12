@@ -3,6 +3,8 @@ import { PRESET_IDS, PRESETS } from '@shared/presets';
 import { loadSettings, saveSettings } from '@shared/storage';
 import { getThemePreference, setThemePreference, type ThemePreference } from '@shared/theme';
 import type { EccLevel, PresetId, Settings } from '@shared/types';
+import { releaseNoteItems, WHATS_NEW } from '@shared/whats-new';
+import { browser } from 'wxt/browser';
 import { el, t } from '../helpers';
 import { notifyDefaultsChanged } from '../state';
 
@@ -124,8 +126,26 @@ export function createSettingsTab(): HTMLElement {
   apiLink.textContent = t('SETTINGS_LINK_API');
   links.appendChild(apiLink);
 
+  const welcomeLink = document.createElement('a');
+  welcomeLink.href = browser.runtime.getURL('/welcome.html');
+  welcomeLink.target = '_blank';
+  welcomeLink.rel = 'noopener';
+  welcomeLink.textContent = t('SETTINGS_LINK_WELCOME');
+  links.appendChild(welcomeLink);
+
   linksGroup.appendChild(links);
   container.appendChild(linksGroup);
+
+  // What's new (bundled release notes)
+  const latest = WHATS_NEW[0];
+  if (latest) {
+    const newsGroup = el('div', 'settings-group');
+    newsGroup.appendChild(el('div', 'settings-group__title', t('WHATS_NEW_TITLE', latest.version)));
+    const list = el('ul', 'whats-new');
+    for (const line of releaseNoteItems(latest, browser.i18n.getUILanguage())) list.appendChild(el('li', '', line));
+    newsGroup.appendChild(list);
+    container.appendChild(newsGroup);
+  }
 
   // Load saved settings
   initSettings();

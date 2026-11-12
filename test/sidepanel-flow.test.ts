@@ -27,8 +27,11 @@ vi.mock('wxt/browser', () => ({
       query: vi.fn(async () => [{ url: env.tabUrl, title: 'Page' }]),
       create: tabsCreate,
     },
-    runtime: { sendMessage },
-    i18n: { getMessage: (key: string) => (key === 'SITE_URL' ? 'https://ru.clx.cx' : key) },
+    runtime: { sendMessage, getURL: (path: string) => `chrome-extension://test${path}` },
+    i18n: {
+      getMessage: (key: string) => (key === 'SITE_URL' ? 'https://ru.clx.cx' : key),
+      getUILanguage: () => 'ru',
+    },
   },
 }));
 vi.mock('@shared/storage', () => ({
@@ -223,6 +226,39 @@ describe('links to the docs', () => {
     expect(hrefs).toContain('https://ru.clx.cx/qr-code-extension');
     expect(hrefs).toContain('https://clx.cx/qr-code-api');
     expect(hrefs.join(' ')).not.toContain('qrcgen.com');
+    expect(hrefs).toContain('chrome-extension://test/welcome.html');
+    expect(tab.querySelector('.whats-new li')?.textContent).toMatch(/clx\.cx/);
+  });
+});
+
+describe('footer', () => {
+  it('links to the store reviews, clx.cx, 301.st and feedback, each with a glyph', async () => {
+    vi.stubEnv('BROWSER', 'chrome');
+    const { createFooter } = await import('@/entrypoints/sidepanel/components/footer');
+    const footer = createFooter();
+    const review = footer.querySelector('.panel__review') as HTMLAnchorElement;
+    expect(review.href).toMatch(/chromewebstore\.google\.com\/detail\/.+\/reviews$/);
+    expect(review.querySelector('img')?.getAttribute('src')).toBe('/icons/chrome.svg');
+    const clx = footer.querySelector('.panel__clx') as HTMLAnchorElement;
+    expect(clx.href).toBe('https://ru.clx.cx/qr-code-generator?utm_source=extension&utm_medium=footer');
+    expect(clx.querySelector('svg')).not.toBeNull();
+    const glyphs = [...footer.querySelectorAll<HTMLAnchorElement>('.panel__glyph')];
+    expect(glyphs.map((a) => new URL(a.href).host)).toEqual(['301.st', 'github.com', 't.me']);
+    for (const a of glyphs) expect(a.querySelector('svg path')).not.toBeNull();
+    vi.unstubAllEnvs();
+  });
+
+  it('a build without a store listing shows no rate link', async () => {
+    vi.stubEnv('BROWSER', 'opera');
+    const { createFooter } = await import('@/entrypoints/sidepanel/components/footer');
+    expect(createFooter().querySelector('.panel__review')).toBeNull();
+    vi.unstubAllEnvs();
+  });
+
+  it('each store build rates on its own store', async () => {
+    const { getStoreInfo } = await import('@shared/brand');
+    expect(getStoreInfo('edge')?.url).toContain('microsoftedge.microsoft.com');
+    expect(getStoreInfo('firefox')?.url).toMatch(/addons\.mozilla\.org\/.+\/reviews\/$/);
   });
 });
 

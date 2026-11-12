@@ -1,0 +1,239 @@
+/* =========================
+   Welcome page — SVG QR Code Generator
+   ========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: var(--lh-body);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome {
+  max-width: 680px;
+  width: 100%;
+  padding: var(--space-6) var(--space-5);
+  margin: 0 auto;
+}
+
+/* ---- Header & hero ---- */
+
+.welcome__header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.welcome__icon {
+  flex-shrink: 0;
+}
+
+.welcome__title {
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.welcome__hero {
+  margin-bottom: var(--space-6);
+}
+
+.welcome__tagline {
+  font-size: 1.75rem;
+  font-weight: var(--fw-bold);
+  margin: 0 0 var(--space-2);
+}
+
+.welcome__subtitle {
+  font-size: var(--fs-lg);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ---- Steps ---- */
+
+.welcome__steps {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.welcome__step {
+  flex: 1;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.welcome__step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-bold);
+}
+
+.welcome__step-title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  margin: 0;
+}
+
+.welcome__step-desc {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* ---- Sections ---- */
+
+.welcome__section-title {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  margin: 0 0 var(--space-2);
+}
+
+.welcome__tips {
+  margin-bottom: var(--space-6);
+}
+
+.welcome__tips-list,
+.welcome__news-list {
+  margin: 0;
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.welcome__card {
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+}
+
+.welcome__card[hidden] {
+  display: none;
+}
+
+.welcome__clx {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.welcome__clx .welcome__section-title {
+  margin: 0;
+}
+
+.welcome__clx-link {
+  align-self: flex-start;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.welcome__clx-link:hover {
+  text-decoration: underline;
+}
+
+/* ---- CTA ---- */
+
+.welcome__action {
+  margin-bottom: var(--space-6);
+}
+
+.welcome__cta {
+  cursor: pointer;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.6rem 1.5rem;
+  font-family: inherit;
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  line-height: 1.25;
+  background: var(--primary);
+  color: #fff;
+  transition: background var(--transition-fast);
+}
+
+.welcome__cta:hover {
+  background: var(--primary-hover);
+}
+
+.welcome__cta:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ---- Footer ---- */
+
+.welcome__footer {
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.welcome__footer-sep {
+  color: var(--text-subtle);
+}
+
+.welcome__sponsor {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.welcome__sponsor:hover,
+.welcome__social-link:hover {
+  color: var(--text);
+}
+
+.welcome__social-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-subtle);
+  transition: color var(--transition-fast);
+}
+
+@media (max-width: 560px) {
+  .welcome__steps {
+    flex-direction: column;
+  }
+
+  .welcome__tagline {
+    font-size: 1.35rem;
+  }
+}
