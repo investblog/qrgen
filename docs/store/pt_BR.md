@@ -46,3 +46,12 @@ Quer saber quantas pessoas escanearam um código? Use dentro dele um link curto 
 Painel lateral no Chrome e no Edge, barra lateral no Firefox, temas claro e escuro. A interface segue o idioma do seu navegador e está disponível em sete idiomas.
 
 Feito por 301.st. O código-fonte é aberto: github.com/investblog/qrgen
+
+## Screenshot captions
+
+1. Uma página no celular: o QR code da página atual, bem ao lado
+2. Link em um clique: “Copiar link” coloca um link para o código na área de transferência
+3. Incorpore em qualquer lugar: um snippet HTML pronto para colar numa página
+4. Para todo stack: o snippet de React, com HTML, Markdown e Vue a um clique
+5. Qualquer texto, do seu jeito: “Texto livre”, código de 300 px e correção de erros H
+6. Nenhum link se perde: o Histórico guarda os códigos cujo link você copiou, só neste computador

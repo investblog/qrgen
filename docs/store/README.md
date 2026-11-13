@@ -13,7 +13,7 @@ line break.
 
 | File | What it holds | Where it goes |
 |---|---|---|
-| `<lang>.md` (`en`, `ru`, `de`, `es`, `fr`, `pt_BR`, `tr`) | the detailed description and the Edge search terms | description: Chrome Web Store and Edge, in its language; search terms: Edge |
+| `<lang>.md` (`en`, `ru`, `de`, `es`, `fr`, `pt_BR`, `tr`) | the detailed description, the Edge search terms and the screenshot captions | description: Chrome Web Store and Edge, in its language; search terms: Edge; captions: Edge and AMO |
 | `amo/<lang>.md` (the same 7) | a separate description in AMO's Markdown | AMO, in its language |
 | `SUBMIT.md` | the submission runbook: what is automated, which file fills which field, release order | every release |
 | `../../store-assets/` | promo tiles for Chrome and Edge and the README banner (`build.py`, SVG sources, JPEG + PNG) | Chrome and Edge tiles |
@@ -56,4 +56,5 @@ measured yet.
 - descriptions are 250 (Edge minimum) to 10,000 characters;
 - search terms are within the Edge limits;
 - AMO text uses no `•` and no headings, and repeats no line of 40+ characters from the Chrome text;
+- every `<lang>.md` has six screenshot captions, numbered in the gallery's order;
 - no old domain (`qrcgen.com`).

@@ -115,4 +115,9 @@ describe('store listings', () => {
       if (line.length >= 40) expect(chrome.has(line), line).toBe(false);
     }
   });
+
+  it.each(langs)('%s has a caption for each of the six screenshots', (lang) => {
+    const captions = section(chromeFile(lang), 'Screenshot captions');
+    expect(captions.map((l) => l.match(/^(\d)\. \S/)?.[1])).toEqual(['1', '2', '3', '4', '5', '6']);
+  });
 });

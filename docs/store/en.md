@@ -47,3 +47,12 @@ Need to know how many people scanned a code? Put a short link from clx.cx into i
 Side panel in Chrome and Edge, sidebar in Firefox, light and dark themes. The interface follows your browser's language and is available in seven languages.
 
 Made by 301.st. The source code is open: github.com/investblog/qrgen
+
+## Screenshot captions
+
+1. Send a page to your phone: the QR code for the current page, right next to it
+2. Share link in one click: Copy Share Link puts a link to the code on the clipboard
+3. Embed anywhere: an HTML snippet ready to paste into a page
+4. Every stack covered: the React snippet, with HTML, Markdown and Vue one click away
+5. Any text, your way: Custom input, a 300 px code and error correction level H
+6. Never lose a link: History keeps the codes whose share link you copied, on this computer only

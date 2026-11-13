@@ -37,7 +37,8 @@ Opera has no listing (the Opera add-ons store no longer accepts extensions).
 | Small promo tile 440×280, Chrome | `store-assets/out/small-440x280-en.jpg` (Chrome tiles are one for all languages) |
 | Marquee 1400×560, Chrome | `store-assets/out/marquee-1400x560-en.jpg` |
 | Small / large promo tile, Edge | `store-assets/out/small-440x280-<en,ru>.png`, `marquee-1400x560-<en,ru>.png`: Edge sets them per language (`-ru` for Russian, `-en` for the rest) and wants the large tile as PNG |
-| Screenshots 1280×800, all three | `store-assets/out/screenshots/<chrome,edge,firefox>/<en,ru>/01…06-*.png`, in that order; alt texts in `captions.md` next to them. Each store has its own set (the panel footer shows that store's rating link); `ru` for Russian, `en` for the rest |
+| Screenshots 1280×800, all three | `store-assets/out/screenshots/<chrome,edge,firefox>/<en,ru>/01…06-*.png`, in that order. Each store has its own set (the panel footer shows that store's rating link); `ru` for Russian, `en` for the rest |
+| Screenshot captions, Edge and AMO | `docs/store/<lang>.md`, section *Screenshot captions*, one line per screenshot in the same order, in every language (the images are `en` for all but Russian); worded for any browser, so both stores take the same lines. Chrome has no caption field; the `captions.md` next to the images are alt texts that describe each image |
 | Privacy policy URL | `https://clx.cx/qr-code-privacy` |
 | Homepage | `https://clx.cx/qr-code-extension` |
 | Support | `https://github.com/investblog/qrgen/issues` |
@@ -76,11 +77,11 @@ order is: upload as a draft, fill the listing, then submit.
    description and screenshots. *Privacy*: single purpose, permissions, remote code, data use, privacy policy URL.
    Then *Submit for review*.
 5. **Edge Partner Center** → the product → *Properties* (privacy policy, website, support) and *Store listings* for
-   every language: description, search terms, tiles (PNG), screenshots. Then *Publish*.
+   every language: description, search terms, tiles (PNG), screenshots with their captions. Then *Publish*.
 6. Turn hold off: `gh variable delete SUBMIT_HOLD`.
 7. **Firefox**, last: Actions → *Submit to stores* → tag `vX.Y.Z`, `stores=firefox`, first with `dry_run` on (checks
    the credentials), then off. Then in the AMO dashboard, for every language: the description from
-   `docs/store/amo/<lang>.md`, screenshots, homepage, support and privacy policy.
+   `docs/store/amo/<lang>.md`, screenshots with the captions from `docs/store/<lang>.md`, homepage, support and privacy policy.
 
 ## A release that does not change the listing
 

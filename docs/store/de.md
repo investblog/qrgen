@@ -47,3 +47,12 @@ Sie möchten wissen, wie viele Menschen einen Code gescannt haben? Verwenden Sie
 Seitenleiste in Chrome und Edge, Sidebar in Firefox, helles und dunkles Design. Die Oberfläche folgt der Sprache Ihres Browsers und ist in sieben Sprachen verfügbar.
 
 Entwickelt von 301.st. Der Quellcode ist offen: github.com/investblog/qrgen
+
+## Screenshot captions
+
+1. Seite aufs Handy: der QR-Code der aktuellen Seite, direkt daneben
+2. Link mit einem Klick: „Link kopieren“ legt einen Link zum Code in die Zwischenablage
+3. Überall einbetten: ein HTML-Snippet, fertig zum Einfügen in eine Seite
+4. Für jeden Stack: das React-Snippet, dazu HTML, Markdown und Vue mit einem Klick
+5. Jeder Text, wie Sie ihn brauchen: „Eigener Text“, ein Code mit 300 px und Fehlerkorrektur H
+6. Kein Link geht verloren: Der Verlauf zeigt die Codes, deren Link Sie kopiert haben – gespeichert nur auf diesem Computer

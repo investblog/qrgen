@@ -46,3 +46,12 @@ Privado por diseño
 Panel lateral en Chrome y Edge, barra lateral en Firefox, temas claro y oscuro. La interfaz sigue el idioma de tu navegador y está disponible en siete idiomas.
 
 Creado por 301.st. El código fuente es abierto: github.com/investblog/qrgen
+
+## Screenshot captions
+
+1. Una página al móvil: el código QR de la página actual, justo al lado
+2. Enlace en un clic: «Copiar enlace» copia al portapapeles un enlace al código
+3. Insértalo donde quieras: un snippet HTML listo para pegar en una página
+4. Para cada stack: el snippet de React, y HTML, Markdown y Vue a un clic
+5. Cualquier texto, a tu manera: «Texto propio», un código de 300 px y corrección de errores H
+6. No pierdas ningún enlace: el Historial guarda los códigos cuyo enlace copiaste, solo en este ordenador

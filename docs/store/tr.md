@@ -47,3 +47,12 @@ Bir kodu kaç kişinin taradığını mı öğrenmek istiyorsunuz? İçine clx.c
 Chrome ve Edge'de yan panel, Firefox'ta kenar çubuğu; açık ve koyu tema. Arayüz tarayıcınızın dilini izler ve yedi dilde kullanılabilir.
 
 Geliştiren: 301.st. Kaynak kodu açık: github.com/investblog/qrgen
+
+## Screenshot captions
+
+1. Sayfayı telefona gönderin: geçerli sayfanın QR kodu, hemen yanında
+2. Tek tıkla bağlantı: “Bağlantıyı kopyala” koda giden bağlantıyı panoya kopyalar
+3. Her yere yerleştirin: bir sayfaya yapıştırmaya hazır HTML kodu
+4. Her altyapı için: React yerleştirme kodu; HTML, Markdown ve Vue bir tık uzağınızda
+5. İstediğiniz metin, istediğiniz gibi: “Özel metin”, 300 px boyutunda bir kod ve H düzeyinde hata düzeltme
+6. Hiçbir bağlantı kaybolmaz: Geçmiş, bağlantısını kopyaladığınız kodları yalnızca bu bilgisayarda tutar

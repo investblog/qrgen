@@ -47,3 +47,12 @@ Besoin de savoir combien de personnes ont scanné un code ? Mettez-y un lien cou
 Panneau latéral dans Chrome et Edge, barre latérale dans Firefox, thèmes clair et sombre. L’interface suit la langue de votre navigateur et existe en sept langues.
 
 Réalisé par 301.st. Le code source est ouvert : github.com/investblog/qrgen
+
+## Screenshot captions
+
+1. Une page vers votre téléphone : le QR code de la page actuelle, juste à côté
+2. Un lien en un clic : « Copier le lien » place un lien vers le code dans le presse-papiers
+3. Intégrez-le partout : un snippet HTML prêt à coller dans une page
+4. Pour chaque stack : le snippet React, et HTML, Markdown et Vue à un clic
+5. Votre texte, à votre façon : « Texte libre », un code de 300 px et la correction d’erreurs H
+6. Aucun lien perdu : l’Historique garde les codes dont vous avez copié le lien, sur cet ordinateur uniquement
